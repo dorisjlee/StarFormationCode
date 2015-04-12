@@ -1,5 +1,0 @@
- compile date = Tue Mar 10 01:48:44 PDT 2015
- patch dir    = 
- remote repo  = https://bitbucket.org/rteyssie/ramses.git
- local branch = master
- last commit  = 01300149 -undo the changes that I accidently pushed to the wrong remote reposito
