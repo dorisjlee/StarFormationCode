@@ -1,0 +1,19 @@
+#PBS -q regular
+# Setting number of cores multiples of 24 (since 24 cores per NUMA node) 
+# -l mppwidth=1008
+#PBS -l mppwidth=24
+#PBS -l walltime=10:00:00
+#PBS -N test
+#PBS -e test.$PBS_JOBID.err
+#PBS -o test.$PBS_JOBID.out
+#PBS -A m2218
+
+#cd $SCRATCH/testrun/
+#or if you need mpi and no threads, don't use 
+#the OMP_NUM_THREADS
+#aprun -n 24 ./a.out
+#aprun -n 1000 ramses3d sedov3d.nml 
+#Need to use GNU compiler
+#aprun -n 1000 /global/homes/d/dorislee/ramses/trunk/ramses/bin/ramses3d sedov3d.nml
+cd ~/hopper_scratch/test_run
+aprun -n 8  /global/homes/d/dorislee/ramses/trunk/ramses/bin/ramses3d sedov3d.nml
