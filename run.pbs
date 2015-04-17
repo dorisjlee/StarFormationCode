@@ -2,7 +2,7 @@
 # Setting number of cores multiples of 24 (since 24 cores per NUMA node) 
 # -l mppwidth=1008
 #PBS -l mppwidth=24
-#PBS -l walltime=10:00:00
+#PBS -l walltime=07:00:00
 #PBS -N test
 #PBS -e test.$PBS_JOBID.err
 #PBS -o test.$PBS_JOBID.out
@@ -16,4 +16,5 @@
 #Need to use GNU compiler
 #aprun -n 1000 /global/homes/d/dorislee/ramses/trunk/ramses/bin/ramses3d sedov3d.nml
 cd ~/hopper_scratch/test_run
+pwd 
 aprun -n 8  /global/homes/d/dorislee/ramses/trunk/ramses/bin/ramses3d sedov3d.nml
