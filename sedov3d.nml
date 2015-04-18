@@ -12,7 +12,7 @@ levelmin=8
 levelmax=8
 ngridtot=3000000
 nexpand=1
-boxlen=0.5
+boxlen=10000.0
 ngridmax=10000
 /
 
