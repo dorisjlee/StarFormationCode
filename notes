@@ -35,3 +35,5 @@ Application 11926985 resources: utime ~897054s, stime ~3921s, Rss ~111220, inblo
 - increasing niter_riemann=15 
 	- so that it is more computationally intensive to get more exact solutions
 		- this would only work if we hit the original max iter alot (n=10) when finding converging solution
+
+- Interesting to take a look at orszag-tang.pdf versus orszag-tang.orig.pdf, the first one was the one ran with the very low courant number of 0.2. The latter one was ran with the normal courant number of 0.8. It is clear from the figure that as we decreased the time step the image looks much less pixellated. The image size is also different so I had to tweak the plotting script plot-orzang-tang.py
