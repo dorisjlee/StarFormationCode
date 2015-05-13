@@ -1,8 +1,3 @@
- ordering type=             hilbert
- time=  0.000000000000000E+000
- Working resolution =        1024
- Processing file /global/homes/d/dorislee/backup_edison_scratch/test4/output_000
- 01//amr_00001.out00001
            0           0           1           0           1           1
            1           1           4           4           4           4
           16          16          16          16          64          32
@@ -10,8 +5,6 @@
         1024         128          16         128        4096         256
           16         256       16384         512          16         512
            0           0           0           0
- Processing file /global/homes/d/dorislee/backup_edison_scratch/test4/output_000
- 01//amr_00001.out00002
            0           0           1           0           1           1
            1           1           4           4           4           4
           16          16          16          16          32          64
@@ -19,8 +12,6 @@
          128        1024         128          16         256        4096
          256          16         512       16384         512          16
            0           0           0           0
- Processing file /global/homes/d/dorislee/backup_edison_scratch/test4/output_000
- 01//amr_00001.out00003
            0           0           1           0           1           1
            1           1           4           4           4           4
           16          16          16          16          16          32
@@ -28,8 +19,6 @@
           16         128        1024         128          16         256
         4096         256          16         512       16384         512
            0           0           0           0
- Processing file /global/homes/d/dorislee/backup_edison_scratch/test4/output_000
- 01//amr_00001.out00004
            0           0           1           0           1           1
            1           1           4           4           4           4
           16          16          16          16          32          16
@@ -37,5 +26,3 @@
          128          16         128        1024         256          16
          256        4096         512          16         512       16384
            0           0           0           0
- Norm=  0.221048532072030     
- Ecriture des donnees du fichier data2.dat
