@@ -1,0 +1,39 @@
+- If you do a plot of the output00001 it will all be uniforma since the initial condition of the problem is uniformat density (close to zero) , this is initialized by the patch on ../patch/ot which must be explicitly specified in runtime.
+- You see the actual evolved field if you look at the second time step.
+- On 1000 cores, 
+Total elapsed time:   33.3687479496002     
+Application 11926007 resources: utime ~33860s, stime ~559s, Rss ~109888, inblocks ~540146, outblocks ~2560545
+
+- changed level max to 10 instead: 
+Total elapsed time:   50.6845259666443     
+Application 11926105 resources: utime ~52969s, stime ~739s, Rss ~111828, inblocks ~540184, outblocks ~2956603
+
+- increasing boxlen by a factor of 10:
+
+ Total elapsed time:   8.56488108634949     
+Application 11926144 resources: utime ~9053s, stime ~471s, Rss ~111540, inblocks ~471289, outblocks ~3323415
+	- not sure why this was faster....
+		- confirmed twice that this is the case...
+-level= 8~10
+	- so enforcing more resolved than it really need to be. 
+	- much longer but not long enough.
+Total elapsed time:   227.838542938232     
+Application 11926180 resources: utime ~227496s, stime ~1346s, Rss ~110448, inblocks ~1017264, outblocks ~3203875
+- level = 9~10
+	-  Total elapsed time:   435.529972076416
+Application 11926306 resources: utime ~435110s, stime ~2156s, Rss ~110568, inblocks ~1543022, outblocks ~3482828
+
+- level = 8~10,  lower courant number 0.5:
+	- so for each box size, the time step is smaller.
+	- So yes this did extend the time by quite a bit 
+	Total elapsed time:   368.831938982010     
+Application 11926771 resources: utime ~368521s, stime ~1880s, Rss ~110648, inblocks ~1351068, outblocks ~320427
+- level 8~10 a even lower courant number 0.2: 
+	-  Total elapsed time:   900.980298042297     
+Application 11926985 resources: utime ~897054s, stime ~3921s, Rss ~111220, inblocks ~2687256, outblocks ~3208885
+
+- increasing niter_riemann=15 
+	- so that it is more computationally intensive to get more exact solutions
+		- this would only work if we hit the original max iter alot (n=10) when finding converging solution
+
+- Interesting to take a look at orszag-tang.pdf versus orszag-tang.orig.pdf, the first one was the one ran with the very low courant number of 0.2. The latter one was ran with the normal courant number of 0.8. It is clear from the figure that as we decreased the time step the image looks much less pixellated. The image size is also different so I had to tweak the plotting script plot-orzang-tang.py
