@@ -20,7 +20,7 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-
+  real rmax, rho0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,i
   ! Call built-in initial condition generator
   !call region_condinit(x,q,dx,nn)
   q(1:nn,:)=0.
@@ -44,7 +44,7 @@ subroutine condinit(x,u,dx,nn)
      !Defining primitives
      
      !Density
-     IF (rr LE. rmax) THEN
+     IF (rr .LE. rmax) THEN
         q(i,1)=rho0
      ELSE !the rest of the box
         q(i,1)=1.1E-25 !few orders of magnitude less dense (~approx 0?)
@@ -54,7 +54,8 @@ subroutine condinit(x,u,dx,nn)
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
      q(i,5)=0.0       ! Pressure
-     !Constant radius boundary condition? 
+     !Constant radius boundary condition?
+  end do 
   !Convert primitive to conservative variables
   ! density -> density
   u(1:nn,1)=q(1:nn,1)

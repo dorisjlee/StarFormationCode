@@ -1,23 +1,39 @@
 &RUN_PARAMS 
 hydro=.true.
+<<<<<<< HEAD
 verbose=.true
 ncontrol=1
 nrestart=0
 nremap=0
 nsubcycle=2,2,2,2,2
+=======
+ncontrol=1
+nrestart=0
+nremap=0
+nsubcycle=10*1
+>>>>>>> c5cd17280a68f4e986edf4abdceaddc944d61397
 nstepmax=10
 /
 
 &AMR_PARAMS 
+<<<<<<< HEAD
 levelmin=5
 levelmax=10
 ngridtot=3000
 nexpand=1
 boxlen=350000000000000000
+=======
+levelmin=8
+levelmax=10
+ngridtot=3000
+nexpand=1
+boxlen=1.0
+>>>>>>> c5cd17280a68f4e986edf4abdceaddc944d61397
 ngridmax=10000000
 /
 
 &INIT_PARAMS
+<<<<<<< HEAD
 nregion=1
 region_type='square'
 x_center=0.0
@@ -32,6 +48,22 @@ u_region=0.0
 v_region=0.0
 w_region=0.0
 p_region=0.0
+=======
+nregion=2
+region_type(1)='square'
+region_type(2)='point'
+x_center=0.5,0.0
+y_center=0.5,0.0
+z_center=0.5,0.0
+length_x=10.0,1.0
+length_y=10.0,1.0
+length_z=10.0,1.0
+exp_region=10.0,10.0
+d_region=1.0,0.0
+u_region=0.0,0.0
+v_region=0.0,0.0
+p_region=1e-5,0.4
+>>>>>>> c5cd17280a68f4e986edf4abdceaddc944d61397
 /
 
 &OUTPUT_PARAMS
@@ -41,7 +73,11 @@ tout=1.0
 
 &HYDRO_PARAMS
 gamma=1.0
+<<<<<<< HEAD
 courant_factor=0.5
+=======
+courant_factor=0.8
+>>>>>>> c5cd17280a68f4e986edf4abdceaddc944d61397
 scheme='muscl'
 slope_type=1
 /
