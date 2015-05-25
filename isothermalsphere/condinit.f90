@@ -20,7 +20,8 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-  real rmax, rho0,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,i
+  real rmax, rho0,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr
+  integer i
   ! Call built-in initial condition generator
   !call region_condinit(x,q,dx,nn)
   q(1:nn,:)=0.
@@ -48,19 +49,19 @@ subroutine condinit(x,u,dx,nn)
      ELSE !the rest of the box
         !PRINT *,"Outside box"
         !PRINT *, "Radius: ",rr
-        q(i,1)=1.0E-50 !few orders of magnitude less dense (~approx 0?)
+        q(i,1)=1.0E-25 !few orders of magnitude less dense (~approx 0?)
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
      !Pressure (constant radius --> isovolumetric, ideal gas)
-     IF (rr .LE. rmax) THEN
-     	q(i,5)=1.0E-50
-     ELSE
-        q(i,5)=P0
-     END IF
-     !q(i,5)=1.d-6
+     !IF (rr .LE. rmax) THEN
+     !	q(i,5)=1.0E-25
+     !ELSE
+     !   q(i,5)=P0
+     !END IF
+     q(i,5)=P0
   end do 
   !Convert primitive to conservative variables
   ! density -> density
