@@ -7,7 +7,16 @@ nremap=0
 nsubcycle=2,2,2,2,2
 nstepmax=10
 /
-
+&BOUNDARY_PARAMS
+nboundary=6
+bound_type= 3,3,3,3,3,3
+ibound_min=-1,+1,-1,-1,-1,-1
+ibound_max=-1,+1,+1,+1,+1,+1
+jbound_min= 0, 0,-1,+1,-1,-1
+jbound_max= 0, 0,-1,+1,+1,+1
+kbound_min= 0, 0, 0, 0,-1,+1
+kbound_max= 0, 0, 0, 0,-1,+1
+/
 &AMR_PARAMS 
 levelmin=5
 levelmax=10

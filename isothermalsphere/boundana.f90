@@ -45,6 +45,7 @@ subroutine boundana(x,u,dx,ibound,ncell)
      zc=x(i,3)-boxlen/2.0
      rr=sqrt(xc**2+yc**2+zc**2)
      !Enforce V=0 of the cloud at the radius at all r
+     print *,xc
      if (rr .EQ. 1.0E10) then
 	 print *,"At rmax!"
          !q(i,2)=0.0
