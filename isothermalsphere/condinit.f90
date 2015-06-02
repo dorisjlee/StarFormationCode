@@ -39,29 +39,36 @@ subroutine condinit(x,u,dx,nn)
      zc=x(i,3)-boxlen/2.0
 
      rr=sqrt(xc**2+yc**2+zc**2)
-     rmax=1.63E17
-     rho0= 1.1E-19
-     P0=3.69E-11
+     !G=1 for self gravity
+     rmax=1.07483E10
+     rho0=7.3403E-27
+     P0= 9.14E-11
+     !P0=2.46E-8
      !In Larson (1969), pressure is constant
      !Density
-     IF (rr .LE. rmax) THEN
-        q(i,1)=rho0
+     !IF (rr .LE. rmax) THEN
+     IF (rr .LE. 1E10) THEN
+	q(i,1)=rho0
      ELSE !the rest of the box
         !PRINT *,"Outside box"
         !PRINT *, "Radius: ",rr
-        q(i,1)=1.0E-25 !few orders of magnitude less dense (~approx 0?)
+        q(i,1)=1.0E-32 !few orders of magnitude less dense (~approx 0?)
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
      !Pressure (constant radius --> isovolumetric, ideal gas)
-     !IF (rr .LE. rmax) THEN
-     !	q(i,5)=1.0E-25
-     !ELSE
-     !   q(i,5)=P0
-     !END IF
-     q(i,5)=P0
+     IF (rr .LE. 1E10) THEN
+    ! IF (rr .LE. 0.8E10) THEN     
+	!q(i,5)=1.0E-25
+	q(i,5)=P0
+     ELSE
+        !q(i,5)=7.3403E-58
+	q(i,5)=1.0E-25
+     END IF
+    !q(i,5)=P0
+    !Don't set P as anything in the initial condition let it do its own thing.
   end do 
   !Convert primitive to conservative variables
   ! density -> density
