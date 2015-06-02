@@ -4,7 +4,7 @@
 !############################################################
 subroutine boundana(x,u,dx,ibound,ncell)
   use amr_parameters, ONLY: dp,ndim,nvector,boxlen
-  use hydro_parameters, ONLY: nvar,boundary_var
+  use hydro_parameters, ONLY: nvar,boundary_var,gamma
   implicit none
   integer ::ibound                        ! Index of boundary region
   integer ::ncell                         ! Number of active cells
@@ -46,10 +46,23 @@ subroutine boundana(x,u,dx,ibound,ncell)
      rr=sqrt(xc**2+yc**2+zc**2)
      !Enforce V=0 of the cloud at the radius at all r
      if (rr .EQ. 1.0E10) then
-         q(i,2)=0.0
-         q(i,3)=0.0
-         q(i,4)=0.0	
+	 print *,"At rmax!"
+         !q(i,2)=0.0
+         !q(i,3)=0.0
+         !q(i,4)=0.0	
+	 U(i,2)=0.0d0
+         U(i,3)=0.0d0
+         U(i,4)=0.0d0
      endif
    enddo
+  ! Convert primitive to conservative variables
+  ! density -> density
+!  u(1:nn,1)=q(1:nn,1)
+  ! velocity -> momentum
+  ! kinetic energy
+  ! pressure -> total fluid energy
+!  u(1:nn,ndim+2)=u(1:nn,ndim+2)+q(1:nn,ndim+2)/(gamma-1.0d0)
+
+
 
 end subroutine boundana
