@@ -22,9 +22,11 @@ subroutine condinit(x,u,dx,nn)
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
   real rmax, rho0,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr
   integer i
+  !print *, "Inside condinit.f90"
   ! Call built-in initial condition generator
   !call region_condinit(x,q,dx,nn)
   q(1:nn,:)=0.
+  !print *,"nn:",nn
   ! Add here, if you wish, some user-defined initial conditions
   do i=1,nn !looping through all grid numbers
     !Defining the left, right, and center positions of each cells.
@@ -39,6 +41,7 @@ subroutine condinit(x,u,dx,nn)
      zc=x(i,3)-boxlen/2.0
 
      rr=sqrt(xc**2+yc**2+zc**2)
+     !print *,"rr_init: ",rr
      !G=1 for self gravity
      rmax=1.07483E10
      rho0=7.3403E-27
@@ -48,6 +51,7 @@ subroutine condinit(x,u,dx,nn)
      !Density
      !IF (rr .LE. rmax) THEN
      IF (rr .LE. 1E10) THEN
+        !PRINT *,"Inside Box"
 	q(i,1)=rho0
      ELSE !the rest of the box
         !PRINT *,"Outside box"

@@ -22,31 +22,31 @@ subroutine boundana(x,u,dx,ibound,ncell)
   !================================================================
 
   integer::ivar,i
-  integer ::nn                            ! Number of cells
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-
   real  xl,xr,xc,yl,yr,yc,zr,zl,zc,rr
+  print *, "Dealing with Boundary Conditions"
   do ivar=1,nvar
      do i=1,ncell
         u(i,ivar)=boundary_var(ibound,ivar)
      end do
   end do
-
+  !!print *,"U:",u
+  print *,"ncell:",ncell
   ! Add here, if you wish, some user-defined boudary conditions
-  do i=1,nn
-     xl=x(i,1)-0.5*dx-boxlen/2.0
-     xr=x(i,1)+0.5*dx-boxlen/2.0
+  do i=1,32
+     !print *,"in here"
      xc=x(i,1)-boxlen/2.0
-     yl=x(i,2)-0.5*dx-boxlen/2.0
-     yr=x(i,2)+0.5*dx-boxlen/2.0
      yc=x(i,2)-boxlen/2.0
-     zl=x(i,3)-0.5*dx-boxlen/2.0
-     zr=x(i,3)+0.5*dx-boxlen/2.0
      zc=x(i,3)-boxlen/2.0
      rr=sqrt(xc**2+yc**2+zc**2)
      !Enforce V=0 of the cloud at the radius at all r
-     print *,xc
-     if (rr .EQ. 1.0E10) then
+     !print *,i,"xc: ",xc
+     !print *,i,"yc: ",yc
+     !print *,i,"zc: ",zc
+     !print *,"before if"
+     print *,"rr:",rr
+
+     if ((rr .LE. 1.1E10) .AND. (rr .GE. 0.9E10)) then
 	 print *,"At rmax!"
          !q(i,2)=0.0
          !q(i,3)=0.0
@@ -58,11 +58,11 @@ subroutine boundana(x,u,dx,ibound,ncell)
    enddo
   ! Convert primitive to conservative variables
   ! density -> density
-!  u(1:nn,1)=q(1:nn,1)
+!  u(1:ncell,1)=q(1:ncell,1)
   ! velocity -> momentum
   ! kinetic energy
   ! pressure -> total fluid energy
-!  u(1:nn,ndim+2)=u(1:nn,ndim+2)+q(1:nn,ndim+2)/(gamma-1.0d0)
+!  u(1:ncell,ndim+2)=u(1:ncell,ndim+2)+q(1:ncell,ndim+2)/(gamma-1.0d0)
 
 
 

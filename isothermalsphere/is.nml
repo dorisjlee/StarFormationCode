@@ -1,11 +1,19 @@
 &RUN_PARAMS 
 hydro=.true.
-verbose=.true
+verbose=.true.
 ncontrol=1
 nrestart=0
 nremap=0
 nsubcycle=2,2,2,2,2
 nstepmax=10
+/
+&AMR_PARAMS 
+levelmin=5
+levelmax=10
+ngridtot=3000
+nexpand=1
+boxlen=25000000000
+ngridmax=10000000
 /
 &BOUNDARY_PARAMS
 nboundary=6
@@ -17,15 +25,6 @@ jbound_max= 0, 0,-1,+1,+1,+1
 kbound_min= 0, 0, 0, 0,-1,+1
 kbound_max= 0, 0, 0, 0,-1,+1
 /
-&AMR_PARAMS 
-levelmin=5
-levelmax=10
-ngridtot=3000
-nexpand=1
-boxlen=25000000000
-ngridmax=10000000
-/
-
 &INIT_PARAMS
 nregion=1
 region_type='square'
