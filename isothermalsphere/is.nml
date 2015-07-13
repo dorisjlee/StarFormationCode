@@ -1,11 +1,12 @@
 &RUN_PARAMS 
 hydro=.true.
-verbose=.true.
+verbose=.false.
+poisson=.true.
 ncontrol=1
 nrestart=0
 nremap=0
 nsubcycle=2,2,2,2,2
-nstepmax=10
+nstepmax=1000000
 /
 &AMR_PARAMS 
 levelmin=5
@@ -15,9 +16,10 @@ nexpand=1
 boxlen=25000000000
 ngridmax=10000000
 /
+
 &BOUNDARY_PARAMS
 nboundary=6
-bound_type= 3,3,3,3,3,3
+bound_type=2,2,2,2,2,2 
 ibound_min=-1,+1,-1,-1,-1,-1
 ibound_max=-1,+1,+1,+1,+1,+1
 jbound_min= 0, 0,-1,+1,-1,-1
@@ -44,13 +46,13 @@ p_region=0.0
 
 
 &OUTPUT_PARAMS
-noutput=2
-tout=0.0,1.0
+foutput=100
+noutput=4
 /
 
 &HYDRO_PARAMS
 gamma=1.01
-courant_factor=0.5
+courant_factor=0.3
 scheme='muscl'
 slope_type=1
 pressure_fix=.false.
@@ -69,7 +71,10 @@ interpol_var=0
 interpol_type=1
 /
 
-
 &PHYSICS_PARAMS
 isothermal=.true.
+/
+
+&POISSON_PARAMS
+gravity_type=0
 /

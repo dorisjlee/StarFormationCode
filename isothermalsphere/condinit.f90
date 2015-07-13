@@ -45,14 +45,13 @@ subroutine condinit(x,u,dx,nn)
      !G=1 for self gravity
      rmax=1.07483E10
      rho0=7.3403E-27
-     P0= 9.14E-11
-     !P0=2.46E-8
-     !In Larson (1969), pressure is constant
+     !P0= 9.14E-11
+     P0=2.46E-8
      !Density
      !IF (rr .LE. rmax) THEN
      IF (rr .LE. 1E10) THEN
         !PRINT *,"Inside Box"
-	q(i,1)=rho0
+        q(i,1)=rho0
      ELSE !the rest of the box
         !PRINT *,"Outside box"
         !PRINT *, "Radius: ",rr
@@ -62,17 +61,15 @@ subroutine condinit(x,u,dx,nn)
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
-     !Pressure (constant radius --> isovolumetric, ideal gas)
-     IF (rr .LE. 1E10) THEN
-    ! IF (rr .LE. 0.8E10) THEN     
-	!q(i,5)=1.0E-25
-	q(i,5)=P0
-     ELSE
-        !q(i,5)=7.3403E-58
-	q(i,5)=1.0E-25
-     END IF
-    !q(i,5)=P0
-    !Don't set P as anything in the initial condition let it do its own thing.
+    !Pressure (constant radius --> isovolumetric, ideal gas)
+     !Doesn't work, this results in outward velocities
+    !IF (rr .LE. 1E10) THEN
+    !  q(i,5)=P0
+    !ELSE
+    !  q(i,5)=7.3403E-30
+    ! END IF
+    !No Pressure gradient in I.C at all
+    q(i,5)=P0
   end do 
   !Convert primitive to conservative variables
   ! density -> density
@@ -113,3 +110,40 @@ subroutine condinit(x,u,dx,nn)
 
 end subroutine condinit
 
+!================================================================
+!================================================================
+!================================================================
+!================================================================
+subroutine velana(x,v,dx,t,ncell)
+  use amr_parameters
+  use hydro_parameters  
+  implicit none
+  integer ::ncell                         ! Size of input arrays
+  real(dp)::dx                            ! Cell size
+  real(dp)::t                             ! Current time
+  real(dp),dimension(1:nvector,1:3)::v    ! Velocity field
+  real(dp),dimension(1:nvector,1:ndim)::x ! Cell center position.
+  !================================================================
+  ! This routine computes the user defined velocity fields.
+  ! x(i,1:ndim) are cell center position in [0,boxlen] (user units).
+  ! v(i,1:3) is the imposed 3-velocity in user units.
+  !================================================================
+  integer::i
+  real(dp)::xx,yy,zz,vx,vy,vz,rr,tt,rmax,margin
+
+  ! Add here, if you wish, some user-defined initial conditions
+  
+  rmax=1.07483E10
+  margin=1.0E-2
+  do i=1,ncell
+     xx=x(i,1)
+     yy=x(i,2)
+     zz=x(i,3)
+     rr=sqrt(xx**2+yy**2+zz**2)
+     IF (rr<rmax+margin .AND. rr>rmax-margin) THEN
+     	v(i,1)=0.0
+     	v(i,2)=0.0
+     	v(i,3)=0.0
+     end IF
+  end do
+end subroutine velana
