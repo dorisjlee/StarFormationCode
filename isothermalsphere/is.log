@@ -1,0 +1,51 @@
+ _/_/_/       _/_/     _/    _/    _/_/_/   _/_/_/_/    _/_/_/  
+ _/    _/    _/  _/    _/_/_/_/   _/    _/  _/         _/    _/ 
+ _/    _/   _/    _/   _/ _/ _/   _/        _/         _/       
+ _/_/_/     _/_/_/_/   _/    _/     _/_/    _/_/_/       _/_/   
+ _/    _/   _/    _/   _/    _/         _/  _/               _/ 
+ _/    _/   _/    _/   _/    _/   _/    _/  _/         _/    _/ 
+ _/    _/   _/    _/   _/    _/    _/_/_/   _/_/_/_/    _/_/_/  
+                         Version 3.0                            
+        written by Romain Teyssier (University of Zurich)       
+                (c) CEA 1999-2007, UZH 2008-2014                
+  
+ Working with nproc =    1 for ndim = 3
+ Using solver = hydro with nvar =  5
+  
+ compile date = 07/18/15-16:18:26
+ patch dir    = ../patch/isothermalsphere
+ remote repo  = https://bitbucket.org/rteyssie/ramses
+ local branch = master
+ last commit  = a80611fccc6104d3ecbc6249e8499b0c7332c83c
+  
+ noutput:          10
+ noutput:          10
+ Building initial AMR grid
+ Initial mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          8 grids (       8,       8,       8,)
+ Level  3 has         64 grids (      64,      64,      64,)
+ Level  4 has        512 grids (     512,     512,     512,)
+ Level  5 has       4096 grids (    4096,    4096,    4096,)
+ Starting time integration
+   ==> Level=    5 Step=    4 Error= 7.455E-05
+ Fine step=     0 t= 0.00000E+00 dt= 8.379E+03 a= 1.000E+00 mem= 0.1% 
+   ==> Level=    5 Step=    4 Error= 7.455E-05
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          8 grids (       8,       8,       8,)
+ Level  3 has         64 grids (      64,      64,      64,)
+ Level  4 has        512 grids (     512,     512,     512,)
+ Level  5 has       4096 grids (    4096,    4096,    4096,)
+ Main step=     1 mcons= 0.00E+00 econs= 0.00E+00 epot=-1.66E+31 ekin= 1.57E+30
+ Fine step=     1 t= 8.37901E+03 dt= 3.424E+03 a= 1.000E+00 mem= 0.1% 
+   ==> Level=    5 Step=    4 Error= 7.455E-05
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          8 grids (       8,       8,       8,)
+ Level  3 has         64 grids (      64,      64,      64,)
+ Level  4 has        512 grids (     512,     512,     512,)
+ Level  5 has       4096 grids (    4096,    4096,    4096,)
+ Main step=     2 mcons= 5.80E-01 econs= 3.25E-01 epot=-1.66E+31 ekin= 3.07E+30
+ Fine step=     2 t= 1.18026E+04 dt= 2.648E+03 a= 1.000E+00 mem= 0.1% 
+ Run completed

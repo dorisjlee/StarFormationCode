@@ -1,6 +1,6 @@
 &RUN_PARAMS 
 hydro=.true.
-verbose=.true.
+verbose=.false.
 poisson=.true.
 ncontrol=1
 nrestart=0
@@ -44,8 +44,8 @@ p_region=0.0
 /
 
 &OUTPUT_PARAMS
-tend=11802
-delta_tout=100.0
+tend=10000
+delta_tout=1000.0
 /
 
 &HYDRO_PARAMS
