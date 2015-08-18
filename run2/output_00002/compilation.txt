@@ -1,0 +1,5 @@
+ compile date = 05/19/15-16:45:11
+ patch dir    = ../patch/isothermalsphere
+ remote repo  = https://bitbucket.org/rteyssie/ramses
+ local branch = master
+ last commit  = 6b241188cd7f21cdfe91e32e089b7fd313518c24
