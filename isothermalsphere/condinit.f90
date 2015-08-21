@@ -45,13 +45,13 @@ subroutine condinit(x,u,dx,nn)
      !G=1 for self gravity
      rmax=1.07483E10
      rho0=7.3403E-27
-     !P0= 9.14E-11
-     P0=2.46E-8
+     P0= 9.14E-11
+     !P0=2.46E-8
      !Density
      !IF (rr .LE. rmax) THEN
      IF (rr .LE. 1E10) THEN
         !PRINT *,"Inside Box"
-        q(i,1)=rho0
+	q(i,1)=rho0
      ELSE !the rest of the box
         !PRINT *,"Outside box"
         !PRINT *, "Radius: ",rr
@@ -61,15 +61,18 @@ subroutine condinit(x,u,dx,nn)
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
-    !Pressure (constant radius --> isovolumetric, ideal gas)
-     !Doesn't work, this results in outward velocities
-    !IF (rr .LE. 1E10) THEN
-    !  q(i,5)=P0
-    !ELSE
-    !  q(i,5)=7.3403E-30
-    ! END IF
-    !No Pressure gradient in I.C at all
-    q(i,5)=P0
+     !Pressure (constant radius --> isovolumetric, ideal gas)
+     IF (rr .LE. 1E10) THEN
+    ! IF (rr .LE. 0.8E10) THEN     
+	!q(i,5)=1.0E-25
+	q(i,5)=P0
+     ELSE
+        !q(i,5)=7.3403E-58
+	q(i,5)=1.0E-25
+!	q(i,5)=P0
+     END IF
+    !q(i,5)=P0
+    !Don't set P as anything in the initial condition let it do its own thing.
   end do 
   !Convert primitive to conservative variables
   ! density -> density
@@ -109,7 +112,6 @@ subroutine condinit(x,u,dx,nn)
 #endif
 
 end subroutine condinit
-
 !================================================================
 !================================================================
 !================================================================
