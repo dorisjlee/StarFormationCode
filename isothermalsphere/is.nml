@@ -31,10 +31,9 @@ kbound_max= 0, 0, 0, 0,-1,+1
 
 &OUTPUT_PARAMS
 foutput=10000000
-delta_tout=1000
-tend=1.36192e10
+delta_tout=0.1
+tend=5.0
 /
-
 &HYDRO_PARAMS
 gamma=1.00001
 courant_factor=0.5
@@ -42,6 +41,7 @@ scheme='muscl'
 slope_type=1
 pressure_fix=.false.
 beta_fix=0.5
+smallr=1d-50
 /
 &POISSON_PARAMS
 gravity_type=0
