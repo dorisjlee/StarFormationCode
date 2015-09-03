@@ -43,9 +43,9 @@ subroutine condinit(x,u,dx,nn)
      rr=sqrt(xc**2+yc**2+zc**2)
      !print *,"rr_init: ",rr
      !G=1 for self gravity
-     rmax=8.012E33
-     rho0=4.31E-37
-     P0= 2.29E-19
+     rmax=1.06E-24
+     rho0=0.02806
+     P0= 0.0359
      !P0=2.46E-8
      !Density
      !IF (rr .LE. rmax) THEN
@@ -55,7 +55,7 @@ subroutine condinit(x,u,dx,nn)
      ELSE !the rest of the box
         !PRINT *,"Outside box"
         !PRINT *, "Radius: ",rr
-        q(i,1)=1.0E-40 !few orders of magnitude less dense (~approx 0?)
+        q(i,1)=1.0E-6 !few orders of magnitude less dense (~approx 0?)
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
@@ -68,7 +68,7 @@ subroutine condinit(x,u,dx,nn)
 	q(i,5)=P0
      ELSE
         !q(i,5)=7.3403E-58
-	q(i,5)=1.0E-22
+	q(i,5)=1.0E-6
 !	q(i,5)=P0
      END IF
     !q(i,5)=P0
