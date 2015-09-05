@@ -14,11 +14,12 @@ yt.funcs.mylog.setLevel(50) #coerce output null
 
 def plot_time_slice(physical_quantity,timestep):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
-    proj = yt.SlicePlot(ds, "z",physical_quantity ,window_size=7)
-    proj.set_cmap(physical_quantity,"rainbow")
-    proj.annotate_velocity()
-    proj.annotate_grids()
-    proj.show()
+    slc = yt.SlicePlot(ds, "z",physical_quantity ,window_size=7)
+    slc.set_axes_unit('pc')
+    slc.set_cmap(physical_quantity,"rainbow")
+    slc.annotate_velocity()
+    slc.annotate_grids()
+    slc.show()
 
 def density_radial_profile(timestep):
     ds= yt.load("output_0000{0}/info_0000{0}.txt".format(timestep))
