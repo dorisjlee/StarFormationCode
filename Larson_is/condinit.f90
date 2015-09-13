@@ -43,13 +43,11 @@ subroutine condinit(x,u,dx,nn)
      rr=sqrt(xc**2+yc**2+zc**2)
      !print *,"rr_init: ",rr
      !G=1 for self gravity
-     rmax=1.06E-24
+     rmax=3.27
      rho0=0.02806
      P0= 0.0359
-     !P0=2.46E-8
      !Density
-     !IF (rr .LE. rmax) THEN
-     IF (rr .LE. 1E10) THEN
+     IF (rr .LE. rmax) THEN
         !PRINT *,"Inside Box"
 	q(i,1)=rho0
      ELSE !the rest of the box
@@ -61,18 +59,12 @@ subroutine condinit(x,u,dx,nn)
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
-     !Pressure (constant radius --> isovolumetric, ideal gas)
-     IF (rr .LE. 1E10) THEN
-    ! IF (rr .LE. 0.8E10) THEN     
-	!q(i,5)=1.0E-25
+     !Pressure 
+     IF (rr .LE. rmax) THEN     
 	q(i,5)=P0
      ELSE
-        !q(i,5)=7.3403E-58
-	q(i,5)=1.0E-6
-!	q(i,5)=P0
+	q(i,5)=P0
      END IF
-    !q(i,5)=P0
-    !Don't set P as anything in the initial condition let it do its own thing.
   end do 
   !Convert primitive to conservative variables
   ! density -> density

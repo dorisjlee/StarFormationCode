@@ -5,7 +5,7 @@ hydro=.true.
 verbose=.false.
 poisson=.true.
 ncontrol=1
-nrestart=340
+nrestart=14
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
@@ -28,10 +28,11 @@ jbound_max= 0, 0,-1,+1,+1,+1
 kbound_min= 0, 0, 0, 0,-1,+1
 kbound_max= 0, 0, 0, 0,-1,+1
 /
+
 &OUTPUT_PARAMS
 foutput=10000000
-delta_tout=0.01
-tend=10.0
+delta_tout=0.1
+tend=20.0
 /
 &HYDRO_PARAMS
 gamma=1.00001
