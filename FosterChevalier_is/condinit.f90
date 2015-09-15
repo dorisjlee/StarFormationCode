@@ -23,13 +23,13 @@ subroutine condinit(x,u,dx,nn)
   real rmax, rho0,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr
   integer i
   real, dimension(32,32) :: dens_arr
-  character (len=255) :: cwd
-  call getcwd(cwd)
-  write(*,*) trim(cwd)
+!  character (len=255) :: cwd
+!  call getcwd(cwd)
+!  write(*,*) trim(cwd)
   open(12,file="../patch/hydro/isothermal_sphere/density.txt",status='old')
-  read(12,*)
+  read(12,*) dens_arr
   dens_arr = transpose(dens_arr)
-!  call printMatrix(dens_arr,32,32)
+  call printMatrix(dens_arr,32,32)
   close(12)
   !print *, "Inside condinit.f90"
   ! Call built-in initial condition generator
@@ -157,7 +157,9 @@ subroutine printMatrix(array, n, m)
 	real, intent(in) :: array(n,m)
 	integer, intent(in) :: n,m
 	integer :: i
+	print *,"------------START_ARRAY-----------------------------"
 	do i = 1,n
 		print*, array(i,:)
 	end do
+ 	print *,"------------------END_ARRAY-----------------------"
 end subroutine printMatrix
