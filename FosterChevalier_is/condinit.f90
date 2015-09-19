@@ -20,23 +20,26 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-  real rmax, rho0,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr
+  real rmax, rho_c,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr
   integer i
-  real, dimension(1024,1) :: dens_arr
+  real, dimension(646,1) :: dens_arr
+!  print *,"x shape: ", SHAPE(x)
+!  print *,"x: ", x
 !  character (len=255) :: cwd
 !  call getcwd(cwd)
 !  write(*,*) trim(cwd)
-  open(12,file="../patch/hydro/isothermal_sphere/density.txt",status='old')
+  open(12,file="../patch/hydro/isothermal_sphere/density.txt")
   read(12,*) dens_arr
-  !call printMatrix(dens_arr,32,32)
+  call printMatrix(dens_arr,646,1)
   close(12)
   !print *, "Inside condinit.f90"
   ! Call built-in initial condition generator
   !call region_condinit(x,q,dx,nn)
 !  q(:,1)=dens_arr(:,1)
   !print *,"nn:",nn
-
-   
+  WRITE(*,*) SHAPE(q)
+  WRITE(*,*) SHAPE(q(1,:)) 
+  WRITE(*,*) SHAPE(q(:,1))
  ! Add here, if you wish, some user-defined initial conditions
   do i=1,nn !looping through all grid numbers
     !Defining the left, right, and center positions of each cells.
@@ -51,21 +54,23 @@ subroutine condinit(x,u,dx,nn)
      zc=x(i,3)-boxlen/2.0
 
      rr=sqrt(xc**2+yc**2+zc**2)
-     !print *,"rr_init: ",rr
+     print *,"rr: ",rr
      !G=1 for self gravity
      rmax=6.4512
-     rho0=0.02806
+     rho_c=0.02806
      P0= 0.0359
+     dr=0.01
      !Density
      q(i,1)=dens_arr(i,1) 
-!     IF (rr .LE. rmax) THEN
+     IF (rr .LE. rmax) THEN
         !PRINT *,"Inside Box"
-!	q(i,1)=rho0
-!     ELSE !the rest of the box
-        !PRINT *,"Outside box"
-        !PRINT *, "Radius: ",rr
-!        q(i,1)=1.0E-6 !few orders of magnitude less dense (~approx 0?)
-!     END IF
+	print *,"rr/dr: ",rr/dr
+	q(i,1)=rho_c*dens_arr(rr/dr,1)
+     ELSE !the rest of the box
+       !PRINT *,"Outside box"
+       !PRINT *, "Radius: ",rr
+        q(i,1)=1.0E-6 !few orders of magnitude less dense (~approx 0?)
+     END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
