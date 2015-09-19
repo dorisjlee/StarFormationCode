@@ -22,19 +22,18 @@ subroutine condinit(x,u,dx,nn)
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
   real rmax, rho0,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr
   integer i
-  real, dimension(32,32) :: dens_arr
-  character (len=255) :: cwd
-  call getcwd(cwd)
-  write(*,*) trim(cwd)
+  real, dimension(1024,1) :: dens_arr
+!  character (len=255) :: cwd
+!  call getcwd(cwd)
+!  write(*,*) trim(cwd)
   open(12,file="../patch/hydro/isothermal_sphere/density.txt",status='old')
-  read(12,*)
-  dens_arr = transpose(dens_arr)
-!  call printMatrix(dens_arr,32,32)
+  read(12,*) dens_arr
+  !call printMatrix(dens_arr,32,32)
   close(12)
   !print *, "Inside condinit.f90"
   ! Call built-in initial condition generator
   !call region_condinit(x,q,dx,nn)
-!  q(1:nn,:)=dens_arr
+!  q(:,1)=dens_arr(:,1)
   !print *,"nn:",nn
 
    
@@ -58,6 +57,7 @@ subroutine condinit(x,u,dx,nn)
      rho0=0.02806
      P0= 0.0359
      !Density
+     q(i,1)=dens_arr(i,1) 
 !     IF (rr .LE. rmax) THEN
         !PRINT *,"Inside Box"
 !	q(i,1)=rho0
@@ -157,7 +157,9 @@ subroutine printMatrix(array, n, m)
 	real, intent(in) :: array(n,m)
 	integer, intent(in) :: n,m
 	integer :: i
+	print *,"------------START_ARRAY-----------------------------"
 	do i = 1,n
 		print*, array(i,:)
 	end do
+ 	print *,"------------------END_ARRAY-----------------------"
 end subroutine printMatrix
