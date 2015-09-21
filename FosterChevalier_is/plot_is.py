@@ -12,11 +12,17 @@ from numpy import *
 import yt
 yt.funcs.mylog.setLevel(50) #coerce output null
 
-def plot_time_slice(physical_quantity,timestep):
+def plot_time_slice(physical_quantity,timestep,text="",title=""):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
     slc = yt.SlicePlot(ds, "z",physical_quantity ,window_size=7)
     slc.set_axes_unit('pc')
     slc.set_cmap(physical_quantity,"rainbow")
+    slc.set_font_size(20)
+    if title!="":
+    	slc.annotate_title(title)
+    if text!="":
+	slc.annotate_text((0.1, 0.1),text, coord_system='axis')	
+    slc.annotate_text((0.05, 0.05),"timestep: {}".format(timestep), coord_system='axis')
     slc.annotate_velocity()
     slc.annotate_grids()
     slc.show()
