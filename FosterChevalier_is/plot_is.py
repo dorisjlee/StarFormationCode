@@ -14,7 +14,7 @@ yt.funcs.mylog.setLevel(50) #coerce output null
 
 def plot_time_slice(physical_quantity,timestep,text="",title=""):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
-    slc = yt.SlicePlot(ds, "z",physical_quantity ,window_size=7)
+    slc = yt.SlicePlot(ds, "z",physical_quantity)
     slc.set_axes_unit('pc')
     slc.set_cmap(physical_quantity,"rainbow")
     slc.set_font_size(20)
@@ -23,6 +23,7 @@ def plot_time_slice(physical_quantity,timestep,text="",title=""):
     if text!="":
 	slc.annotate_text((0.1, 0.1),text, coord_system='axis')	
     slc.annotate_text((0.05, 0.05),"timestep: {}".format(timestep), coord_system='axis')
+    slc.annotate_text((0.05, 0.02),"time: {} Myrs".format(timestep*61793.091/1000000.), coord_system='axis')
     slc.annotate_velocity()
     slc.annotate_grids()
     slc.show()
