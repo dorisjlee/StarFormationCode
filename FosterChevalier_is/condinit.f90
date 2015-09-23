@@ -65,7 +65,7 @@ subroutine condinit(x,u,dx,nn)
         !PRINT *,"Inside Box"
 	!print *,"rr/dr: ",rr/dr
 !	print *,"rc/dr: ",rc/dr
-	q(i,1)=rho_c*dens_arr(int(rc)/dr,1)
+	q(i,1)=rho_c*dens_arr(int(rc/dr),1)
      ELSE !the rest of the box
        !PRINT *,"Outside box"
        !PRINT *, "Radius: ",rr
