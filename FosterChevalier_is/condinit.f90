@@ -20,7 +20,7 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-  real rmax, rho_c,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr
+  real rmax, rho_c,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc
   integer i
   real, dimension(646,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
@@ -30,16 +30,16 @@ subroutine condinit(x,u,dx,nn)
 !  write(*,*) trim(cwd)
   open(12,file="../patch/hydro/isothermal_sphere/density.txt")
   read(12,*) dens_arr
-  call printMatrix(dens_arr,646,1)
+!  call printMatrix(dens_arr,646,1)
   close(12)
   !print *, "Inside condinit.f90"
   ! Call built-in initial condition generator
   !call region_condinit(x,q,dx,nn)
 !  q(:,1)=dens_arr(:,1)
   !print *,"nn:",nn
-  WRITE(*,*) SHAPE(q)
-  WRITE(*,*) SHAPE(q(1,:)) 
-  WRITE(*,*) SHAPE(q(:,1))
+!  WRITE(*,*) SHAPE(q)
+!  WRITE(*,*) SHAPE(q(1,:)) 
+!  WRITE(*,*) SHAPE(q(:,1))
  ! Add here, if you wish, some user-defined initial conditions
   do i=1,nn !looping through all grid numbers
     !Defining the left, right, and center positions of each cells.
@@ -54,18 +54,18 @@ subroutine condinit(x,u,dx,nn)
      zc=x(i,3)-boxlen/2.0
 
      rr=sqrt(xc**2+yc**2+zc**2)
-     print *,"rr: ",rr
+!     print *,"rr: ",rr
      !G=1 for self gravity
-     rmax=6.4512
+     rmax=6.4512 !code units
      rho_c=0.02806
      P0= 0.0359
      dr=0.01
-     !Density
-     q(i,1)=dens_arr(i,1) 
-     IF (rr .LE. rmax) THEN
+     rc =rr*0.625 !converting from grid units to code length units 
+     IF (rc .LE. rmax) THEN 
         !PRINT *,"Inside Box"
-	print *,"rr/dr: ",rr/dr
-	q(i,1)=rho_c*dens_arr(rr/dr,1)
+	!print *,"rr/dr: ",rr/dr
+!	print *,"rc/dr: ",rc/dr
+	q(i,1)=rho_c*dens_arr(int(rc)/dr,1)
      ELSE !the rest of the box
        !PRINT *,"Outside box"
        !PRINT *, "Radius: ",rr
