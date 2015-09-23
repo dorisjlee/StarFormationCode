@@ -69,7 +69,7 @@ subroutine condinit(x,u,dx,nn)
      ELSE !the rest of the box
        !PRINT *,"Outside box"
        !PRINT *, "Radius: ",rr
-        q(i,1)=1.0E-6 !few orders of magnitude less dense (~approx 0?)
+        q(i,1)=1.997E-9 
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
@@ -77,9 +77,9 @@ subroutine condinit(x,u,dx,nn)
      q(i,4)=0.0      ! Velocity z
      !Pressure 
      IF (rr .LE. rmax) THEN     
-	q(i,5)=P0
+	q(i,5)=q(i,1)*8.159E-18
      ELSE
-	q(i,5)=P0
+	q(i,5)=2.57E-3
      END IF
   end do 
   !Convert primitive to conservative variables
