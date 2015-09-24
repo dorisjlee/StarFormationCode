@@ -60,7 +60,8 @@ subroutine condinit(x,u,dx,nn)
      rho_c=0.02806
      P0= 0.0359
      dr=0.01
-     rc =rr*0.625 !converting from grid units to code length units 
+!     print *,boxlen
+     rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units 
      IF (rc .LE. rmax) THEN 
         !PRINT *,"Inside Box"
 	!print *,"rr/dr: ",rr/dr
