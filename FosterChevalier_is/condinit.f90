@@ -20,7 +20,7 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-  real rmax, rho_c,P0,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc
+  real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc
   integer i
   real, dimension(646,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
@@ -56,31 +56,24 @@ subroutine condinit(x,u,dx,nn)
      rr=sqrt(xc**2+yc**2+zc**2)
 !     print *,"rr: ",rr
      !G=1 for self gravity
-     rmax=6.4512 !code units
-     rho_c=0.02806
-     P0= 0.0359
-     dr=0.01
-!     print *,boxlen
-     rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units 
+     rmax=6.4512 !dimensionless xi units 
+     rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
+     dr=0.01!delta xi used to initialize np.arange for the numerical integration
+     rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi 
      IF (rc .LE. rmax) THEN 
-        !PRINT *,"Inside Box"
-	!print *,"rr/dr: ",rr/dr
-!	print *,"rc/dr: ",rc/dr
-	q(i,1)=rho_c*dens_arr(int(rc/dr),1)
-     ELSE !the rest of the box
-       !PRINT *,"Outside box"
-       !PRINT *, "Radius: ",rr
-        q(i,1)=1.997E-9 
+	q(i,1)=rho_c*dens_arr(int(rc/dr),1)!rho_c [code unit]*result of numerical integration[code units]
+     ELSE 
+        q(i,1)=1.997E-9 !ideal gas law computed rho_out with T=10^7 K and P_edge = P_out
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
      q(i,3)=0.0      ! Velocity y
      q(i,4)=0.0      ! Velocity z
      !Pressure 
-     IF (rr .LE. rmax) THEN     
-	q(i,5)=q(i,1)*8.159E-18
+     IF (rc .LE. rmax) THEN     
+	q(i,5)=q(i,1)*1.2849!ideal gas law 
      ELSE
-	q(i,5)=2.57E-3
+	q(i,5)=2.57E-3!copying outer cloud edge value 
      END IF
   end do 
   !Convert primitive to conservative variables
