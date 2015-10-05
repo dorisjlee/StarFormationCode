@@ -59,8 +59,8 @@ subroutine condinit(x,u,dx,nn)
      rmax=6.4512 !dimensionless xi units 
      rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
-     rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
-     !rc =rr*0.5194 
+     !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
+     rc =rr*0.5194 
      IF (rc .LE. rmax) THEN 
 	q(i,1)=rho_c*dens_arr(int(rc/dr),1)!rho_c [code unit]*result of numerical integration[code units]
      ELSE 
