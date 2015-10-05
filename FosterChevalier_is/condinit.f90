@@ -20,7 +20,7 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-  real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc
+  real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1
   integer i
   real, dimension(646,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
@@ -61,8 +61,13 @@ subroutine condinit(x,u,dx,nn)
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
      rc =rr*0.5194 
-     IF (rc .LE. rmax) THEN 
-	q(i,1)=rho_c*dens_arr(int(rc/dr),1)!rho_c [code unit]*result of numerical integration[code units]
+     IF (rc .LE. rmax) THEN
+	rho0 =  rho_c*dens_arr(int(rc/dr),1)
+	rho1 = rho_c*dens_arr(int(rc/dr)+1,1)
+	rc0 = int(rc/dr)*dr
+	rc1 = rc0+dr
+	q(i,1)=rho0+(rho1-rho0)*(rc-rc0)/(rc1-rc0) !linear interpolation 
+	!q(i,1)=rho_c*dens_arr(int(rc/dr),1)!rho_c [code unit]*result of numerical integration[code units]
      ELSE 
 	!q(i,1)=1.997E-3
         q(i,1)=1.997E-9 !ideal gas law computed rho_out with T=10^7 K and P_edge = P_out
