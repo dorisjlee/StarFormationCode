@@ -11,11 +11,11 @@ nsubcycle=1,1,1,1,1,
 nstepmax=100000000
 /
 &AMR_PARAMS 
-levelmin=6
+levelmin=7
 levelmax=10
 ngridtot=10000
 nexpand=1
-boxlen=35
+boxlen=70
 ngridmax=10000000
 /
 &BOUNDARY_PARAMS
@@ -31,7 +31,7 @@ kbound_max= 0, 0, 0, 0,-1,+1
 &OUTPUT_PARAMS
 foutput=10000000
 delta_tout=0.01
-tend=30.0
+tend=90.0
 /
 &HYDRO_PARAMS
 gamma=1.00001

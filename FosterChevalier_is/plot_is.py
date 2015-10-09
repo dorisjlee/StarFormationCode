@@ -29,7 +29,7 @@ def plot_time_slice(physical_quantity,timestep,text="",title=""):
     slc.show()
 
 def density_radial_profile(timestep):
-    ds= yt.load("output_0000{0}/info_0000{0}.txt".format(timestep))
+    ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
     c = ds.find_max("density")[1]
     ax = 0 # Cut through x axis
     # cutting through the y0,z0 such that we hit the max density
