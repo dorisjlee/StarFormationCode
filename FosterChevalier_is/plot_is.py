@@ -12,10 +12,12 @@ from numpy import *
 import yt
 yt.funcs.mylog.setLevel(50) #coerce output null
 
-def plot_time_slice(physical_quantity,timestep,text="",title=""):
+def plot_time_slice(physical_quantity,timestep,text="",title="",zoom_factor=""):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
     slc = yt.SlicePlot(ds, "z",physical_quantity)
     slc.set_axes_unit('pc')
+    if zoom_factor!="":
+        slc.zoom(zoom_factor)
     slc.set_cmap(physical_quantity,"rainbow")
     slc.set_font_size(20)
     if title!="":
