@@ -383,7 +383,7 @@ subroutine count_test_particle(xx,ilevel,nskip,action)
         end select
      end do
   end do
-
+if (myid==1)write(*,*)'end count_test_particle flag2 slice:  ',flag2(1:20)
 end subroutine count_test_particle
 !################################################################
 !################################################################
@@ -450,19 +450,28 @@ subroutine flag_peaks(xx,ipeak)
   !----------------------------------------------------------------------
   integer::ipart,jpart
   integer,dimension(1:nvector)::ind_part,ind_cell,ind_max
+if (myid==1)write(*,*)'Entering flag_peaks inside clump_merger'
+if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
   do ipart=1,ntest
      jpart=testp_sort(ipart)
+     if (myid==1)write(*,*)'jpart:  ',jpart     
      if(imaxp(jpart).EQ.-1)then
         ipeak=ipeak+1
+	if (myid==1 .and. ipeak .NE. 0)write(*,*)'ipeak:  ',ipeak
+ 	if (myid==1 .and. ipeak .NE. 0)write(*,*)'jpart:  ',jpart
+	if (myid==1 .and. ipeak .NE. 0)write(*,*)'icellp(jpart):  ',icellp(jpart)
         flag2(icellp(jpart))=ipeak
+	if (myid==1 .and. ipeak .NE. 0)write(*,*)'flag2(icellp(jpart)):  ',flag2(icellp(jpart))
         max_dens(ipeak-ipeak_start(myid))=xx(icellp(jpart))
         peak_cell(ipeak-ipeak_start(myid))=icellp(jpart)
         peak_cell_level(ipeak-ipeak_start(myid))=levp(jpart)
      endif
   end do
+!if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
+if (myid==1)write(*,*)'end flag peaks flag2 slice:  ',flag2(1:20)
 end subroutine flag_peaks
 !#########################################################################
-!#########################################################################
+!########################################################################
 !#########################################################################
 !#########################################################################
 subroutine propagate_flag(nmove,nzero)

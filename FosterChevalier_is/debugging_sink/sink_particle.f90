@@ -41,6 +41,7 @@ subroutine create_sink
   
   ! DO NOT MODIFY FLAG2 BETWEEN CLUMP_FINDER AND MAKE_SINK_FROM_CLUMP    
   if (myid==1)write(*,*)'check create_sinks after : ',create_sinks 
+!  if (myid==1)write(*,*)'flag2:  ',flag2
   if (create_sinks)then
      ! Run the clump finder,(produce no output, keep clump arrays allocated)
      call clump_finder(.false.,.true.)
@@ -1527,6 +1528,7 @@ subroutine make_sink_from_clump(ilevel)
   !------------------------------------------------
   ntot=0
   ntot_sink_cpu=0
+  if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
   if(numbtot(1,ilevel)>0)then
      ncache=active(ilevel)%ngrid
      do igrid=1,ncache,nvector
@@ -1540,14 +1542,17 @@ subroutine make_sink_from_clump(ilevel)
               ind_cell(i)=iskip+ind_grid(i)
            end do
            do i=1,ngrid
+! 	      if (myid==1)write(*,*)'ntot counted!  flag2(ind_cell(i)):  ',flag2(ind_cell(i))
+!	      if (myid==1)write(*,*)'ind_cell(i):  ',ind_cell(i) 
               if(flag2(ind_cell(i))>0)then
+		  if (myid==1)write(*,*)'ntot counted!  flag2(ind_cell(i)):  ',flag2(ind_cell(i))
                  ntot=ntot+1
               end if
            end do
         end do
      end do
   end if
-
+  if (myid==1)write(*,*)'number of cells that are flagged as sink : ntot:  ', ntot
   !---------------------------------
   ! Compute global sink statistics
   !---------------------------------
@@ -1618,6 +1623,7 @@ subroutine make_sink_from_clump(ilevel)
            nnew=0
            do i=1,ngrid
               if (flag2(ind_cell(i))>0)then
+		 if (myid==1)write(*,*)'gathered cells with a new sink flag2(ind_cell(i)):  ',flag2(ind_cell(i))
                  nnew=nnew+1
                  ind_grid_new(nnew)=ind_grid(i)
                  ind_cell_new(nnew)=ind_cell(i)
@@ -1763,7 +1769,7 @@ subroutine make_sink_from_clump(ilevel)
      endif
   end do
 #endif
-
+ if (myid==1)write(*,*)'end of make_sink_from_clump nsink:  ', nsink
 end subroutine make_sink_from_clump
 !################################################################
 !################################################################
@@ -2825,6 +2831,7 @@ subroutine count_clouds(ilevel,action)
 
 
   if (action=='count')then
+     if (myid==1)write(*,*)'count_clouds action :count'
      ! Loop over cpus
      do icpu=1,ncpu
         igrid=headl(icpu,ilevel)

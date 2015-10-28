@@ -184,7 +184,7 @@ subroutine compute_clump_properties(xx)
   halo_mass=clump_mass
   ! Calculate total mass above threshold
   tot_mass=sum(clump_mass(1:npeaks))
-
+  if (myid==1)write(*,*)'total mass above the density threshold :  ', tot_mass
 #ifndef WITHOUTMPI     
   call MPI_ALLREDUCE(tot_mass,tot_mass_tot,1,MPI_DOUBLE_PRECISION,MPI_SUM,MPI_COMM_WORLD,info)
   tot_mass=tot_mass_tot
