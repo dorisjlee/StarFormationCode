@@ -2,25 +2,25 @@
 /
 &RUN_PARAMS 
 hydro=.true.
-verbose=.true.
+verbose=.false.
 poisson=.true.
 ncontrol=1
-nrestart=0
+nrestart=145
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
-sink=.true.
 /
 &AMR_PARAMS 
-levelmin=7
+levelmin=6
 levelmax=10
+ngridtot=10000
 nexpand=1
-boxlen=70
-ngridtot=3000000
+boxlen=35
+ngridmax=10000000
 /
 &BOUNDARY_PARAMS
 nboundary=6
-bound_type= 1,1,1,1,1,1
+bound_type= 2,2,2,2,2,2,
 ibound_min=-1,+1,-1,-1,-1,-1
 ibound_max=-1,+1,+1,+1,+1,+1
 jbound_min= 0, 0,-1,+1,-1,-1
@@ -30,9 +30,8 @@ kbound_max= 0, 0, 0, 0,-1,+1
 /
 &OUTPUT_PARAMS
 foutput=10000000
-!delta_tout=0.01
-delta_tout=1.E-3
-tend=90.0
+delta_tout=0.01
+tend=30.0
 /
 &HYDRO_PARAMS
 gamma=1.00001
@@ -57,17 +56,8 @@ b_refine=1.0,1.0
 exp_refine=2.0,2.0
 interpol_var=0
 interpol_type=1
+err_grad_d=-1e-5
+err_grad_u=-1e-5
+err_grad_p=-1e-5
 /
-&CLUMPFIND_PARAMS
-!density_threshold=1.E-5
-!density_threshold=0.02806
-density_threshold=0.02
-/
-&SINK_PARAMS
-merging_timescale=10000.
-create_sinks=.true.
-accretion_scheme='none'
-/
-&PHYSICS_PARAMS
-T2_star=1.66666667
-/
+
