@@ -143,7 +143,8 @@ subroutine init_sink
      rewind(ilun)
      read(ilun)nsink
      read(ilun)nindsink
-
+     if(myid==1)write(*,*)"Reading in nsink from  ",fileloc
+     if(myid==1)write(*,*)"nsink: ",nsink
      if(nsink>0)then
         allocate(xdp(1:nsink))
         read(ilun)xdp ! Read sink mass
