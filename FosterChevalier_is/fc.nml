@@ -2,7 +2,7 @@
 /
 &RUN_PARAMS 
 hydro=.true.
-verbose=.false.
+verbose=.true.
 poisson=.true.
 ncontrol=1
 nrestart=0
@@ -62,11 +62,14 @@ interpol_type=1
 !density_threshold=1.E-5
 !density_threshold=0.02806
 density_threshold=0.02
+saddle_threshold=0.02
+relevance_threshold=0.02
 /
 &SINK_PARAMS
 merging_timescale=10000.
 create_sinks=.true.
-accretion_scheme='none'
+accretion_scheme='flux'
+d_sink = 0.02
 /
 &PHYSICS_PARAMS
 T2_star=1.66666667

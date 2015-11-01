@@ -35,7 +35,7 @@ subroutine create_sink
   do ilevel=levelmin-1,1,-1
      call merge_tree_fine(ilevel)
   end do
-  
+  write(*,*)"after merge_tree_fine nsink : ",nsink 
   ! Remove all particle clouds around old sinks (including the central one)
   call kill_entire_cloud(1) 
   
@@ -45,23 +45,24 @@ subroutine create_sink
   if (create_sinks)then
      ! Run the clump finder,(produce no output, keep clump arrays allocated)
      call clump_finder(.false.,.true.)
-     
+     write(*,*)"after clump_finder nsink : ",nsink
      ! Trim clumps down to R_accretion ball around peaks 
      if(clump_core)call trim_clumps
      
      ! Compute simple additive quantities and means (1st moments)
      call compute_clump_properties(uold(1,1))
-     
      ! Compute quantities relative to mean (2nd moments)
      call compute_clump_properties_round2(uold(1,1))
-  
+     write(*,*)"after compute_clump_properties, nsink : ",nsink 
      ! Apply all checks and flag cells for sink formation
      call flag_formation_sites
+     write(*,*)"after flag_formation_sites, nsink : ",nsink
 
      ! Create new sink particles if relevant
      do ilevel=levelmin,nlevelmax
         call make_sink_from_clump(ilevel)
      end do
+     write(*,*)"after make_sink_from_clump, nsink : ",nsink
 
      ! Deallocate clump finder arrays
      deallocate(npeaks_per_cpu)
@@ -73,7 +74,7 @@ subroutine create_sink
         deallocate(imaxp)
      endif
      call deallocate_all
-
+     write(*,*)"finished sink creation procedures inside sink_particles.f90, time to merge" 
   end if
 
   ! Merge sink for smbh runs 
@@ -230,6 +231,8 @@ subroutine create_cloud_from_sink
   end do
 
 #endif
+
+!write(*,*)"nsink: ",nsink
 end subroutine create_cloud_from_sink
 !################################################################
 !################################################################
@@ -2166,7 +2169,7 @@ subroutine merge_star_sink
   logical::iyoung,jyoung,merge
   real(dp)::scale_nH,scale_T2,scale_l,scale_d,scale_t,scale_v
   real(dp),dimension(1:3)::xcom,vcom,lcom
-
+  write(*,*) "Inside merge_star_sink, nsink: ",nsink
   if(nsink==0)return
 
   ! Mesh spacing in that level
@@ -2759,12 +2762,12 @@ subroutine read_sink_params()
         else
            dx_min=0.5**nlevelmax*scale
            d_sink=T2_star/scale_T2 *3.14159/16./(dx_min**2)
-           if(myid==1)write(*,*)'d_sink = ',d_sink
-           if(myid==1)write(*,*)'rho_sink = ',d_sink*scale_d
-           if(myid==1)write(*,*)'n_sink = ',d_sink*scale_nH
+!           if(myid==1)write(*,*)'d_sink = ',d_sink
+!           if(myid==1)write(*,*)'rho_sink = ',d_sink*scale_d
+!           if(myid==1)write(*,*)'n_sink = ',d_sink*scale_nH
         end if
      end if
-
+if(myid==1)write(*,*)'d_sink = ',d_sink
      endif
   end if
   

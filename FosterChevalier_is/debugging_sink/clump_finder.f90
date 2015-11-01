@@ -462,7 +462,7 @@ if (myid==1)write(*,*)'Entering flag_peaks inside clump_merger'
 !if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
   do ipart=1,ntest
      jpart=testp_sort(ipart)
-     if (myid==1)write(*,*)'jpart:  ',jpart     
+     !if (myid==1)write(*,*)'jpart:  ',jpart     
      if(imaxp(jpart).EQ.-1)then
         ipeak=ipeak+1
 	if (myid==1 .and. ipeak .NE. 0)write(*,*)'ipeak:  ',ipeak

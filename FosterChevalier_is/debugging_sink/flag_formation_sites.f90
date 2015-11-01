@@ -50,6 +50,7 @@ subroutine flag_formation_sites
   allocate(occupied(1:npeaks_max))
   occupied=0
   pos=0.0
+  if(myid==1)write(*,*)'Inside flag_formation_site.f90 nsink: ',nsink
   if(myid==1 .and. clinfo)write(*,*)'looping over ',nsink,' sinks and marking their clumps'
 
   if (smbh)then 

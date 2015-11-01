@@ -469,9 +469,13 @@ subroutine merge_clumps(action)
         alive(i)=1
      endif
      if(action.EQ.'saddleden')then
+ 	write(*,*)"relevance(i): ",relevance(i)
+	write(*,*)"relevance_threshold: ",relevance_threshold
         if(relevance(i)>relevance_threshold)then
-           alive(i)=1
+           write(*,*)"alive"
+	   alive(i)=1
         else
+	   write(*,*)"dead"
            alive(i)=0
         endif
      endif
