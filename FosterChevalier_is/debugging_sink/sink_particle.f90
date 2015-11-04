@@ -804,7 +804,7 @@ subroutine accrete_sink(ind_grid,ind_part,ind_grid_part,ng,np,ilevel,on_creation
 
   real(dp)::tan_theta,cone_dist,orth_dist
   real(dp),dimension(1:3)::cone_dir
-  if (myid==1)write(*,*)'inside accrete_sink nsink:  ', nsink
+  !if (myid==1)write(*,*)'inside accrete_sink nsink:  ', nsink
   ! Conversion factor from user units to cgs units
   call units(scale_l,scale_t,scale_d,scale_v,scale_nH,scale_T2)
   

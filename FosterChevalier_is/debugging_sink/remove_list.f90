@@ -53,9 +53,9 @@ subroutine remove_free(ind_part,np)
   do j=1,np
      ipart=headp_free
      ind_part(j)=ipart
-     write(*,*)"numbp_free: ",numbp_free
+     !write(*,*)"numbp_free: ",numbp_free
      !numbp_free=numbp_free-1 !tresspassing this for now...
-     write(*,*)"numbp_free: ",numbp_free
+     !write(*,*)"numbp_free: ",numbp_free
      if(numbp_free<0)then
         write(*,*)'No more free memory'
         write(*,*)'in PE ',myid
