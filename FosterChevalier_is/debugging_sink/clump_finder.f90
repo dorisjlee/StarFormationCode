@@ -270,6 +270,7 @@ subroutine clump_finder(create_output,keep_alive)
         endif
      endif
      if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
+     write (*,*) pack(flag2,flag2 /= 0)
      if (myid==1)write(*,*)'saddle_threshold:  ',saddle_threshold
      !------------------------------------------
      ! Merge clumps into haloes
@@ -280,7 +281,8 @@ subroutine clump_finder(create_output,keep_alive)
         if(myid==1)write(*,*)"Now merging peaks into halos."
         call merge_clumps('saddleden')
      endif
-
+      if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
+     write (*,*) pack(flag2,flag2 /= 0)
      !------------------------------------------
      ! Output clumps properties to file
      !------------------------------------------
@@ -309,6 +311,7 @@ subroutine clump_finder(create_output,keep_alive)
      call deallocate_all
   end if
 if(myid==1)write(*,*)'at the end of clump_finder : ntest_all: ' ,ntest_all
+ write (*,*) pack(flag2,flag2 /= 0)
  if(myid==1)write(*,*)'ntest: ' ,ntest
 end subroutine clump_finder
 !################################################################

@@ -54,10 +54,11 @@ subroutine create_sink
      ! Compute quantities relative to mean (2nd moments)
      call compute_clump_properties_round2(uold(1,1))
      write(*,*)"after compute_clump_properties, nsink : ",nsink 
+     write (*,*) pack(flag2,flag2 /= 0)
      ! Apply all checks and flag cells for sink formation
      call flag_formation_sites
      write(*,*)"after flag_formation_sites, nsink : ",nsink
-
+     write (*,*) pack(flag2,flag2 /= 0)
      ! Create new sink particles if relevant
      do ilevel=levelmin,nlevelmax
         call make_sink_from_clump(ilevel)
@@ -1531,7 +1532,10 @@ subroutine make_sink_from_clump(ilevel)
   !------------------------------------------------
   ntot=0
   ntot_sink_cpu=0
-  if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
+!  if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
+!  where(flag2>0) write(*,*)'nonzero element: ',flag2
+  write(*,*) SHAPE(flag2)
+  write (*,*) pack(flag2,flag2 /= 0) 
   if(numbtot(1,ilevel)>0)then
      ncache=active(ilevel)%ngrid
      do igrid=1,ncache,nvector
@@ -1574,8 +1578,10 @@ subroutine make_sink_from_clump(ilevel)
      ntot_sink_cpu(icpu)=ntot_sink_cpu(icpu-1)+ntot_sink_all(icpu)
   end do
 #endif
-  nsink=nsink+ntot_all  
+  nsink=nsink+ntot_all 
+  if (myid==1)write(*,*)' nsink:  ', nsink
   nindsink=nindsink+ntot_all
+  if (myid==1)write(*,*)' nindsink:  ', nindsink
   if(myid==1)then
      if(ntot_all.gt.0)then
         write(*,'(" Level = ",I6," New sinks produced from clumps= ",I6," Total sinks =",I8)')&
@@ -1586,6 +1592,8 @@ subroutine make_sink_from_clump(ilevel)
   !-------------------------------------------
   ! Check wether max number of sink is reached
   !------------------------------------------
+  write(*,*)"nsink: ",nsink
+  write(*,*)"ntot_all:",ntot_all
   ok_free=(nsink+ntot_all<=nsinkmax)
   if(.not. ok_free)then
      if(myid==1)write(*,*)'global list of sink particles is too long'

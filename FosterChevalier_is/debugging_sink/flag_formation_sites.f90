@@ -52,7 +52,7 @@ subroutine flag_formation_sites
   pos=0.0
   if(myid==1)write(*,*)'Inside flag_formation_site.f90 nsink: ',nsink
   if(myid==1 .and. clinfo)write(*,*)'looping over ',nsink,' sinks and marking their clumps'
-
+  write (*,*) "flag2:", pack(flag2,flag2 /= 0) 
   if (smbh)then 
      ! Block clumps (halo done later) that contain a sink for formation
      do j=1,nsink
@@ -106,7 +106,7 @@ subroutine flag_formation_sites
      call boundary_peak_int(occupied)
 #endif
   endif
-  
+  write (*,*) "before patch determination flag2:", pack(flag2,flag2 /= 0) 
   !------------------------------------------------------------------------------
   ! determine whether a peak patch is allowed to form a new sink.
   ! if a new sink has to be created, flag2 is set to the clump number at the peak position
@@ -115,7 +115,7 @@ subroutine flag_formation_sites
   !------------------------------------------------------------------------------     
   pos=0.0
   flag2=0
-
+  write (*,*) "reset flag2 as 0 :", pack(flag2,flag2 /= 0)
   ! Sort clumps by peak density in ascending order
   do i=1,npeaks
      peakd(i)=max_dens(i)
@@ -128,6 +128,7 @@ subroutine flag_formation_sites
      jj=ind_sort(j)
      ok=.true.
      if (smbh)then
+	write(*,*),"SuperMassiveBlackHole"
         ! Peak has to be a halo
         ok=ok.and.(ind_halo(jj).EQ.jj+ipeak_start(myid))
         ! Halo must have no existing sink 
@@ -156,14 +157,19 @@ subroutine flag_formation_sites
             end if
          end if
      else
+	write(*,*),"Not a super massive black hole"
         ok=ok.and.relevance(jj)>0.
         ok=ok.and.occupied(jj)==0
         ok=ok.and.max_dens(jj)>d_sink
-        ok=ok.and.contracting(jj)
-        ok=ok.and.Icl_dd(jj)<0.
+!        ok=ok.and.contracting(jj)
+!        ok=ok.and.Icl_dd(jj)<0.
+   	write(*,*)"ok: ",ok
+	write(*,*)"Icl_dd: ",Icl_dd
         if (ok)then
            pos(1,1:3)=peak_pos(jj,1:3)
            call cmp_cpumap(pos,cc,1)
+	   write(*,*)"cc(1): ",cc(1)
+	   write(*,*)"myid: ",myid
            if (cc(1) .eq. myid)then
               call get_cell_index(cell_index,cell_levl,pos,nlevelmax,1)
               flag2(cell_index(1))=jj
@@ -174,7 +180,7 @@ subroutine flag_formation_sites
   end do
 
   deallocate(occupied)
-
+  write (*,*) "end flag_formation_sites  flag2:", pack(flag2,flag2 /= 0)
 end subroutine flag_formation_sites
 !################################################################
 !################################################################
@@ -524,7 +530,7 @@ subroutine trim_clumps
 #if NDIM==3
   ! Conversion factor from user units to cgs units
   call units(scale_l,scale_t,scale_d,scale_v,scale_nH,scale_T2)
-  
+  write (*,*) "beginning of trim_clump , flag2:", pack(flag2,flag2 /= 0) 
   ! Mesh spacing in max level
   dx=0.5D0**nlevelmax
   nx_loc=(icoarse_max-icoarse_min+1)
@@ -548,7 +554,7 @@ subroutine trim_clumps
      call boundary_peak_dp(peak_pos(1,idim))
   end do
 #endif
-
+write (*,*) "before updating flag2:", pack(flag2,flag2 /= 0)
   !update flag 2
   do ipart=1,ntest
      glob_peak_nr=flag2(icellp(ipart))
@@ -570,7 +576,7 @@ subroutine trim_clumps
         end if
      end if
   end do
-
+write (*,*) "end of trim_clump, after updating flag2:", pack(flag2,flag2 /= 0)
 #ifndef WITHOUTMPI
   do ilevel=levelmin,nlevelmax
      call make_virtual_fine_int(flag2(1),ilevel)
