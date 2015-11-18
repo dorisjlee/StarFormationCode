@@ -1,0 +1,326 @@
+ntot_all:           0
+ nsink:            1
+ ntot_all:           0
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ end of make_sink_from_clump nsink:             1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ after make_sink_from_clump, nsink :            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ Inside merge_star_sink, nsink:            1
+  Entering create_cloud_from_sink
+ nsink:             1
+   Entering make_tree_fine for level  1
+   Entering kill_tree_fine for level  1
+   Entering virtual_tree_fine for level  1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+ finished sink creation procedures inside sink_particles.f90, time to merge
+ Inside merge_star_sink, nsink:            1
+   Entering make_tree_fine for level  2
+   Entering kill_tree_fine for level  2
+   Entering virtual_tree_fine for level  2
+   Entering make_tree_fine for level  3
+   Entering kill_tree_fine for level  3
+   Entering virtual_tree_fine for level  3
+   Entering make_tree_fine for level  4
+   Entering kill_tree_fine for level  4
+   Entering virtual_tree_fine for level  4
+   Entering make_tree_fine for level  5
+   Entering kill_tree_fine for level  5
+   Entering virtual_tree_fine for level  5
+   Entering make_tree_fine for level  6
+   Entering kill_tree_fine for level  6
+   Entering virtual_tree_fine for level  6
+   Entering make_tree_fine for level  7
+   Entering kill_tree_fine for level  7
+   Entering virtual_tree_fine for level  7
+   Entering make_tree_fine for level  8
+   Entering virtual_tree_fine for level  8
+   Entering collect_acczone_avg for level  8
+ count_clouds action :count
+   Entering collect_acczone_avg for level  9
+   Entering collect_acczone_avg for level 10
+   Entering grow_sink for level 10
+ after grow_sink nsink:             1
+   Entering grow_sink for level  9
+ after grow_sink nsink:             1
+   Entering grow_sink for level  8
+ after grow_sink nsink:             1
+   Entering merge_tree_fine for level  8
+   Entering make_boundary_hydro for level 10
+   Entering make_boundary_hydro for level  9
+   Entering upload_fine for level 8
+   Entering make_boundary_hydro for level  8
+   Entering update_cloud for level  8
+ sink drift due to accretion relative to grid size at level            8
+ #sink:            1  drift:  -3.968645233076781E-004 -3.968645233076781E-004
+ -3.968645233076781E-004
+ Number of sink =            1
+ Total mass in sink =   1.735007412368101E-008
+ simulation time =   1.023825514129621E-003
+ ================================================================================================================================================
+   Id     M[Msol]          x             y             z            vx            vy            vz    acc_rate[Msol/y] acc_lum[Lsol]     age
+ ================================================================================================================================================
+    1   0.17350E-07   0.70236E+02   0.70236E+02   0.70236E+02  -0.27702E-04  -0.27702E-04  -0.27702E-04   0.29678E-09   0.00000E+00   0.58443E+02
+ ================================================================================================================================================
+   Entering upload_fine for level 7
+   Entering make_boundary_hydro for level  7
+   Entering upload_fine for level 6
+   Entering make_boundary_hydro for level  6
+   Entering upload_fine for level 5
+   Entering make_boundary_hydro for level  5
+   Entering upload_fine for level 4
+   Entering make_boundary_hydro for level  4
+   Entering upload_fine for level 3
+   Entering make_boundary_hydro for level  3
+   Entering upload_fine for level 2
+   Entering make_boundary_hydro for level  2
+   Entering upload_fine for level 1
+   Entering make_boundary_hydro for level  1
+   Entering flag_fine for level  7
+   Entering make_boundary_flag for level  7
+   ==> end step 1       87384
+   Entering flag_fine for level  6
+   Entering make_boundary_flag for level  6
+   ==> end step 1       10920
+   Entering flag_fine for level  5
+   Entering make_boundary_flag for level  5
+   ==> end step 1        1360
+   Entering flag_fine for level  4
+   Entering make_boundary_flag for level  4
+   ==> end step 1         168
+   Entering flag_fine for level  3
+   Entering make_boundary_flag for level  3
+   ==> end step 1          16
+   Entering flag_fine for level  2
+   Entering make_boundary_flag for level  2
+   ==> end step 1           0
+   Entering flag_fine for level  1
+   Entering make_boundary_flag for level  1
+   ==> end step 1           0
+   Entering flag_coarse
+   ==> Flag      1 cells
+   Entering make_boundary_coarse
+ Time elapsed since last coarse step:    5.06 s        7.24 mus/pt        7.23 mus/pt (av)
+ Used memory:   1.6 Gb
+ Entering amr_step_coarse
+   Entering refine_coarse
+   Entering authorize_coarse
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  1
+   Entering make_boundary_hydro for level  1
+   Entering refine_fine for level  1
+   Entering authorize_fine for level  1
+   Entering init_boundary_fine for level  1
+   Entering make_boundary_flag for level  1
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  2
+   Entering make_boundary_hydro for level  2
+   Entering refine_fine for level  2
+   Entering authorize_fine for level  2
+   Entering init_boundary_fine for level  2
+   Entering make_boundary_flag for level  2
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  3
+   Entering make_boundary_hydro for level  3
+   Entering refine_fine for level  3
+   Entering authorize_fine for level  3
+   Entering init_boundary_fine for level  3
+   Entering make_boundary_flag for level  3
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  4
+   Entering make_boundary_hydro for level  4
+   Entering refine_fine for level  4
+   Entering authorize_fine for level  4
+   Entering init_boundary_fine for level  4
+   Entering make_boundary_flag for level  4
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  5
+   Entering make_boundary_hydro for level  5
+   Entering refine_fine for level  5
+   Entering authorize_fine for level  5
+   Entering init_boundary_fine for level  5
+   Entering make_boundary_flag for level  5
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  6
+   Entering make_boundary_hydro for level  6
+   Entering refine_fine for level  6
+   Entering authorize_fine for level  6
+   Entering init_boundary_fine for level  6
+   Entering make_boundary_flag for level  6
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  7
+   Entering make_boundary_hydro for level  7
+   Entering refine_fine for level  7
+   Entering authorize_fine for level  7
+   Entering init_boundary_fine for level  7
+   Entering make_boundary_flag for level  7
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  8
+   Entering make_boundary_hydro for level  8
+ Entering amr_step1 for level 8
+   Entering refine_fine for level  8
+   Entering authorize_fine for level  8
+   Entering init_boundary_fine for level  8
+   Entering make_boundary_flag for level  8
+   ==> Make      0 sub-grids
+   ==> Kill      0 sub-grids
+   Entering build_comm for level  9
+   Entering make_boundary_hydro for level  9
+   Entering make_boundary_force for level  9
+   Entering build_comm for level 10
+   Entering make_boundary_hydro for level 10
+   Entering make_boundary_force for level 10
+   Entering update_cloud for level  8
+ sink drift due to accretion relative to grid size at level            8
+ #sink:            1  drift:   0.000000000000000E+000  0.000000000000000E+000
+  0.000000000000000E+000
+   Entering make_tree_fine for level  8
+ Defragmenting main memory...
+   Entering build_comm for level  1
+   Entering build_comm for level  2
+   Entering build_comm for level  3
+   Entering build_comm for level  4
+   Entering build_comm for level  5
+   Entering build_comm for level  6
+   Entering build_comm for level  7
+   Entering build_comm for level  8
+   Entering build_comm for level  9
+   Entering build_comm for level 10
+ Entering dump_all
+ Entering output_header
+ Entering output_info
+ Entering file_descriptor_hydro
+ Entering output_sink
+ nsink:             1
+ Entering output_sink
+ Entering output_sink_csv
+ filename:
+ output_00002/sink_00002.csv
+
+ nsink:            1
+ Entering backup_amr
+ Entering backup_hydro
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source
+ramses3d           00000000006CD4A1  Unknown               Unknown  Unknown
+ramses3d           00000000006CBBF7  Unknown               Unknown  Unknown
+ramses3d           0000000000683684  Unknown               Unknown  Unknown
+ramses3d           0000000000683496  Unknown               Unknown  Unknown
+ramses3d           000000000061DE6F  Unknown               Unknown  Unknown
+ramses3d           000000000062208D  Unknown               Unknown  Unknown
+ramses3d           0000000000406770  Unknown               Unknown  Unknown
+ramses3d           00000000008BA6C9  Unknown               Unknown  Unknown
+ramses3d           0000000000901EFB  Unknown               Unknown  Unknown
+ramses3d           0000000000779DD1  Unknown               Unknown  Unknown
+ramses3d           0000000000750B83  MAIN__                    122  adaptive_loop.f90
+ramses3d           0000000000405D8E  Unknown               Unknown  Unknown
+ramses3d           00000000006D7C31  Unknown               Unknown  Unknown
+ramses3d           0000000000405C69  Unknown               Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source
+ramses3d           00000000006CD4A1  Unknown               Unknown  Unknown
+ramses3d           00000000006CBBF7  Unknown               Unknown  Unknown
+ramses3d           0000000000683684  Unknown               Unknown  Unknown
+ramses3d           0000000000683496  Unknown               Unknown  Unknown
+ramses3d           000000000061DE6F  Unknown               Unknown  Unknown
+ramses3d           000000000062208D  Unknown               Unknown  Unknown
+ramses3d           0000000000406770  Unknown               Unknown  Unknown
+ramses3d           00000000008BA6B4  Unknown               Unknown  Unknown
+ramses3d           0000000000901EFB  Unknown               Unknown  Unknown
+ramses3d           0000000000779DD1  Unknown               Unknown  Unknown
+ramses3d           0000000000750B83  MAIN__                    122  adaptive_loop.f90
+ramses3d           0000000000405D8E  Unknown               Unknown  Unknown
+ramses3d           00000000006D7C31  Unknown               Unknown  Unknown
+ramses3d           0000000000405C69  Unknown               Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source
+ramses3d           00000000006CD4A1  Unknown               Unknown  Unknown
+ramses3d           00000000006CBBF7  Unknown               Unknown  Unknown
+ramses3d           0000000000683684  Unknown               Unknown  Unknown
+ramses3d           0000000000683496  Unknown               Unknown  Unknown
+ramses3d           000000000061DE6F  Unknown               Unknown  Unknown
+ramses3d           000000000062208D  Unknown               Unknown  Unknown
+ramses3d           0000000000406770  Unknown               Unknown  Unknown
+ramses3d           00000000008BA6C9  Unknown               Unknown  Unknown
+ramses3d           0000000000901EFB  Unknown               Unknown  Unknown
+ramses3d           0000000000779DD1  Unknown               Unknown  Unknown
+ramses3d           0000000000750B83  MAIN__                    122  adaptive_loop.f90
+ramses3d           0000000000405D8E  Unknown               Unknown  Unknown
+ramses3d           00000000006D7C31  Unknown               Unknown  Unknown
+ramses3d           0000000000405C69  Unknown               Unknown  Unknown
+[NID 05354] 2015-11-18 04:19:53 Apid 17596999: initiated application termination
+Application 17596999 exit codes: 174
+Application 17596999 resources: utime ~690s, stime ~54s, Rss ~1796908, inblocks ~4543843, outblocks ~313202
+
