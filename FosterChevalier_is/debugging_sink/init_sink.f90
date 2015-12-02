@@ -22,8 +22,8 @@ subroutine init_sink
 
   integer,parameter::tag=1112,tag2=1113
   integer::dummy_io,info2
-
-
+  
+  ic_sink=.true.
 
   !allocate all sink related quantities...
   allocate(weightp(1:npartmax,1:twotondim))
@@ -143,8 +143,7 @@ subroutine init_sink
      rewind(ilun)
      read(ilun)nsink
      read(ilun)nindsink
-     if(myid==1)write(*,*)"Reading in nsink from  ",fileloc
-     if(myid==1)write(*,*)"nsink: ",nsink
+
      if(nsink>0)then
         allocate(xdp(1:nsink))
         read(ilun)xdp ! Read sink mass
@@ -201,7 +200,7 @@ subroutine init_sink
      end if
 
   end if
-
+  write(*,*)"ic_sink: ",ic_sink
   if (nrestart>0)then
      nsinkold=nsink  
      if(TRIM(initfile(levelmin)).NE.' ')then
@@ -231,9 +230,10 @@ subroutine init_sink
         INQUIRE(FILE=filename, EXIST=ic_sink)
      end if
   end if
-!print *,"here"      
+  write(*,*)"ic_sink: ",ic_sink
+  ic_sink=.true. 
   if (ic_sink)then
-!print *,"inside_if"
+
      ! Wait for the token                                                                                                                                                                    
 #ifndef WITHOUTMPI
      if(IOGROUPSIZE>0) then
@@ -243,11 +243,12 @@ subroutine init_sink
         end if
      endif
 #endif
-     
+     write(*,*) "Opening up : ",filename 
      open(10,file=filename,form='formatted')                                                             
      eof=.false.                                                                                         
      do                                                                                                  
-        read(10,*,end=102)mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3                                        
+        write(*,*) "Reading stuff from ic_sink"
+ 	read(10,*,end=102)mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3                                        
         nsink=nsink+1
         nindsink=nindsink+1
         idsink(nsink)=nindsink
@@ -263,10 +264,14 @@ subroutine init_sink
         lsink(nsink,3)=ll3
         tsink(nsink)=t
         new_born(nsink)=.true.
+        
+!        write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
      end do
 102  continue
+write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+write(*,*)"Vector info: ", idsink(nsink),msink(nsink),xsink(nsink,:),vsink(nsink,:),lsink(nsink,:),tsink(nsink)
      close(10)
-     ! Send the token                                                                                                                                                                       
+     ! Send the token                                                                                                                                                                        
 #ifndef WITHOUTMPI
      if(IOGROUPSIZE>0) then
         if(mod(myid,IOGROUPSIZE)/=0 .and.(myid.lt.ncpu))then
@@ -280,7 +285,6 @@ subroutine init_sink
 
 
   end if
-
   if (myid==1.and.nsink-nsinkold>0)then
      write(*,*)'sinks read from file '//filename
      write(*,'("   Id           M             x             y             z            vx            vy            vz            lx            ly            lz       ")')
@@ -293,8 +297,6 @@ subroutine init_sink
   do isink=1,nsink
      direct_force_sink(isink)=(msink(isink) .ge. mass_sink_direct_force)
   end do  
-print *,"finished init_sink"
-
 end subroutine init_sink
 !################################################################
 !################################################################
