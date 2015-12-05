@@ -57,7 +57,7 @@ subroutine condinit(x,u,dx,nn)
 !     print *,"rr: ",rr
      !G=1 for self gravity
      rmax=6.4512 !dimensionless xi units 
-     rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
+     rho_c=0.04!0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
      rc =rr*0.5194 
