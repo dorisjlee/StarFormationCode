@@ -22,7 +22,7 @@ subroutine condinit(x,u,dx,nn)
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
   real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1
   integer i
-  real, dimension(646,1) :: dens_arr
+  real, dimension(546,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
 !  print *,"x: ", x
 !  character (len=255) :: cwd
@@ -56,8 +56,8 @@ subroutine condinit(x,u,dx,nn)
      rr=sqrt(xc**2+yc**2+zc**2)
 !     print *,"rr: ",rr
      !G=1 for self gravity
-     rmax=6.4512 !dimensionless xi units 
-     rho_c=0.04!0.02806!rho_c = 1.10e-19 [cgs] /scale_d
+     rmax=6.451 !dimensionless xi units 
+     rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
      rc =rr*0.5194 

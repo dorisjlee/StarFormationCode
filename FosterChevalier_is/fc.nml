@@ -4,7 +4,7 @@
 hydro=.true.
 !verbose=.true.
 poisson=.true.
-nrestart=27
+nrestart=0
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
@@ -12,7 +12,7 @@ nstepmax=100000000
 /
 &AMR_PARAMS
 levelmin=6
-levelmax=10
+levelmax=8
 nexpand=1
 boxlen=140
 ngridtot=30000000
@@ -56,5 +56,5 @@ b_refine=1.0,1.0
 exp_refine=2.0,2.0
 interpol_var=0
 interpol_type=1
-err_grad_d=1e-5
+err_grad_d=1e-3
 /
