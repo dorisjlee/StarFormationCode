@@ -22,7 +22,7 @@ subroutine condinit(x,u,dx,nn)
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
   real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1
   integer i
-  real, dimension(546,1) :: dens_arr
+  real, dimension(700,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
 !  print *,"x: ", x
 !  character (len=255) :: cwd
@@ -56,7 +56,7 @@ subroutine condinit(x,u,dx,nn)
      rr=sqrt(xc**2+yc**2+zc**2)
 !     print *,"rr: ",rr
      !G=1 for self gravity
-     rmax=6.451 !dimensionless xi units 
+     rmax=7.0!51 !dimensionless xi units 
      rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
@@ -78,7 +78,7 @@ subroutine condinit(x,u,dx,nn)
      q(i,4)=0.0      ! Velocity z
      !Pressure 
      IF (rc .LE. rmax) THEN     
-	q(i,5)=q(i,1)*1.2849!ideal gas law 
+	q(i,5)=q(i,1)*0.03617 !ideal gas law*rho_c/P_scale
      ELSE
 	!q(i,5)=2567.58 
 	q(i,5)=2.57E-3!copying outer cloud edge value 
