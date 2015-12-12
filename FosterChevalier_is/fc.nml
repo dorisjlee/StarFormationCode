@@ -2,9 +2,9 @@
 /
 &RUN_PARAMS 
 hydro=.true.
-!verbose=.true.
+verbose=.true.
 poisson=.true.
-nrestart=99
+nrestart=20
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
@@ -12,7 +12,7 @@ nstepmax=100000000
 /
 &AMR_PARAMS
 levelmin=5
-levelmax=9
+levelmax=8
 nexpand=1
 boxlen=140
 ngridtot=30000000
