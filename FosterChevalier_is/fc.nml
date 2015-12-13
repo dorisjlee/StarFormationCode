@@ -4,7 +4,7 @@
 hydro=.true.
 verbose=.true.
 poisson=.true.
-nrestart=20
+nrestart=227
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
