@@ -14,7 +14,7 @@ import yt
 #print np.__version__
 yt.funcs.mylog.setLevel(50) #coerce output null
 
-def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title="",zoom_factor="",grid=False,save=False):
+def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title="",zoom_factor="",velocity=True,grid=False,save=False):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
     slc = yt.SlicePlot(ds, "z",physical_quantity)
     slc.set_axes_unit('pc')
@@ -30,7 +30,8 @@ def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title=""
 	slc.annotate_text((0.1, 0.1),text, coord_system='axis')	
     slc.annotate_text((0.05, 0.05),"timestep: {}".format(timestep), coord_system='axis')
     slc.annotate_text((0.05, 0.02),"time: {} Myrs".format(timestep*61793.091/1000000.), coord_system='axis')
-    slc.annotate_velocity()
+    if (velocity):
+        slc.annotate_velocity()
     if(grid): 
 	slc.annotate_grids()
     if (save):
