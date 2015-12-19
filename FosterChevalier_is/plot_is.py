@@ -14,10 +14,12 @@ import yt
 #print np.__version__
 yt.funcs.mylog.setLevel(50) #coerce output null
 
-def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title="",zoom_factor="",velocity=True,grid=False,save=False):
+def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title="",zoom_factor="",velocity=True,grid=False,save=False,log=True):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
     slc = yt.SlicePlot(ds, "z",physical_quantity)
     slc.set_axes_unit('pc')
+    if (log==False):
+	slc.set_log(physical_quantity, False)
     if zoom_factor!="":
         slc.zoom(zoom_factor)
     if zmin!="" and zmax!="":

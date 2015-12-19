@@ -3,8 +3,8 @@
 &RUN_PARAMS 
 hydro=.true.
 verbose=.true.
-poisson=.true.
-nrestart=227
+poisson=.false.
+nrestart=0
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
@@ -32,7 +32,7 @@ kbound_max= 0, 0, 0, 0,-1,+1
 foutput=10000000
 delta_tout=0.01
 !delta_tout=1.E-3
-tend=200.0
+tend=500.0
 /
 &HYDRO_PARAMS
 gamma=1.00001

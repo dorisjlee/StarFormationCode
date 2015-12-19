@@ -22,7 +22,7 @@ subroutine condinit(x,u,dx,nn)
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
   real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1
   integer i
-  real, dimension(700,1) :: dens_arr
+  real, dimension(1000,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
 !  print *,"x: ", x
 !  character (len=255) :: cwd
@@ -56,7 +56,8 @@ subroutine condinit(x,u,dx,nn)
      rr=sqrt(xc**2+yc**2+zc**2)
 !     print *,"rr: ",rr
      !G=1 for self gravity
-     rmax=7.0!51 !dimensionless xi units 
+     !Marginally stable case 6.470001
+     rmax=6.470001 !dimensionless xi units 
      rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
@@ -67,12 +68,8 @@ subroutine condinit(x,u,dx,nn)
 	rc0 = int(rc/dr)*dr
 	rc1 = rc0+dr
 	q(i,1)=rho0+(rho1-rho0)*(rc-rc0)/(rc1-rc0) !linear interpolation 
-	!q(i,1)=rho_c*dens_arr(int(rc/dr),1)!rho_c [code unit]*result of numerical integration[code units]
      ELSE 
-	!q(i,1)=1.997E-3
-!        q(i,1)=1.997E-9 !ideal gas law computed rho_out with T=10^7 K and P_edge = P_out
-	!q(i,1)=0.00164097
-	q(i,1)=1.64097e-9
+	q(i,1)=1.98383862042e-9
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
@@ -80,12 +77,9 @@ subroutine condinit(x,u,dx,nn)
      q(i,4)=0.0      ! Velocity z
      !Pressure 
      IF (rc .LE. rmax) THEN     
-	q(i,5)=q(i,1)*0.03617 !ideal gas law*rho_c/P_scale
+	q(i,5)=q(i,1)*1.2889 !ideal gas law*rho_c/P_scale
      ELSE
-	!q(i,5)=2567.58 
-	!q(i,5)=2.57E-3!copying outer cloud edge value 
-	!q(i,5)=2114.44
-	q(i,5)=0.002114
+	q(i,5)=0.00255623039055
      END IF
   end do 
   !Convert primitive to conservative variables
