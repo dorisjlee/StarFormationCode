@@ -20,7 +20,7 @@ subroutine condinit(x,u,dx,nn)
   !================================================================
   integer::ivar
   real(dp),dimension(1:nvector,1:nvar),save::q   ! Primitive variables
-  real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1
+  real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1,rho_out,P_out,rho_min
   integer i
   real, dimension(1000,1) :: dens_arr
 !  print *,"x shape: ", SHAPE(x)
@@ -61,7 +61,16 @@ subroutine condinit(x,u,dx,nn)
      rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
-     rc =rr*0.5194 
+     rc =rr*0.5194
+     !Computing values for outside 
+  !   WRITE(*,*) "dens_arr shape:  ",SHAPE(dens_arr)
+     rho_min =  dens_arr(int(rmax*100),1)*1.099952e-19 !rho_c*scale_d
+ !    rho_min =  0.0706998795588*1.099952e-19
+ !    WRITE(*,*) "rho_min: ",rho_min !rho_min
+     P_out =rho_min *3.2870596565353414e+17
+     rho_out  =P_out *7.760797413856846e-07
+!     WRITE(*,*) "P_out: ", P_out
+!     WRITE(*,*) "rho_out: ", rho_out
      IF (rc .LE. rmax) THEN
 	rho0 =  rho_c*dens_arr(int(rc/dr),1)
 	rho1 = rho_c*dens_arr(int(rc/dr)+1,1)
@@ -69,7 +78,7 @@ subroutine condinit(x,u,dx,nn)
 	rc1 = rc0+dr
 	q(i,1)=rho0+(rho1-rho0)*(rc-rc0)/(rc1-rc0) !linear interpolation 
      ELSE 
-	q(i,1)=1.98383862042e-9
+	q(i,1)=rho_out!1.98383862042e-9
      END IF
      !Initially static cloud
      q(i,2)=0.0      ! Velocity x
@@ -79,7 +88,7 @@ subroutine condinit(x,u,dx,nn)
      IF (rc .LE. rmax) THEN     
 	q(i,5)=q(i,1)*1.2889 !ideal gas law*rho_c/P_scale
      ELSE
-	q(i,5)=0.00255623039055
+	q(i,5)=P_out!0.00255623039055
      END IF
   end do 
   !Convert primitive to conservative variables

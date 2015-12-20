@@ -3,8 +3,8 @@
 &RUN_PARAMS 
 hydro=.true.
 verbose=.true.
-poisson=.false.
-nrestart=0
+poisson=.true.
+nrestart=29
 nremap=0
 nsubcycle=1,1,1,1,1,
 nstepmax=100000000
