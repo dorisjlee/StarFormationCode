@@ -10,14 +10,13 @@ from IPython.core.pylabtools import figsize, getfigs
 from pylab import *
 from numpy import *
 import yt
-#print yt.__version__
-#print np.__version__
 yt.funcs.mylog.setLevel(50) #coerce output null
 
-def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title="",zoom_factor="",velocity=True,grid=False,save=False,log=True):
+def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title="",zoom_factor="",velocity=True,grid=False,save=False,log=True,plot_size=5):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
     slc = yt.SlicePlot(ds, "z",physical_quantity)
     slc.set_axes_unit('pc')
+    slc.set_figure_size(plot_size)
     if (log==False):
 	slc.set_log(physical_quantity, False)
     if zoom_factor!="":
@@ -41,6 +40,36 @@ def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title=""
        slc.save(name)
     else:
        slc.show()
+
+def check_IC_profiles(timestep=1):
+    from mpl_toolkits.axes_grid1 import AxesGrid
+    ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
+    fig = plt.figure()
+    grid = AxesGrid(fig, ( (0.1, 0.1, 0.8, 0.8)),
+                    nrows_ncols = (1, 3),
+                    axes_pad = 1.0,
+                    label_mode = "1",
+                    share_all = True,
+                    cbar_location="right",
+                    cbar_mode="each",
+                    cbar_size="3%",
+                    cbar_pad="0%")
+    fields = ['density','pressure','temperature']
+    slc = yt.SlicePlot(ds, 'z', fields)
+    slc.set_log('pressure', False)
+    slc.set_axes_unit('pc')
+    slc.annotate_text((0.05, 0.02),"time: {} Myrs".format(timestep*61793.091/1000000.), coord_system='axis')
+    slc.annotate_velocity()
+    slc.set_font_size(12)
+    for i, field in enumerate(fields):
+        plot = slc.plots[field]
+        plot.figure = fig
+        slc.set_cmap(field,"rainbow")
+        plot.axes = grid[i].axes
+        plot.cax = grid.cbar_axes[i]
+        slc._setup_plots()
+
+
 
 def density_radial_profile(timestep):
     ds= yt.load("output_{0}/info_{0}.txt".format(str(timestep).zfill(5)))
