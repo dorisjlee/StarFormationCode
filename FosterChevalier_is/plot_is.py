@@ -17,6 +17,7 @@ def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title=""
     slc = yt.SlicePlot(ds, "z",physical_quantity)
     slc.set_axes_unit('pc')
     slc.set_figure_size(plot_size)
+    slc.set_font_size(plot_size*2.5)
     if (log==False):
 	slc.set_log(physical_quantity, False)
     if zoom_factor!="":
@@ -24,7 +25,6 @@ def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title=""
     if zmin!="" and zmax!="":
         slc.set_zlim(physical_quantity, zmin,zmax)
     slc.set_cmap(physical_quantity,"rainbow")
-    slc.set_font_size(20)
     if title!="":
     	slc.annotate_title(title)
     if text!="":
