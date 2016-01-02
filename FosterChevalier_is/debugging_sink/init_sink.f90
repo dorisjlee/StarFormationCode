@@ -6,6 +6,8 @@ subroutine init_sink
 #ifndef WITHOUTMPI
   include 'mpif.h'
 #endif
+  integer::io  
+
   real(dp)::scale_nH,scale_T2,scale_l,scale_d,scale_t,scale_v
   integer::idim
   integer::i,isink
@@ -22,8 +24,8 @@ subroutine init_sink
 
   integer,parameter::tag=1112,tag2=1113
   integer::dummy_io,info2
-  
-  ic_sink=.true.
+
+
 
   !allocate all sink related quantities...
   allocate(weightp(1:npartmax,1:twotondim))
@@ -200,7 +202,7 @@ subroutine init_sink
      end if
 
   end if
-  write(*,*)"ic_sink: ",ic_sink
+
   if (nrestart>0)then
      nsinkold=nsink  
      if(TRIM(initfile(levelmin)).NE.' ')then
@@ -231,7 +233,7 @@ subroutine init_sink
      end if
   end if
   write(*,*)"ic_sink: ",ic_sink
-  ic_sink=.true. 
+  ic_sink=.true.      
   if (ic_sink)then
 
      ! Wait for the token                                                                                                                                                                    
@@ -243,12 +245,14 @@ subroutine init_sink
         end if
      endif
 #endif
+    
      write(*,*) "Opening up : ",filename 
      open(10,file=filename,form='formatted')                                                             
      eof=.false.                                                                                         
      do                                                                                                  
         write(*,*) "Reading stuff from ic_sink"
- 	read(10,*,end=102)mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3                                        
+	read(10,*,end=102)mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+	write(*,*) "after reading"
         nsink=nsink+1
         nindsink=nindsink+1
         idsink(nsink)=nindsink
@@ -265,12 +269,15 @@ subroutine init_sink
         tsink(nsink)=t
         new_born(nsink)=.true.
         
-!        write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+        write(*,*)"Info before end do : ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
      end do
 102  continue
-write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
-write(*,*)"Vector info: ", idsink(nsink),msink(nsink),xsink(nsink,:),vsink(nsink,:),lsink(nsink,:),tsink(nsink)
+       write(*,*)"after 102"
+       write(*,*)"IOstat:",io
+     write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+     write(*,*)"Vector info: ", idsink(nsink),msink(nsink),xsink(nsink,:),vsink(nsink,:),lsink(nsink,:),tsink(nsink)
      close(10)
+
      ! Send the token                                                                                                                                                                        
 #ifndef WITHOUTMPI
      if(IOGROUPSIZE>0) then

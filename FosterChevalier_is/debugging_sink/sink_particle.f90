@@ -27,7 +27,7 @@ subroutine create_sink
   real(dp)::scale_nH,scale_T2,scale_l,scale_d,scale_t,scale_v
 
   if(verbose)write(*,*)' Entering create_sink'
-  if (myid==1)write(*,*)'check create_sinks before: ',create_sinks
+
   ! Conversion factor from user units to cgs units
   call units(scale_l,scale_t,scale_d,scale_v,scale_nH,scale_T2)
 
@@ -35,35 +35,32 @@ subroutine create_sink
   do ilevel=levelmin-1,1,-1
      call merge_tree_fine(ilevel)
   end do
-  write(*,*)"after merge_tree_fine nsink : ",nsink 
+  
   ! Remove all particle clouds around old sinks (including the central one)
   call kill_entire_cloud(1) 
   
-  ! DO NOT MODIFY FLAG2 BETWEEN CLUMP_FINDER AND MAKE_SINK_FROM_CLUMP    
-  if (myid==1)write(*,*)'check create_sinks after : ',create_sinks 
-!  if (myid==1)write(*,*)'flag2:  ',flag2
+  ! DO NOT MODIFY FLAG2 BETWEEN CLUMP_FINDER AND MAKE_SINK_FROM_CLUMP     
   if (create_sinks)then
+     
      ! Run the clump finder,(produce no output, keep clump arrays allocated)
      call clump_finder(.false.,.true.)
-     write(*,*)"after clump_finder nsink : ",nsink
+     
      ! Trim clumps down to R_accretion ball around peaks 
      if(clump_core)call trim_clumps
      
      ! Compute simple additive quantities and means (1st moments)
      call compute_clump_properties(uold(1,1))
+     
      ! Compute quantities relative to mean (2nd moments)
      call compute_clump_properties_round2(uold(1,1))
-     write(*,*)"after compute_clump_properties, nsink : ",nsink 
-     write (*,*) pack(flag2,flag2 /= 0)
+  
      ! Apply all checks and flag cells for sink formation
      call flag_formation_sites
-     write(*,*)"after flag_formation_sites, nsink : ",nsink
-     write (*,*) pack(flag2,flag2 /= 0)
+
      ! Create new sink particles if relevant
      do ilevel=levelmin,nlevelmax
         call make_sink_from_clump(ilevel)
      end do
-     write(*,*)"after make_sink_from_clump, nsink : ",nsink
 
      ! Deallocate clump finder arrays
      deallocate(npeaks_per_cpu)
@@ -75,14 +72,14 @@ subroutine create_sink
         deallocate(imaxp)
      endif
      call deallocate_all
-     write(*,*)"finished sink creation procedures inside sink_particles.f90, time to merge" 
+
   end if
 
   ! Merge sink for smbh runs 
   if (smbh)then
     call merge_smbh_sink
   else
-    call merge_star_sink
+     if(merging_timescale>0.d0)call merge_star_sink
   end if
 
   ! Create new cloud particles
@@ -169,7 +166,7 @@ subroutine create_cloud_from_sink
 
   if(numbtot(1,1)==0) return
   if(verbose)write(*,*)' Entering create_cloud_from_sink'
-  if (myid==1)write(*,*)'nsink:  ', nsink
+
 #if NDIM==3
 
   ! Level 1 linked list
@@ -232,8 +229,6 @@ subroutine create_cloud_from_sink
   end do
 
 #endif
-
-!write(*,*)"nsink: ",nsink
 end subroutine create_cloud_from_sink
 !################################################################
 !################################################################
@@ -757,7 +752,7 @@ subroutine grow_sink(ilevel,on_creation)
   
 #endif
 111 format('   Entering grow_sink for level ',I2)
-if (myid==1)write(*,*)'after grow_sink nsink:  ', nsink
+
 end subroutine grow_sink
 !################################################################
 !################################################################
@@ -804,7 +799,7 @@ subroutine accrete_sink(ind_grid,ind_part,ind_grid_part,ng,np,ilevel,on_creation
 
   real(dp)::tan_theta,cone_dist,orth_dist
   real(dp),dimension(1:3)::cone_dir
-  !if (myid==1)write(*,*)'inside accrete_sink nsink:  ', nsink
+
   ! Conversion factor from user units to cgs units
   call units(scale_l,scale_t,scale_d,scale_v,scale_nH,scale_T2)
   
@@ -1485,7 +1480,7 @@ subroutine make_sink_from_clump(ilevel)
 #endif
   
   if(verbose)write(*,*)'entering make_sink_from_clump for level ',ilevel
-  if (myid==1)write(*,*)'nsink:  ', nsink
+
   ! Gravitational constant
   factG=1d0
   if(cosmo)factG=3d0/8d0/3.1415926*omega_m*aexp
@@ -1532,10 +1527,6 @@ subroutine make_sink_from_clump(ilevel)
   !------------------------------------------------
   ntot=0
   ntot_sink_cpu=0
-!  if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
-!  where(flag2>0) write(*,*)'nonzero element: ',flag2
-  write(*,*) SHAPE(flag2)
-  write (*,*) pack(flag2,flag2 /= 0) 
   if(numbtot(1,ilevel)>0)then
      ncache=active(ilevel)%ngrid
      do igrid=1,ncache,nvector
@@ -1549,17 +1540,14 @@ subroutine make_sink_from_clump(ilevel)
               ind_cell(i)=iskip+ind_grid(i)
            end do
            do i=1,ngrid
-! 	      if (myid==1)write(*,*)'ntot counted!  flag2(ind_cell(i)):  ',flag2(ind_cell(i))
-!	      if (myid==1)write(*,*)'ind_cell(i):  ',ind_cell(i) 
               if(flag2(ind_cell(i))>0)then
-		  if (myid==1)write(*,*)'ntot counted!  flag2(ind_cell(i)):  ',flag2(ind_cell(i))
                  ntot=ntot+1
               end if
            end do
         end do
      end do
   end if
-  if (myid==1)write(*,*)'number of cells that are flagged as sink : ntot:  ', ntot
+
   !---------------------------------
   ! Compute global sink statistics
   !---------------------------------
@@ -1578,10 +1566,8 @@ subroutine make_sink_from_clump(ilevel)
      ntot_sink_cpu(icpu)=ntot_sink_cpu(icpu-1)+ntot_sink_all(icpu)
   end do
 #endif
-  nsink=nsink+ntot_all 
-  if (myid==1)write(*,*)' nsink:  ', nsink
+  nsink=nsink+ntot_all  
   nindsink=nindsink+ntot_all
-  if (myid==1)write(*,*)' nindsink:  ', nindsink
   if(myid==1)then
      if(ntot_all.gt.0)then
         write(*,'(" Level = ",I6," New sinks produced from clumps= ",I6," Total sinks =",I8)')&
@@ -1592,8 +1578,6 @@ subroutine make_sink_from_clump(ilevel)
   !-------------------------------------------
   ! Check wether max number of sink is reached
   !------------------------------------------
-  write(*,*)"nsink: ",nsink
-  write(*,*)"ntot_all:",ntot_all
   ok_free=(nsink+ntot_all<=nsinkmax)
   if(.not. ok_free)then
      if(myid==1)write(*,*)'global list of sink particles is too long'
@@ -1634,7 +1618,6 @@ subroutine make_sink_from_clump(ilevel)
            nnew=0
            do i=1,ngrid
               if (flag2(ind_cell(i))>0)then
-		 if (myid==1)write(*,*)'gathered cells with a new sink flag2(ind_cell(i)):  ',flag2(ind_cell(i))
                  nnew=nnew+1
                  ind_grid_new(nnew)=ind_grid(i)
                  ind_cell_new(nnew)=ind_cell(i)
@@ -1780,7 +1763,7 @@ subroutine make_sink_from_clump(ilevel)
      endif
   end do
 #endif
- if (myid==1)write(*,*)'end of make_sink_from_clump nsink:  ', nsink
+
 end subroutine make_sink_from_clump
 !################################################################
 !################################################################
@@ -1899,10 +1882,10 @@ subroutine true_max(x,y,z,ilevel)
 
   !clipping the displacement in order to keep max in the cell
   disp_max=maxval(abs(displacement(1:3)))
-  if (disp_max > dx_loc*0.5)then
-     displacement(1)=displacement(1)/disp_max*dx_loc*0.5
-     displacement(2)=displacement(2)/disp_max*dx_loc*0.5
-     displacement(3)=displacement(3)/disp_max*dx_loc*0.5
+  if (disp_max > dx_loc*0.499999)then
+     displacement(1)=displacement(1)/disp_max*dx_loc*0.499999
+     displacement(2)=displacement(2)/disp_max*dx_loc*0.499999
+     displacement(3)=displacement(3)/disp_max*dx_loc*0.499999
   end if
 
   x=x+displacement(1)
@@ -1940,7 +1923,7 @@ subroutine update_sink(ilevel)
 
   fsink=0.
   call f_sink_sink
-  if (myid==1)write(*,*)'nsink:  ', nsink
+
   vsold(1:nsink,1:ndim,ilevel)=vsnew(1:nsink,1:ndim,ilevel)
   vsnew(1:nsink,1:ndim,ilevel)=vsink(1:nsink,1:ndim)
 
@@ -2177,7 +2160,7 @@ subroutine merge_star_sink
   logical::iyoung,jyoung,merge
   real(dp)::scale_nH,scale_T2,scale_l,scale_d,scale_t,scale_v
   real(dp),dimension(1:3)::xcom,vcom,lcom
-  write(*,*) "Inside merge_star_sink, nsink: ",nsink
+
   if(nsink==0)return
 
   ! Mesh spacing in that level
@@ -2704,7 +2687,7 @@ subroutine read_sink_params()
   real(dp)::scale_nH,scale_T2,scale_l,scale_d,scale_t,scale_v
 
   if(.not.cosmo) call units(scale_l,scale_t,scale_d,scale_v,scale_nH,scale_T2)  
-  if(myid==1)write(*,*)"create_sinks inside read_sink_params(): ", create_sinks
+
   nx_loc=(icoarse_max-icoarse_min+1)
   scale = boxlen/dble(nx_loc)
 
@@ -2770,23 +2753,20 @@ subroutine read_sink_params()
         else
            dx_min=0.5**nlevelmax*scale
            d_sink=T2_star/scale_T2 *3.14159/16./(dx_min**2)
-!           if(myid==1)write(*,*)'d_sink = ',d_sink
-!           if(myid==1)write(*,*)'rho_sink = ',d_sink*scale_d
-!           if(myid==1)write(*,*)'n_sink = ',d_sink*scale_nH
+           if(myid==1)write(*,*)'d_sink = ',d_sink
+           if(myid==1)write(*,*)'rho_sink = ',d_sink*scale_d
+           if(myid==1)write(*,*)'n_sink = ',d_sink*scale_nH
         end if
      end if
-if(myid==1)write(*,*)'d_sink = ',d_sink
+
      endif
   end if
   
   if (.not.smbh)then
-     if (merging_timescale<0.)then
-        if (myid==1)write(*,*)'You chose sink merging on a timescale but did not provide the timescale'
-        if (myid==1)write(*,*)'choosing 1000y as lifetime...'
-        merging_timescale=1000.
+     if (merging_timescale > 0.)then
+        cty=scale_t/(365.25*24.*3600.)
+        cont_speed=-1./(merging_timescale/cty)
      end if
-     cty=scale_t/(365.25*24.*3600.)
-     cont_speed=-1./(merging_timescale/cty)
   end if
 
   ! nol_accretion requires a somewhat smaller timestep per default
@@ -2842,7 +2822,6 @@ subroutine count_clouds(ilevel,action)
 
 
   if (action=='count')then
-     if (myid==1)write(*,*)'count_clouds action :count'
      ! Loop over cpus
      do icpu=1,ncpu
         igrid=headl(icpu,ilevel)

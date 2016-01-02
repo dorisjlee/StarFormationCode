@@ -57,7 +57,7 @@ subroutine condinit(x,u,dx,nn)
 !     print *,"rr: ",rr
      !G=1 for self gravity
      !Marginally stable case 6.470001
-     rmax=6.470001 !dimensionless xi units 
+     rmax=6.41 !dimensionless xi units 
      rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
      dr=0.01!delta xi used to initialize np.arange for the numerical integration
      !rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
@@ -129,43 +129,6 @@ subroutine condinit(x,u,dx,nn)
 #endif
 
 end subroutine condinit
-!================================================================
-!================================================================
-!================================================================
-!================================================================
-subroutine velana(x,v,dx,t,ncell)
-  use amr_parameters
-  use hydro_parameters  
-  implicit none
-  integer ::ncell                         ! Size of input arrays
-  real(dp)::dx                            ! Cell size
-  real(dp)::t                             ! Current time
-  real(dp),dimension(1:nvector,1:3)::v    ! Velocity field
-  real(dp),dimension(1:nvector,1:ndim)::x ! Cell center position.
-  !================================================================
-  ! This routine computes the user defined velocity fields.
-  ! x(i,1:ndim) are cell center position in [0,boxlen] (user units).
-  ! v(i,1:3) is the imposed 3-velocity in user units.
-  !================================================================
-  integer::i
-  real(dp)::xx,yy,zz,vx,vy,vz,rr,tt,rmax,margin
-
-  ! Add here, if you wish, some user-defined initial conditions
-  
-  rmax=1.07483E10
-  margin=1.0E-2
-  do i=1,ncell
-     xx=x(i,1)
-     yy=x(i,2)
-     zz=x(i,3)
-     rr=sqrt(xx**2+yy**2+zz**2)
-     IF (rr<rmax+margin .AND. rr>rmax-margin) THEN
-     	v(i,1)=0.0
-     	v(i,2)=0.0
-     	v(i,3)=0.0
-     end IF
-  end do
-end subroutine velana
 subroutine printMatrix(array, n, m)
 	implicit none
 	real, intent(in) :: array(n,m)

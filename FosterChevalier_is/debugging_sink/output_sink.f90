@@ -20,7 +20,7 @@ subroutine backup_sink(filename)
   if(.not. sink) return
 
   if(verbose)write(*,*)'Entering backup_sink'
-  if(myid==1)write(*,*)'filename: ',filename
+
   ilun=4*ncpu+myid+10
 
   call title(myid,nchar)
@@ -38,8 +38,7 @@ subroutine backup_sink(filename)
 
   open(unit=ilun,file=TRIM(fileloc),form='unformatted')
   rewind(ilun)
-  if(myid==1)write(*,*)'ilun: ',ilun
-  if(myid==1)write(*,*)'nsink: ',nsink
+
   write(ilun)nsink
   write(ilun)nindsink
   if(nsink>0)then
@@ -129,7 +128,7 @@ subroutine output_sink(filename)
   character(LEN=5)::nchar
 
   if(verbose)write(*,*)'Entering output_sink'
-  if (myid==1)write(*,*)'nsink:  ', nsink 
+
   ilun=myid+10
 
   ! Conversion factor from user units to cgs units                                                                   
@@ -177,7 +176,7 @@ subroutine output_sink_csv(filename)
   integer::ilun,icpu,isink
 
   if(verbose)write(*,*)'Entering output_sink_csv'
-  if(myid==1)write(*,*)'filename: ',filename
+
   ilun=2*ncpu+myid+10
 
   fileloc=TRIM(filename)
@@ -185,7 +184,6 @@ subroutine output_sink_csv(filename)
   !======================
   ! Write sink properties
   !======================
-  if(myid==1)write(*,*)'nsink: ',nsink
   do isink=1,nsink
      write(ilun,'(I10,12(A1,ES20.10))')idsink(isink),',',msink(isink),&
           ',',xsink(isink,1),',',xsink(isink,2),',',xsink(isink,3),&

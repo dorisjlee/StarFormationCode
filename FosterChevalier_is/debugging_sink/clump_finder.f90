@@ -83,8 +83,7 @@ subroutine clump_finder(create_output,keep_alive)
         write(*,'(" Total number of cells above threshold=",I12)')ntest_all
      endif
   end if
- if(myid==1)write(*,*)'ntest_all: ' ,ntest_all 
- if(myid==1)write(*,*)'ntest: ' ,ntest
+
   !------------------------------------------------------------------------
   ! Allocate arrays and create list of cells above the threshold
   !------------------------------------------------------------------------
@@ -106,8 +105,7 @@ subroutine clump_finder(create_output,keep_alive)
   do ilevel=nlevelmax,levelmin,-1
      call make_virtual_fine_int(flag2(1),ilevel)
   end do
-  if(myid==1)write(*,*)'ntest_all: ' ,ntest_all
- if(myid==1)write(*,*)'ntest: ' ,ntest
+
   !-----------------------------------------------------------------------
   ! Sort cells above threshold according to their density
   !-----------------------------------------------------------------------
@@ -177,21 +175,16 @@ subroutine clump_finder(create_output,keep_alive)
   flag2=0
   if(ntest>0)then
      if(ivar_clump==0)then
-	if (myid==1)write(*,*)'calling ivar_clump flag peaks'
         call flag_peaks(rho(1),nskip)
-	if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
      else
         if(hydro)then
-	   if (myid==1)write(*,*)'calling hydro flag_peaks'
            call flag_peaks(uold(1,ivar_clump),nskip)
-	   if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
         endif
      endif
   endif
   do ilevel=nlevelmax,levelmin,-1
      call make_virtual_fine_int(flag2(1),ilevel)
   end do
-   
 
   !---------------------------------------------------------------------
   ! Determine peak-patches around each peak
@@ -229,7 +222,7 @@ subroutine clump_finder(create_output,keep_alive)
 #endif   
      if(myid==1.and.ntest_all>0.and.clinfo)write(*,*)"istep=",istep,"nmove=",nmove_tot
   end do
-  if (myid==1)write(*,*)'nmove_tot : ',nmove
+
   !------------------------------------
   ! Allocate peak-patch property arrays
   !------------------------------------
@@ -257,7 +250,7 @@ subroutine clump_finder(create_output,keep_alive)
      do ilevel=nlevelmax,levelmin,-1
         call make_virtual_fine_int(flag2(1),ilevel)
      end do
-     if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
+
      !------------------------------------------
      ! Compute clumps properties
      !------------------------------------------
@@ -269,20 +262,15 @@ subroutine clump_finder(create_output,keep_alive)
            call compute_clump_properties(uold(1,ivar_clump))
         endif
      endif
-     if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
-     write (*,*) pack(flag2,flag2 /= 0)
-     if (myid==1)write(*,*)'saddle_threshold:  ',saddle_threshold
+     
      !------------------------------------------
      ! Merge clumps into haloes
      !------------------------------------------
-     if(myid==1)write(*,*)"clinfo: ",clinfo
      if(saddle_threshold>0)then
-        !if(myid==1.and.clinfo)write(*,*)"Now merging peaks into halos."
-        if(myid==1)write(*,*)"Now merging peaks into halos."
+        if(myid==1.and.clinfo)write(*,*)"Now merging peaks into halos."
         call merge_clumps('saddleden')
      endif
-      if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
-     write (*,*) pack(flag2,flag2 /= 0)
+
      !------------------------------------------
      ! Output clumps properties to file
      !------------------------------------------
@@ -310,9 +298,7 @@ subroutine clump_finder(create_output,keep_alive)
      endif
      call deallocate_all
   end if
-if(myid==1)write(*,*)'at the end of clump_finder : ntest_all: ' ,ntest_all
- write (*,*) pack(flag2,flag2 /= 0)
- if(myid==1)write(*,*)'ntest: ' ,ntest
+
 end subroutine clump_finder
 !################################################################
 !################################################################
@@ -341,7 +327,7 @@ subroutine count_test_particle(xx,ilevel,nskip,action)
   integer ,dimension(1:nvector)::ind_grid,ind_cell
   logical ,dimension(1:nvector)::ok
 
-  if(myid==1)write(*,*)'Enter count_test_particle' 
+
   if(numbtot(1,ilevel)==0) return
 
   if(verbose .and. myid==1)then
@@ -366,9 +352,7 @@ subroutine count_test_particle(xx,ilevel,nskip,action)
         !checks
         do i=1,ngrid
            ok(i)=son(ind_cell(i))==0 !check if leaf cell
-	 !  if(myid==1)write(*,*)'what is ok? ' , ok(i)
            ok(i)=ok(i).and.xx(ind_cell(i))>density_threshold !check density
-	 !  if(myid==1)write(*,*) "second criterion: ", xx(ind_cell(i))>density_threshold
         end do
 
         select case (action) 
@@ -394,7 +378,7 @@ subroutine count_test_particle(xx,ilevel,nskip,action)
         end select
      end do
   end do
-if (myid==1)write(*,*)'end count_test_particle '!flag2 slice:  ',flag2(1:20)
+
 end subroutine count_test_particle
 !################################################################
 !################################################################
@@ -461,28 +445,19 @@ subroutine flag_peaks(xx,ipeak)
   !----------------------------------------------------------------------
   integer::ipart,jpart
   integer,dimension(1:nvector)::ind_part,ind_cell,ind_max
-if (myid==1)write(*,*)'Entering flag_peaks inside clump_merger'
-!if (myid==1)write(*,*)'flag2 slice:  ',flag2(1:20)
   do ipart=1,ntest
      jpart=testp_sort(ipart)
-     !if (myid==1)write(*,*)'jpart:  ',jpart     
      if(imaxp(jpart).EQ.-1)then
         ipeak=ipeak+1
-	if (myid==1 .and. ipeak .NE. 0)write(*,*)'ipeak:  ',ipeak
- 	!if (myid==1 .and. ipeak .NE. 0)write(*,*)'jpart:  ',jpart
-	if (myid==1 .and. ipeak .NE. 0)write(*,*)'icellp(jpart):  ',icellp(jpart)
         flag2(icellp(jpart))=ipeak
-	if (myid==1 .and. ipeak .NE. 0)write(*,*)'flag2(icellp(jpart)):  ',flag2(icellp(jpart))
         max_dens(ipeak-ipeak_start(myid))=xx(icellp(jpart))
         peak_cell(ipeak-ipeak_start(myid))=icellp(jpart)
         peak_cell_level(ipeak-ipeak_start(myid))=levp(jpart)
      endif
   end do
-if (myid==1)write(*,*)'flage2(idx) should be nonzero:  ',flag2(18289880)
-if (myid==1)write(*,*)'end flag peaks'! flag2 slice:  ',flag2(1:20)
 end subroutine flag_peaks
 !#########################################################################
-!########################################################################
+!#########################################################################
 !#########################################################################
 !#########################################################################
 subroutine propagate_flag(nmove,nzero)
@@ -932,7 +907,6 @@ subroutine read_clumpfind_params()
         density_threshold=rho_clfind/scale_d
      end if
   end if
-  if(myid==1)write(*,*)'density_threshold: ' , density_threshold
 end subroutine read_clumpfind_params
 
 !################################################################
@@ -1144,7 +1118,7 @@ subroutine rho_only(ilevel)
   !------------------------------------------------------------------
   integer::iskip,icpu,ind,i,info,nx_loc,ibound,idim
   real(dp)::dx,scale,dx_loc
-  if(myid==1)write(*,*)'Entering rho_only'
+
   if(.not. poisson)return
   if(numbtot(1,ilevel)==0)return
   if(verbose)write(*,111)ilevel

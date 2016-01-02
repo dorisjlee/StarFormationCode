@@ -82,7 +82,6 @@ subroutine compute_clump_properties(xx)
   !--------------------------------------------------------------------------
   ! loop over all cells above the threshold
   !--------------------------------------------------------------------------
-  if (myid==1)write(*,*)'inside clump_merger, looping over cells above the threshold ', ntest
   do ipart=1,ntest     
      global_peak_id=flag2(icellp(ipart)) 
      if (global_peak_id /=0 ) then
@@ -184,7 +183,7 @@ subroutine compute_clump_properties(xx)
   halo_mass=clump_mass
   ! Calculate total mass above threshold
   tot_mass=sum(clump_mass(1:npeaks))
-  if (myid==1)write(*,*)'total mass above the density threshold :  ', tot_mass
+
 #ifndef WITHOUTMPI     
   call MPI_ALLREDUCE(tot_mass,tot_mass_tot,1,MPI_DOUBLE_PRECISION,MPI_SUM,MPI_COMM_WORLD,info)
   tot_mass=tot_mass_tot
@@ -469,13 +468,9 @@ subroutine merge_clumps(action)
         alive(i)=1
      endif
      if(action.EQ.'saddleden')then
- 	write(*,*)"relevance(i): ",relevance(i)
-	write(*,*)"relevance_threshold: ",relevance_threshold
         if(relevance(i)>relevance_threshold)then
-           write(*,*)"alive"
-	   alive(i)=1
+           alive(i)=1
         else
-	   write(*,*)"dead"
            alive(i)=0
         endif
      endif

@@ -121,8 +121,6 @@ subroutine newdt_fine(ilevel)
 
 
      ! timestep restrictions due to sink
-     if(myid==1)write(*,*)"Inside newdt_fine.f90, sink:",sink
-     if(myid==1)write(*,*)"nsink: ",nsink
      if(sink .and. nsink>0) then
         ! determine if on highest active level...
         if (ilevel==nlevelmax)then
