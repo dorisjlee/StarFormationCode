@@ -7,6 +7,7 @@ subroutine init_sink
   include 'mpif.h'
 #endif
   integer::io  
+CHARACTER(len=255) :: cwd
 
   real(dp)::scale_nH,scale_T2,scale_l,scale_d,scale_t,scale_v
   integer::idim
@@ -232,7 +233,7 @@ subroutine init_sink
         INQUIRE(FILE=filename, EXIST=ic_sink)
      end if
   end if
-  write(*,*)"ic_sink: ",ic_sink
+ ! write(*,*)"ic_sink: ",ic_sink
   ic_sink=.true.      
   if (ic_sink)then
 
@@ -245,14 +246,17 @@ subroutine init_sink
         end if
      endif
 #endif
-    
-     write(*,*) "Opening up : ",filename 
-     open(10,file=filename,form='formatted')                                                             
-     eof=.false.                                                                                         
-     do                                                                                                  
+
+!     CALL getcwd(cwd)
+!     WRITE(*,*)"get cwd:",cwd
+!     write(*,*)"Opening up : ",filename 
+     eof = .false.
+     open(10,file=filename,form='formatted')                                              !eof = .false. 
+     do 
         write(*,*) "Reading stuff from ic_sink"
-	read(10,*,end=102)mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+	read(10,*,iostat=io)mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
 	write(*,*) "after reading"
+	write(*,*)"IOstat:",io
         nsink=nsink+1
         nindsink=nindsink+1
         idsink(nsink)=nindsink
@@ -268,13 +272,13 @@ subroutine init_sink
         lsink(nsink,3)=ll3
         tsink(nsink)=t
         new_born(nsink)=.true.
-        
-        write(*,*)"Info before end do : ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+        exit  
+  !      write(*,*)"Info before end do : ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
      end do
 102  continue
        write(*,*)"after 102"
        write(*,*)"IOstat:",io
-     write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+    write(*,*)"Info: ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
      write(*,*)"Vector info: ", idsink(nsink),msink(nsink),xsink(nsink,:),vsink(nsink,:),lsink(nsink,:),tsink(nsink)
      close(10)
 
