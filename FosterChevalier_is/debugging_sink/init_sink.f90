@@ -272,8 +272,8 @@ CHARACTER(len=255) :: cwd
         lsink(nsink,3)=ll3
         tsink(nsink)=t
         new_born(nsink)=.true.
-        exit  
-  !      write(*,*)"Info before end do : ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+        write(*,*)"Info before end do : ", mm1,xx1,xx2,xx3,vv1,vv2,vv3,ll1,ll2,ll3
+	exit
      end do
 102  continue
        write(*,*)"after 102"
