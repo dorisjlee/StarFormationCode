@@ -29,7 +29,7 @@ def plot_time_slice(physical_quantity,timestep,zmin="",zmax="" ,text="",title=""
     	slc.annotate_title(title)
     if text!="":
 	slc.annotate_text((0.1, 0.1),text, coord_system='axis')	
-    slc.annotate_text((0.05, 0.05),"timestep: {}".format(timestep), coord_system='axis')
+    slc.annotate_text((0.05, 0.05),"timestep: {}".format(timestep-1), coord_system='axis')
     slc.annotate_text((0.05, 0.02),"time: {} Myrs".format(timestep*61793.091/1000000.), coord_system='axis')
     if (velocity):
         slc.annotate_velocity()
