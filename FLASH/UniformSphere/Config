@@ -1,6 +1,4 @@
 # Configuration file for the Uniform Sphere problem
-# modified from the Sedov Explosion problem
-
 REQUIRES Driver
 REQUIRES physics/Hydro
 REQUIRES physics/Eos

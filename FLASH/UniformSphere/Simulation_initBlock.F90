@@ -80,14 +80,16 @@ subroutine Simulation_initBlock(blockID)
   do k = 1, kmax
      do j = 1, jmax
         do i = 1, imax
-           
            do kk = 0, (Nint-1)*K3D
               zz    = zzmin + delz*(real(k-guard(KAXIS)-1)+kk*Nintinv1)
+              zdist = (zz - sim_zctr) * K3D
               do jj = 0, (Nint-1)*K2D
                  yy    = yymin + dely*(real(j-guard(JAXIS)-1)+jj*Nintinv1)
+                 ydist = (yy - sim_yctr) * K2D
                  do ii = 0, Nint-1
                     xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
-                    dist    = sqrt( xx**2 + yy**2 + zz**2 )
+                    xdist = xx - sim_xctr
+                    dist    = sqrt( xdist**2 + ydist**2 + zdist**2 )
 		    if (dist<rcloud) then 
 			solnData(DENS_VAR,i,j,k) = rhoIn 
 		    else
