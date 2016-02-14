@@ -1,7 +1,9 @@
 !!REORDER(4): solnData
 
 subroutine Simulation_initBlock(blockID)
-  use Simulation_data, ONLY : rhoOut,rhoIn,P,rcloud,sim_xctr,sim_yctr,sim_zctr,sim_gamma,sim_gascon 
+  use Simulation_data, ONLY : rhoOut,rhoIn,P,rcloud, &
+                              sim_xctr,sim_yctr,sim_zctr,&
+                              sim_gamma,sim_gascon 
 
   use Grid_interface, ONLY : Grid_getBlkIndexLimits, Grid_getBlkPtr, &
     Grid_getDeltas, Grid_releaseBlkPtr, Grid_getBlkBoundBox
@@ -18,8 +20,6 @@ subroutine Simulation_initBlock(blockID)
   integer, intent(in) :: blockID
   
   real, pointer, dimension(:,:,:,:) :: solnData
-
-
   
   real,dimension(MDIM) :: size, coord
   
@@ -105,14 +105,6 @@ subroutine Simulation_initBlock(blockID)
            solnData(VELX_VAR,i,j,k) = 0.0
            solnData(VELY_VAR,i,j,k) = 0.0
            solnData(VELZ_VAR,i,j,k) = 0.0 
-           !************************** for constant velocity gradient/uniform density test
-           !             solnData(DENS_VAR,i,j,k) = sim_initDens
-           !             solnData(PRES_VAR,i,j,k) = sim_initDens*sim_presFrac
-           !             solnData(VELX_VAR,i,j,k) = 3.4E9 *
-           !     &                     (1.-(xxmin+delx*(i-guard(IAXIS)-0.5))/sim_imax)
-           !             solnData(VELY_VAR,i,j,k) = 0.
-           !             solnData(VELZ_VAR,i,j,k) = 0.
-           !**************************
            
         enddo
      enddo

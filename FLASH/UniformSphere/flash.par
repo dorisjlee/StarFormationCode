@@ -5,8 +5,8 @@
 #		Ambient pressure and density, explosion energy, initial
 #		radius of perturbation, and location of explosion center
 
-rhoIn			= 2.386E6
 rhoOut			= 23861.3108
+rhoIn                   = 2.386E6
 P			= 59.6525
 rcloud			= 0.25
 sim_xctr		= 0.5
@@ -15,8 +15,8 @@ sim_zctr		= 0.5
 
 #		Gas ratio of specific heats
 
-sim_gamma           = 1.0001
-
+#sim_gamma           = 1.0001
+#sim_gascon 	    = 8.2544E7 
 #	Computational volume parameters
 
 #		Grid dimensionality and geometry
@@ -77,7 +77,7 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #  Adaptvie Grid refinement parameters
-
+lrefine_min     = 6
 lrefine_max     = 6
 refine_var_1 = "dens"
 refine_var_2 = "pres"
