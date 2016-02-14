@@ -5,17 +5,17 @@
 #		Ambient pressure and density, explosion energy, initial
 #		radius of perturbation, and location of explosion center
 
-sim_pAmbient	= 1.E-5
-sim_rhoAmbient	= 1.
-sim_expEnergy	= 1.
-sim_rInit		= 0.013671875
+rhoIn			= 2.386E6
+rhoOut			= 23861.3108
+P			= 59.6525
+rcloud			= 0.25
 sim_xctr		= 0.5
 sim_yctr		= 0.5
 sim_zctr		= 0.5
 
 #		Gas ratio of specific heats
 
-gamma           = 1.4
+sim_gamma           = 1.0001
 
 #	Computational volume parameters
 
@@ -50,8 +50,8 @@ zr_boundary_type = "outflow"
 
 #	Simulation time, I/O  parameters
 
-cfl		= 0.8
-basenm          = "sedov_"
+cfl		= 0.5
+basenm          = "uniform_sphere_"
 restart         = .false.
 
 
@@ -68,8 +68,8 @@ plotfileNumber = 0
 nend            = 10000
 tmax            = 0.05
 
-run_comment     = "Sedov explosion"
-log_file        = "sedov.log"
+run_comment     = "Uniform Sphere"
+log_file        = "uniform_sphere.log"
 eintSwitch     = 1.e-4
 
 plot_var_1 = "dens"
@@ -109,26 +109,6 @@ kProcs = 1
 # as iGridSize/iprocs  etc.
  
  
-## -------------------------------------------------------------##
-##  SWITCHES SPECIFIC TO THE UNSPLIT HYDRO SOLVER               ##
-#	I. INTERPOLATION SCHEME:
-order		= 3      # Interpolation order (first/second/third/fifth order)
-slopeLimiter    = "mc"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
-LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
-charLimiting	= .true. # Characteristic limiting vs. Primitive limiting
-
-use_avisc	= .true. # use artificial viscosity (originally for PPM)
-cvisc		= 0.1     # coefficient for artificial viscosity
-use_flattening	= .false. # use flattening (dissipative) (originally for PPM)
-use_steepening	= .false. # use contact steepening (originally for PPM)
-use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
-
-#	II. RIEMANN SOLVERS:
-RiemannSolver	= "Roe"       # Roe, HLL, HLLC, LLF, Marquina
-entropy         = .false.     # Entropy fix for the Roe solver
-
-#	III. STRONG SHOCK HANDELING SCHEME:
-shockDetect	= .false.     # Shock Detect for numerical stability
 ## -------------------------------------------------------------##
 
 ## ---------------------------------------------------------------##

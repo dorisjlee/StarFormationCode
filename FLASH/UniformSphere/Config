@@ -16,14 +16,28 @@ IF withParticles
 ENDIF
 
 D rhoOut          Density outside of the sphere
-PARAMETER rhoOut  REAL 	23861
+PARAMETER 	  rhoOut  REAL 	23861
 
-D rhoIn	      Density of the sphere
-PARAMETER rhoIn   REAL      2.386E6
+D rhoIn	          Density of the sphere
+PARAMETER 	  rhoIn   REAL      2.386E6
 
-D P		      Pressure Everywhere
-PARAMETER P	      REAL	59.6525
+D P		  Pressure Everywhere
+PARAMETER P	  REAL	59.6525
 
-D rcloud  	Size of the Cloud
-PARAMETER rcloud 	REAL 0.25 
-# No VARIABLE declarations here, using VARIABLES declared in Hydro etc.
+D rcloud  	  Size of the Cloud
+PARAMETER rcloud  REAL 0.25 
+
+D sim_xctr        Center of the Cloud
+PARAMETER sim_xctr REAL 0.5
+
+D sim_yctr
+PARAMETER  sim_yctr REAL 0.5
+
+D sim_zctr
+PARAMETER  sim_zctr REAL 0.5
+
+D sim_gamma
+PARAMETER  sim_gamma REAL 1.0001
+
+D sim_gascon
+PARAMETER  sim_gascon REAL 8.2544E7

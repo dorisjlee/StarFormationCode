@@ -25,7 +25,7 @@ module Simulation_data
 
   !! *** Runtime Parameters *** !!
 
-  real, save     :: rhoOut, rhoIn,P,rcloud
+  real, save     :: rhoOut, rhoIn,P,rcloud,sim_gascon,sim_gamma,sim_xctr,sim_yctr,sim_zctr
   !! *** Variables pertaining to this Simulation *** !!
 
   !integer, parameter                  :: sim_nProfile = 1000

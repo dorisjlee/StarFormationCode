@@ -1,8 +1,7 @@
 !!REORDER(4): solnData
 
 subroutine Simulation_initBlock(blockID)
-
-  use Simulation_data, ONLY : rhoOut,rhoIn,P,rcloud 
+  use Simulation_data, ONLY : rhoOut,rhoIn,P,rcloud,sim_xctr,sim_yctr,sim_zctr,sim_gamma,sim_gascon 
 
   use Grid_interface, ONLY : Grid_getBlkIndexLimits, Grid_getBlkPtr, &
     Grid_getDeltas, Grid_releaseBlkPtr, Grid_getBlkBoundBox
@@ -31,7 +30,7 @@ subroutine Simulation_initBlock(blockID)
   real            Nintinv, sum_rho, sum_p, sum_vx, sum_vy, sum_vz, & 
        &                Nintinv1
   real            xxmin, xxmax, yymin, yymax, zzmin, zzmax,ek
-  real 		  sim_gascon,sim_gamma
+ ! real 		  sim_gascon,sim_gamma
   integer, dimension(MDIM) :: guard
   integer, dimension(LOW:HIGH,MDIM) :: blkLimits, blkLimitsGC
   real, dimension(LOW:HIGH,MDIM) :: bndBox
@@ -44,8 +43,9 @@ subroutine Simulation_initBlock(blockID)
   call Grid_getBlkIndexLimits(blockID,blkLimits,blkLimitsGC)
   call Grid_getBlkBoundBox(blockID,bndBox)
   call Grid_getDeltas(blockID,delta)
-  sim_gascon=8.2544E7
-  sim_gamma=1.0001
+!  sim_gascon=8.2544E7
+!  sim_gamma=1.0001
+  print *, "begin Simulation_initBlock"
   imax = blkLimitsGC(HIGH,IAXIS)-blkLimitsGC(LOW,IAXIS)+1
   jmax = blkLimitsGC(HIGH,JAXIS)-blkLimitsGC(LOW,JAXIS)+1
   kmax = blkLimitsGC(HIGH,KAXIS)-blkLimitsGC(LOW,KAXIS)+1
