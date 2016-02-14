@@ -46,7 +46,6 @@ subroutine Simulation_init()
 
   logical :: threadBlockListBuild, threadWithinBlockBuild  
 
-  sim_pi = PI
   call RuntimeParameters_get('rhoOut',rhoOut)
   call RuntimeParameters_get('rhoIn',rhoIn)
   call RuntimeParameters_get('P', P)

@@ -31,10 +31,12 @@ subroutine Simulation_initBlock(blockID)
   real            Nintinv, sum_rho, sum_p, sum_vx, sum_vy, sum_vz, & 
        &                Nintinv1
   real            xxmin, xxmax, yymin, yymax, zzmin, zzmax,ek
+  real 		  sim_gascon,sim_gamma
   integer, dimension(MDIM) :: guard
   integer, dimension(LOW:HIGH,MDIM) :: blkLimits, blkLimitsGC
   real, dimension(LOW:HIGH,MDIM) :: bndBox
   real, dimension(MDIM) :: delta
+
 !==========================================================================
 !               Initialize scalar quantities we will need.
 
@@ -42,7 +44,8 @@ subroutine Simulation_initBlock(blockID)
   call Grid_getBlkIndexLimits(blockID,blkLimits,blkLimitsGC)
   call Grid_getBlkBoundBox(blockID,bndBox)
   call Grid_getDeltas(blockID,delta)
-
+  sim_gascon=8.2544E7
+  sim_gamma=1.0001
   imax = blkLimitsGC(HIGH,IAXIS)-blkLimitsGC(LOW,IAXIS)+1
   jmax = blkLimitsGC(HIGH,JAXIS)-blkLimitsGC(LOW,JAXIS)+1
   kmax = blkLimitsGC(HIGH,KAXIS)-blkLimitsGC(LOW,KAXIS)+1
@@ -80,15 +83,12 @@ subroutine Simulation_initBlock(blockID)
            
            do kk = 0, (Nint-1)*K3D
               zz    = zzmin + delz*(real(k-guard(KAXIS)-1)+kk*Nintinv1)
-              zdist = (zz - sim_kctr) * K3D
               do jj = 0, (Nint-1)*K2D
                  yy    = yymin + dely*(real(j-guard(JAXIS)-1)+jj*Nintinv1)
-                 ydist = (yy - sim_jctr) * K2D
                  do ii = 0, Nint-1
                     xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
-                    xdist = xx - sim_ictr
-                    dist    = sqrt( xdist**2 + ydist**2 + zdist**2 )
-		    if (dist<rcloud)
+                    dist    = sqrt( xx**2 + yy**2 + zz**2 )
+		    if (dist<rcloud) then 
 			solnData(DENS_VAR,i,j,k) = rhoIn 
 		    else
 			solnData(DENS_VAR,i,j,k) = rhoOut              
@@ -98,9 +98,8 @@ subroutine Simulation_initBlock(blockID)
               enddo
            enddo
            
-           solnData(PRES_VAR,i,j,k) = sim_smallp * 100.
-           solnData(TEMP_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) /
-            &              (solnData(DENS_VAR,i,j,k)*sim_gascon)
+           solnData(PRES_VAR,i,j,k) = P 
+           solnData(TEMP_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) /(solnData(DENS_VAR,i,j,k)*sim_gascon)
            solnData(VELX_VAR,i,j,k) = 0.0
            solnData(VELY_VAR,i,j,k) = 0.0
            solnData(VELZ_VAR,i,j,k) = 0.0 
@@ -149,7 +148,7 @@ subroutine Simulation_initBlock(blockID)
                 &                                    (solnData(GAME_VAR,i,j,k)-1.)
            solnData(EINT_VAR,i,j,k) = solnData(EINT_VAR,i,j,k) / & 
                 &                                    solnData(DENS_VAR,i,j,k)
-           solnData(EINT_VAR,i,j,k) = max(solnData(EINT_VAR,i,j,k),sim_smalle)
+           solnData(EINT_VAR,i,j,k) = solnData(EINT_VAR,i,j,k)
            solnData(ENER_VAR,i,j,k) = solnData(EINT_VAR,i,j,k) + ek
            
         enddo
