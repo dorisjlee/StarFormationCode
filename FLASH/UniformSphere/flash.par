@@ -56,7 +56,7 @@ restart         = .false.
 
 
 #	checkpoint file output parameters
-checkpointFileIntervalTime = 0.01
+checkpointFileIntervalTime = 0.1
 checkpointFileIntervalStep = 0
 checkpointFileNumber = 0
 
@@ -66,7 +66,7 @@ plotfileIntervalStep = 0
 plotfileNumber = 0
 
 nend            = 10000
-tmax            = 0.05
+tmax            = 1.40
 
 run_comment     = "Uniform Sphere"
 log_file        = "uniform_sphere.log"
@@ -77,7 +77,7 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #  Adaptvie Grid refinement parameters
-lrefine_min     = 6
+lrefine_min     = 4
 lrefine_max     = 6
 refine_var_1 = "dens"
 refine_var_2 = "pres"

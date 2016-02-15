@@ -45,7 +45,7 @@ subroutine Simulation_initBlock(blockID)
   call Grid_getDeltas(blockID,delta)
 !  sim_gascon=8.2544E7
 !  sim_gamma=1.0001
-  print *, "begin Simulation_initBlock"
+!  print *, "begin Simulation_initBlock"
   imax = blkLimitsGC(HIGH,IAXIS)-blkLimitsGC(LOW,IAXIS)+1
   jmax = blkLimitsGC(HIGH,JAXIS)-blkLimitsGC(LOW,JAXIS)+1
   kmax = blkLimitsGC(HIGH,KAXIS)-blkLimitsGC(LOW,KAXIS)+1
