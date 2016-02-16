@@ -1,20 +1,13 @@
-#	Runtime parameters for the Sedov explosion problem.
-
 #	Parameters for initial model
-
-#		Ambient pressure and density, explosion energy, initial
-#		radius of perturbation, and location of explosion center
-
 rhoOut			= 23861.3108
 rhoIn                   = 2.386E6
 P			= 59.6525
-rcloud			= 0.25
-sim_xctr		= 0.5
-sim_yctr		= 0.5
-sim_zctr		= 0.5
+rcloud			= 0.1
+sim_xctr		= 1.0
+sim_yctr		= 1.0
+sim_zctr		= 1.0
 
 #		Gas ratio of specific heats
-
 #sim_gamma           = 1.0001
 #sim_gascon 	    = 8.2544E7 
 #	Computational volume parameters
@@ -25,11 +18,11 @@ geometry = "cartesian"
 
 #		Size of computational volume
 
-xmin		= 0.
+xmin		= -1.
 xmax		= 1.
-ymin		= 0.
+ymin		= -1.
 ymax		= 1.
-zmin		= 0.
+zmin		= -1.
 zmax		= 1.
 
 #		Boundary conditions
@@ -77,7 +70,7 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #  Adaptvie Grid refinement parameters
-lrefine_min     = 4
+lrefine_min     = 6
 lrefine_max     = 6
 refine_var_1 = "dens"
 refine_var_2 = "pres"
