@@ -92,7 +92,7 @@ subroutine Simulation_initBlock(blockID)
                     !xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
                     !xdist = xx - sim_xctr
                     dist    = sqrt( xdist**2 + ydist**2 + zdist**2 )
-		    print *,"(i,j,k),dist:",i,j,k,dist
+		    !print *,"(i,j,k),dist:",i,j,k,dist
 		    if (dist<rcloud) then 
 			solnData(DENS_VAR,i,j,k) = rhoIn 
 		    else
