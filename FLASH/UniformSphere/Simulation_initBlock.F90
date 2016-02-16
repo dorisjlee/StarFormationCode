@@ -26,10 +26,9 @@ subroutine Simulation_initBlock(blockID)
   integer         i, j, k, n, imax, jmax, kmax, jlo
   integer         Nint, ii, jj, kk
   real            delx, xx, dely, yy, delz, zz, velocity, distinv
-  real            vfrac, xdist, ydist, zdist, dist
-  real            Nintinv, sum_rho, sum_p, sum_vx, sum_vy, sum_vz, & 
-       &                Nintinv1
+  real            xdist, ydist, zdist, dist
   real            xxmin, xxmax, yymin, yymax, zzmin, zzmax,ek
+  real            Nintinv,Nintinv1
  ! real 		  sim_gascon,sim_gamma
   integer, dimension(MDIM) :: guard
   integer, dimension(LOW:HIGH,MDIM) :: blkLimits, blkLimitsGC
@@ -78,27 +77,31 @@ subroutine Simulation_initBlock(blockID)
   Nintinv1= 1./(float(Nint)-1.)
   
   do k = 1, kmax
-     do j = 1, jmax
+    zdist = k - sim_zctr 
+    do j = 1, jmax
+        ydist = j - sim_yctr 
         do i = 1, imax
-           do kk = 0, (Nint-1)*K3D
-              zz    = zzmin + delz*(real(k-guard(KAXIS)-1)+kk*Nintinv1)
-              zdist = (zz - sim_zctr) * K3D
-              do jj = 0, (Nint-1)*K2D
-                 yy    = yymin + dely*(real(j-guard(JAXIS)-1)+jj*Nintinv1)
-                 ydist = (yy - sim_yctr) * K2D
-                 do ii = 0, Nint-1
-                    xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
-                    xdist = xx - sim_xctr
+	    xdist = i - sim_xctr
+ !          do kk = 0, (Nint-1)*K3D
+ !             zz    = zzmin + delz*(real(k-guard(KAXIS)-1)+kk*Nintinv1)
+ !             zdist = (zz - sim_zctr) * K3D
+ !             do jj = 0, (Nint-1)*K2D
+ !                yy    = yymin + dely*(real(j-guard(JAXIS)-1)+jj*Nintinv1)
+ !                ydist = (yy - sim_yctr) * K2D
+ !                do ii = 0, Nint-1
+                    !xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
+                    !xdist = xx - sim_xctr
                     dist    = sqrt( xdist**2 + ydist**2 + zdist**2 )
+		    print *,"(i,j,k),dist:",i,j,k,dist
 		    if (dist<rcloud) then 
 			solnData(DENS_VAR,i,j,k) = rhoIn 
 		    else
 			solnData(DENS_VAR,i,j,k) = rhoOut              
 	            endif
                     
-                 enddo
-              enddo
-           enddo
+                ! enddo
+              !enddo
+           !enddo
            
            solnData(PRES_VAR,i,j,k) = P 
            solnData(TEMP_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) /(solnData(DENS_VAR,i,j,k)*sim_gascon)

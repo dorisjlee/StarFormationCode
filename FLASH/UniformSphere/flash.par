@@ -16,6 +16,8 @@ sim_zctr		= 0.5
 
 geometry = "cartesian"
 
+# Units of Physical Constants
+pc_unitsbase    = CGS
 #		Size of computational volume
 
 xmin		= 0
@@ -26,8 +28,6 @@ zmin		= 0.
 zmax		= 1.
 
 #		Boundary conditions
-
-
 xl_boundary_type = "outflow"
 xr_boundary_type = "outflow"
 
@@ -70,8 +70,10 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #  Adaptvie Grid refinement parameters
-lrefine_min     = 6
-lrefine_max     = 6
+#lrefine_min     = 4
+#lrefine_max     = 7
+lrefine_min = 6
+lrefine_max = 6
 refine_var_1 = "dens"
 refine_var_2 = "pres"
 
