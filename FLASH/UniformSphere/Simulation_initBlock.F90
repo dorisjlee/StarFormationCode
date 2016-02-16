@@ -77,20 +77,20 @@ subroutine Simulation_initBlock(blockID)
   Nintinv1= 1./(float(Nint)-1.)
   
   do k = 1, kmax
-    zdist = k - sim_zctr 
+    !zdist = k - sim_zctr 
     do j = 1, jmax
-        ydist = j - sim_yctr 
+       ! ydist = j - sim_yctr 
         do i = 1, imax
-	    xdist = i - sim_xctr
- !          do kk = 0, (Nint-1)*K3D
- !             zz    = zzmin + delz*(real(k-guard(KAXIS)-1)+kk*Nintinv1)
- !             zdist = (zz - sim_zctr) * K3D
- !             do jj = 0, (Nint-1)*K2D
- !                yy    = yymin + dely*(real(j-guard(JAXIS)-1)+jj*Nintinv1)
- !                ydist = (yy - sim_yctr) * K2D
- !                do ii = 0, Nint-1
-                    !xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
-                    !xdist = xx - sim_xctr
+	  !  xdist = i - sim_xctr
+           do kk = 0, (Nint-1)*K3D
+              zz    = zzmin + delz*(real(k-guard(KAXIS)-1)+kk*Nintinv1)
+              zdist = (zz - sim_zctr) * K3D
+              do jj = 0, (Nint-1)*K3D
+                 yy    = yymin + dely*(real(j-guard(JAXIS)-1)+jj*Nintinv1)
+                 ydist = (yy - sim_yctr) * K3D
+                 do ii = 0, Nint-1
+                    xx    = xxmin + delx*(real(i-guard(IAXIS)-1)+ii*Nintinv1)
+                    xdist = (xx - sim_xctr)*K3D
                     dist    = sqrt( xdist**2 + ydist**2 + zdist**2 )
 		    !print *,"(i,j,k),dist:",i,j,k,dist
 		    if (dist<rcloud) then 
