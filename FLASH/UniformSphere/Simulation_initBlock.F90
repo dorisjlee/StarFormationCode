@@ -1,6 +1,6 @@
 !!REORDER(4): solnData
 subroutine Simulation_initBlock(blockID,solnData)
-
+#include "Flash.h"
 #include "constants.h"
 #include "Flash.h"
 #include "Eos.h"
@@ -32,8 +32,8 @@ subroutine Simulation_initBlock(blockID,solnData)
   real, dimension(MDIM) :: delta
   integer :: sizeX,sizeY,sizeZ
   integer, dimension(MDIM) :: axis
-!  real :: rhoZone, velxZone, velyZone, velzZone, presZone, & 
-!       eintZone, enerZone, ekinZone, gameZone, gamcZone
+  real :: rhoZone, velxZone, velyZone, velzZone, presZone, & 
+       eintZone, enerZone, ekinZone, gameZone, gamcZone
 
 #ifdef SIMULATION_TWO_MATERIALS
   real, dimension(EOS_NUM) :: eosData
@@ -90,54 +90,77 @@ subroutine Simulation_initBlock(blockID,solnData)
 !           print *,"zCoord,yCoord,xCenter:",zCoord(k),yCoord(j),xCenter(i)
            r = sqrt(xx**2+yy**2+zz**2)
            if (r  <= rcloud) then
-              solnData(DENS_VAR,i,j,k)  = rhoIn
+!              solnData(DENS_VAR,i,j,k)  = rhoIn
+               rhoZone = rhoIn
            else 
-              solnData(DENS_VAR,i,j,k)  = rhoOut  
+!              solnData(DENS_VAR,i,j,k)  = rhoOut 
+               rhoZone = rhoOut 
            endif
-	   solnData(PRES_VAR,i,j,k) = 59.6525 !P
+           presZone = P
+           velxZone = 0.0
+           velyZone = 0.0
+           velzZone = 0.0
+!	   solnData(PRES_VAR,i,j,k) = 59.6525 !P
           ! solnData(TEMP_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) /(solnData(DENS_VAR,i,j,k)*sim_gascon)
-           solnData(VELX_VAR,i,j,k) = 0.0
-           solnData(VELY_VAR,i,j,k) = 0.0
-           solnData(VELZ_VAR,i,j,k) = 0.0
-
+ !          solnData(VELX_VAR,i,j,k) = 0.0
+ !          solnData(VELY_VAR,i,j,k) = 0.0
+ !          solnData(VELZ_VAR,i,j,k) = 0.0
+       
            axis(IAXIS) = i
            axis(JAXIS) = j
            axis(KAXIS) = k
+
+           ekinZone = 0.5 * (velxZone**2 + &
+                velyZone**2 + &
+                velzZone**2)
+
+#ifdef SIMULATION_TWO_MATERIALS
+           eosData(EOS_DENS) = rhoZone
+           eosData(EOS_PRES) = presZone
+           eosData(EOS_TEMP) = 1.0e8
+           call Eos(MODE_DENS_PRES, 1, eosData, mfrac)
+           eintZone = eosData(EOS_EINT)
+           gameZone = 1.0+eosData(EOS_PRES)/eosData(EOS_DENS)/eosData(EOS_EINT)
+           gamcZone = eosData(EOS_GAMC)
+#else
+           eintZone = presZone / (sim_gamma-1.)
+           eintZone = eintZone / rhoZone
+           gameZone = sim_gamma
+           gamcZone = sim_gamma
+#endif
+           enerZone = eintZone + ekinZone
+
+        call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
+           call Grid_putPointData(blockId, CENTER, PRES_VAR, EXTERIOR, axis, presZone)
+           call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)
+           call Grid_putPointData(blockId, CENTER, VELY_VAR, EXTERIOR, axis, velyZone)
+           call Grid_putPointData(blockId, CENTER, VELZ_VAR, EXTERIOR, axis, velzZone)
+
+#ifdef ENER_VAR
+           call Grid_putPointData(blockId, CENTER, ENER_VAR, EXTERIOR, axis, enerZone)
+#endif
+#ifdef EINT_VAR
+           call Grid_putPointData(blockId, CENTER, EINT_VAR, EXTERIOR, axis, eintZone)
+#endif
+#ifdef GAME_VAR
+           call Grid_putPointData(blockId, CENTER, GAME_VAR, EXTERIOR, axis, gameZone)
+#endif
+#ifdef GAMC_VAR
+           call Grid_putPointData(blockId, CENTER, GAMC_VAR, EXTERIOR, axis, gamcZone)
+#endif
+
+
         enddo
      enddo
   enddo
-
-           ! Compute the gas energy and set the gamma-values needed for the equation of state 
-  
-	do k = 1, kmax
-	     do j = 1, jmax
-		do i = 1, imax
-
-		   solnData(GAME_VAR,i,j,k) = sim_gamma
-		   solnData(GAMC_VAR,i,j,k) = sim_gamma
-
-		   ek = 0.5 * (solnData(VELX_VAR,i,j,k)**2 + &
-			&                    solnData(VELY_VAR,i,j,k)**2 + &
-			&                    solnData(VELZ_VAR,i,j,k)**2)
-		   solnData(EINT_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) / &
-			&                                    (solnData(GAME_VAR,i,j,k)-1.)
-		   solnData(EINT_VAR,i,j,k) = solnData(EINT_VAR,i,j,k) / &
-			&                                    solnData(DENS_VAR,i,j,k)
-		   solnData(EINT_VAR,i,j,k) = solnData(EINT_VAR,i,j,k)
-		   solnData(ENER_VAR,i,j,k) = solnData(EINT_VAR,i,j,k) + ek
-
-		enddo
-	     enddo
-	  enddo 
-
            ! store the variables in the current zone via Grid put methods
            ! data is put stored one cell at a time with these calls to Grid_putData           
 
-           !call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
-           !call Grid_putPointData(blockId, CENTER, PRES_VAR, EXTERIOR, axis, presZone)
-           !call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)
-           !call Grid_putPointData(blockId, CENTER, VELY_VAR, EXTERIOR, axis, velyZone)
-           !call Grid_putPointData(blockId, CENTER, VELZ_VAR, EXTERIOR, axis, velzZone)
+           call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
+           call Grid_putPointData(blockId, CENTER, PRES_VAR, EXTERIOR, axis, presZone)
+           call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)
+           call Grid_putPointData(blockId, CENTER, VELY_VAR, EXTERIOR, axis, velyZone)
+           call Grid_putPointData(blockId, CENTER, VELZ_VAR, EXTERIOR, axis, velzZone)
 
 !#ifdef ENER_VAR
           ! call Grid_putPointData(blockId, CENTER, ENER_VAR, EXTERIOR, axis, enerZone)   
