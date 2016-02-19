@@ -1,6 +1,5 @@
 !!REORDER(4): solnData
 subroutine Simulation_initBlock(blockID,solnData)
-#include "Flash.h"
 #include "constants.h"
 #include "Flash.h"
 #include "Eos.h"
@@ -72,36 +71,37 @@ subroutine Simulation_initBlock(blockID,solnData)
   call Grid_getCellCoords(IAXIS, blockId, CENTER, gcell, xCoord, sizeX)
 
 !------------------------------------------------------------------------------
-
 ! Loop over cells in the block.  For each, compute the physical position of 
 ! its left and right edge and its center as well as its physical width.  
 ! Then decide which side of the initial discontinuity it is on and initialize 
 ! the hydro variables appropriately.
-
-
   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
      zz = zCoord(k) -sim_zctr
      do j = blkLimits(LOW,JAXIS),blkLimits(HIGH,JAXIS)
         yy = yCoord(j)-sim_yctr
         do i = blkLimits(LOW,IAXIS),blkLimits(HIGH,IAXIS)
            xx  = xCoord(i)-sim_xctr
-!           print *,"(i,j,k):",i,j,k
-!           print *,"(xx,yy,zz):",xx,yy,zz
-!           print *,"zCoord,yCoord,xCenter:",zCoord(k),yCoord(j),xCenter(i)
+          ! print *,"-------------------"
+          ! print *,"(i,j,k):",i,j,k
+          ! print *,"(xx,yy,zz):",xx,yy,zz
+          ! print *,"zCoord,yCoord,xCoord:",zCoord(k),yCoord(j),xCoord(i)
            r = sqrt(xx**2+yy**2+zz**2)
+          ! print *,"r: ",r
            if (r  <= rcloud) then
+   	   !    print *,"inside"
 !              solnData(DENS_VAR,i,j,k)  = rhoIn
                rhoZone = rhoIn
            else 
 !              solnData(DENS_VAR,i,j,k)  = rhoOut 
                rhoZone = rhoOut 
            endif
-           presZone = P
+!           print *,"P: ",P
+           presZone = 100000 !P
            velxZone = 0.0
            velyZone = 0.0
            velzZone = 0.0
-!	   solnData(PRES_VAR,i,j,k) = 59.6525 !P
-          ! solnData(TEMP_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) /(solnData(DENS_VAR,i,j,k)*sim_gascon)
+ !	   solnData(PRES_VAR,i,j,k) = 59.6525 !P
+ !          solnData(TEMP_VAR,i,j,k) = solnData(PRES_VAR,i,j,k) /(solnData(DENS_VAR,i,j,k)*sim_gascon)
  !          solnData(VELX_VAR,i,j,k) = 0.0
  !          solnData(VELY_VAR,i,j,k) = 0.0
  !          solnData(VELZ_VAR,i,j,k) = 0.0
@@ -130,7 +130,7 @@ subroutine Simulation_initBlock(blockID,solnData)
 #endif
            enerZone = eintZone + ekinZone
 
-        call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
+           call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
            call Grid_putPointData(blockId, CENTER, PRES_VAR, EXTERIOR, axis, presZone)
            call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)
            call Grid_putPointData(blockId, CENTER, VELY_VAR, EXTERIOR, axis, velyZone)
@@ -148,14 +148,11 @@ subroutine Simulation_initBlock(blockID,solnData)
 #ifdef GAMC_VAR
            call Grid_putPointData(blockId, CENTER, GAMC_VAR, EXTERIOR, axis, gamcZone)
 #endif
-
-
         enddo
      enddo
   enddo
            ! store the variables in the current zone via Grid put methods
            ! data is put stored one cell at a time with these calls to Grid_putData           
-
            call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
            call Grid_putPointData(blockId, CENTER, PRES_VAR, EXTERIOR, axis, presZone)
            call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)

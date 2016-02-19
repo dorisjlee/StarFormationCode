@@ -3,9 +3,9 @@ rhoOut			= 23861.3108
 rhoIn                   = 2.386E6
 P			= 59.6525
 rcloud			= 0.25
-sim_xctr		= 0.5
-sim_yctr		= 0.5
-sim_zctr		= 0.5
+sim_xctr		= 0.0 
+sim_yctr		= 0.0
+sim_zctr		= 0.0 
 
 #		Gas ratio of specific heats
 #sim_gamma           = 1.0001
@@ -20,11 +20,11 @@ geometry = "cartesian"
 pc_unitsbase    = CGS
 #		Size of computational volume
 
-xmin		= 0
+xmin		= -1. 
 xmax		= 1.
-ymin		= 0.
+ymin		= -1.
 ymax		= 1.
-zmin		= 0.
+zmin		= -1.
 zmax		= 1.
 
 #		Boundary conditions
