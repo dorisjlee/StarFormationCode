@@ -3,6 +3,7 @@ REQUIRES Driver
 REQUIRES physics/Hydro
 REQUIRES physics/Gravity/GravityMain/Poisson
 REQUIRES physics/Eos/EosMain/Gamma
+REQUIRES Particles/ParticlesMain/active/Sink
 #LINKIF Grid_markRefineDerefine.F90 Grid/GridMain/paramesh
 
 

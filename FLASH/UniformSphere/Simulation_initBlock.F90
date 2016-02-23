@@ -96,7 +96,7 @@ subroutine Simulation_initBlock(blockID,solnData)
                rhoZone = rhoOut 
            endif
 !           print *,"P: ",P
-           presZone = 100000 !P
+           presZone = P
            velxZone = 0.0
            velyZone = 0.0
            velzZone = 0.0
@@ -114,20 +114,10 @@ subroutine Simulation_initBlock(blockID,solnData)
                 velyZone**2 + &
                 velzZone**2)
 
-#ifdef SIMULATION_TWO_MATERIALS
-           eosData(EOS_DENS) = rhoZone
-           eosData(EOS_PRES) = presZone
-           eosData(EOS_TEMP) = 1.0e8
-           call Eos(MODE_DENS_PRES, 1, eosData, mfrac)
-           eintZone = eosData(EOS_EINT)
-           gameZone = 1.0+eosData(EOS_PRES)/eosData(EOS_DENS)/eosData(EOS_EINT)
-           gamcZone = eosData(EOS_GAMC)
-#else
            eintZone = presZone / (sim_gamma-1.)
            eintZone = eintZone / rhoZone
            gameZone = sim_gamma
            gamcZone = sim_gamma
-#endif
            enerZone = eintZone + ekinZone
 
            call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
