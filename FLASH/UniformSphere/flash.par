@@ -35,7 +35,7 @@ zr_boundary_type = "outflow"
 
 #	Simulation time, I/O  parameters
 
-cfl		= 0.5
+cfl		= 0.8
 basenm          = "uniform_sphere_"
 restart         = .false.
 
@@ -62,17 +62,17 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #  Adaptvie Grid refinement parameters
-#lrefine_min     = 4
-#lrefine_max     = 7
-lrefine_min = 4
-lrefine_max = 6
+lrefine_min     = 6
+lrefine_max     = 6
+#lrefine_min = 4
+#lrefine_max = 6
 refine_var_1 = "dens"
 refine_var_2 = "pres"
 
 #Sink Particles Parameters
-sink_density_thresh = 1.928E5
-sink_accretion_radius = 0.03906
-sink_softening_radius = 0.03906
+#sink_density_thresh = 1.928E5
+#sink_accretion_radius = 0.03906
+#sink_softening_radius = 0.03906
 
 # Uniform Grid specific parameters 
 # see note below for more explanation

@@ -32,7 +32,7 @@ subroutine Simulation_initBlock(blockID,solnData)
   integer :: sizeX,sizeY,sizeZ
   integer, dimension(MDIM) :: axis
   real :: rhoZone, velxZone, velyZone, velzZone, presZone, & 
-       eintZone, enerZone, ekinZone, gameZone, gamcZone
+       eintZone, enerZone, ekinZone, gameZone, gamcZone,TZone
 
 #ifdef SIMULATION_TWO_MATERIALS
   real, dimension(EOS_NUM) :: eosData
@@ -91,9 +91,11 @@ subroutine Simulation_initBlock(blockID,solnData)
    	   !    print *,"inside"
 !              solnData(DENS_VAR,i,j,k)  = rhoIn
                rhoZone = rhoIn
+	       TZone = 3.025E-13
            else 
 !              solnData(DENS_VAR,i,j,k)  = rhoOut 
                rhoZone = rhoOut 
+	       TZone = 3.025E-11
            endif
 !           print *,"P: ",P
            presZone = P
@@ -125,7 +127,7 @@ subroutine Simulation_initBlock(blockID,solnData)
            call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)
            call Grid_putPointData(blockId, CENTER, VELY_VAR, EXTERIOR, axis, velyZone)
            call Grid_putPointData(blockId, CENTER, VELZ_VAR, EXTERIOR, axis, velzZone)
-
+           call Grid_putPointData(blockId, CENTER, TEMP_VAR, EXTERIOR, axis, velzZone)
 #ifdef ENER_VAR
            call Grid_putPointData(blockId, CENTER, ENER_VAR, EXTERIOR, axis, enerZone)
 #endif
