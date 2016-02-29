@@ -4,18 +4,36 @@
 
 #		Density, pressure, and velocity on either side of interface
 
+#sim_rhoLeft	= 2.386E6  #1.
+#sim_rhoRight	= 23861.3108 #0.125
+sim_rhoLeft    = 1.
+sim_rhoRight   = 0.125
+sim_pLeft		= 1.
+#sim_pRight		= 59.6525  #0.1
+sim_pRight             = 0.1
+sim_uLeft		= 0.
+sim_uRight		= 0.
 #rhoOut                  = 23861.3108
 #rhoIn                   = 2.386E6
 #P                       = 59.6525
-sim_rhoLeft		= 1 
-sim_rhoRight		= 0.125 
-sim_pLeft		= 1.
-sim_pRight		= 0.1 
-sim_uLeft		= 0.
-sim_uRight		= 0.
+#		Angle and position of interface relative to x and y axes
+
+# These settings are better for testing 3-d problem, they are little
+# less symmetric.
+
+#sim_xangle		= 45.
+#sim_yangle		= 45.
+#sim_posn		= 1.0  
+
+# To get a simpler test problem which shows the 1-D Profile
+# use the following values.
+#sim_xangle		= 0
+#sim_yangle		= 90.
+#sim_posn		= 0.5
+
 #		Gas ratio of specific heats
 
-gamma           = 1.4
+gamma           = 1.001 #1.4
 
 #	Computational volume parameters
 
@@ -34,8 +52,10 @@ ymax		= 1.
 
 xl_boundary_type = "outflow"
 xr_boundary_type = "outflow"
+
 yl_boundary_type = "outflow"
 yr_boundary_type = "outflow"
+
 
 #	Simulation (grid, time, I/O) parameters
 

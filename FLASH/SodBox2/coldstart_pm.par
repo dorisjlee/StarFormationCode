@@ -4,15 +4,28 @@
 
 #		Density, pressure, and velocity on either side of interface
 
-#rhoOut                  = 23861.3108
-#rhoIn                   = 2.386E6
-#P                       = 59.6525
-sim_rhoLeft		= 1 
-sim_rhoRight		= 0.125 
+sim_rhoLeft	= 1.
+sim_rhoRight	= 0.125
 sim_pLeft		= 1.
-sim_pRight		= 0.1 
+sim_pRight		= 0.1
 sim_uLeft		= 0.
 sim_uRight		= 0.
+
+#		Angle and position of interface relative to x and y axes
+
+# These settings are better for testing 3-d problem, they are little
+# less symmetric.
+
+sim_xangle		= 45.
+sim_yangle		= 45.
+sim_posn		= 1.0  
+
+# To get a simpler test problem which shows the 1-D Profile
+# use the following values.
+#sim_xangle		= 0
+#sim_yangle		= 90.
+#sim_posn		= 0.5
+
 #		Gas ratio of specific heats
 
 gamma           = 1.4
@@ -34,8 +47,10 @@ ymax		= 1.
 
 xl_boundary_type = "outflow"
 xr_boundary_type = "outflow"
+
 yl_boundary_type = "outflow"
 yr_boundary_type = "outflow"
+
 
 #	Simulation (grid, time, I/O) parameters
 
@@ -66,7 +81,6 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #    AMR refinement parameters  
-lrefine_min     = 6
 lrefine_max     = 6
 refine_var_1    = "dens"
 
@@ -94,36 +108,3 @@ kProcs = 1
 # the guard cell into account. The local blocksize is calculated
 # as iGridSize/iprocs  etc.
  
-
-## -------------------------------------------------------------##
-##  SWITCHES SPECIFIC TO THE UNSPLIT HYDRO SOLVER               ##
-#	I. INTERPOLATION SCHEME:
-order		= 2      # Interpolation order (first/second/third/fifth order)
-slopeLimiter    = "mc"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
-LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
-charLimiting	= .true. # Characteristic limiting vs. Primitive limiting
-
-use_avisc	= .false. # use artificial viscosity (originally for PPM)
-#cvisc		= 0.1     # coefficient for artificial viscosity
-use_flattening	= .false. # use flattening (dissipative) (originally for PPM)
-use_steepening	= .false. # use contact steepening (originally for PPM)
-use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
-
-#	II. RIEMANN SOLVERS:
-RiemannSolver	= "Roe"       # Roe, HLL, HLLC, LLF, Marquina
-entropy         = .false.     # Entropy fix for the Roe solver
-
-hy_fPresInMomFlux = 1.0       # Part of pressure gradient term in momentum equation to include in momentum fluxes
-
-#	III. STRONG SHOCK HANDELING SCHEME:
-shockDetect	= .false.     # Shock Detect for numerical stability
-## -------------------------------------------------------------##
-
-## ---------------------------------------------------------------##
-##  SWITCHES SPECIFIC TO THE SUPER-TIME-STEPPING (STS) ALGORITHM  ##
-##  NOTE: For details on using STS runtime parameters, please     ##
-##        refer to user's guide (Driver chapter).                 ##
-useSTS                  = .false.
-nstepTotalSTS           = 5
-nuSTS                   = 0.2
-## ---------------------------------------------------------------##

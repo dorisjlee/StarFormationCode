@@ -4,9 +4,16 @@ subroutine Simulation_initBlock(blockID)
 #include "Flash.h"
 #include "Eos.h"
 
-  use Simulation_data, ONLY: sim_rhoLeft,  sim_pLeft, sim_uLeft, sim_rhoRight, sim_pRight, sim_uRight, &
+  use Simulation_data, ONLY: sim_posn, sim_xCos, sim_yCos, sim_zCos, &    
+     &  sim_rhoLeft,  sim_pLeft, sim_uLeft, sim_rhoRight, sim_pRight, sim_uRight, &
      &  sim_smallX, sim_gamma, sim_smallP
 
+#ifdef FLASH_3T
+  use Simulation_data, ONLY : &
+       sim_pionLeft, sim_peleLeft, sim_pradLeft, &
+       sim_pionRight, sim_peleRight, sim_pradRight
+#endif
+     
   use Grid_interface, ONLY : Grid_getBlkIndexLimits, &
     Grid_getCellCoords, Grid_putPointData
   use Eos_interface, ONLY : Eos, Eos_wrapped
@@ -25,7 +32,7 @@ subroutine Simulation_initBlock(blockID)
   
 
 
-  real :: xx, yy,  zz, rr!xxL, xxR
+  real :: xx, yy,  zz, xxL, xxR,rr
   
   real :: lPosn0, lPosn
   
@@ -53,6 +60,17 @@ subroutine Simulation_initBlock(blockID)
   
   logical :: gcell = .true.
 
+  
+  ! dump some output to stdout listing the paramters
+!!$  if (sim_meshMe == MASTER_PE) then
+!!$     
+!!$     
+!!$1    format (1X, 1P, 4(A7, E13.7, :, 1X))
+!!$2    format (1X, 1P, 2(A7, E13.7, 1X), A7, I13)
+!!$     
+!!$  endif
+  
+  
   ! get the integer index information for the current block
   call Grid_getBlkIndexLimits(blockId,blkLimits,blkLimitsGC)
   
@@ -85,53 +103,35 @@ subroutine Simulation_initBlock(blockID)
 ! its left and right edge and its center as well as its physical width.  
 ! Then decide which side of the initial discontinuity it is on and initialize 
 ! the hydro variables appropriately.
-
-
   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
      ! get the coordinates of the cell center in the z-direction
-     zz = zCoord(k)
+     zz = zCoord(k)-0.5
      do j = blkLimits(LOW,JAXIS),blkLimits(HIGH,JAXIS)
         ! get the coordinates of the cell center in the y-direction
-        yy = yCoord(j)
-        ! The position of the shock in the current yz-row.
-       ! lPosn = lPosn0 - yy*sim_yCos/sim_xCos
+        yy = yCoord(j)-0.5
         do i = blkLimits(LOW,IAXIS),blkLimits(HIGH,IAXIS)
            ! get the cell center, left, and right positions in x
-           xx  = xCenter(i)
-     !      xxL = xLeft(i)
-      !     xxR = xRight(i)
+           xx  = xCenter(i)-0.5
            rr = sqrt(xx**2 + yy**2 + zz**2)
-!           print *,"xx,yy,zz: ", xx,yy,zz
-!           print *,"rr: ", rr
-!           if (rr <= 0.25) then
-!               print *,"Inside"
-!               rhoZone =5 !sim_rhoRight 
-!           else
-!               print *,"Outisde"
-!               rhoZone =10 !sim_rhoLeft
-!           endif
-    
+           !print *,"xx,yy,zz: ", xx,yy,zz
+           !print *,"rr: ", rr
+           if (rr <= 0.25) then
+           !    print *,"Inside"
+               rhoZone =sim_rhoRight
+           else
+           !    print *,"Outisde"
+               rhoZone =sim_rhoLeft
+           endif
+           !rhoZone = sim_rhoRight
            presZone = sim_pRight
-           rhoZone = sim_rhoRight
-           velxZone = 0.0
+           velxZone = 0.0 
            velyZone = 0.0
            velzZone = 0.0
+
            axis(IAXIS) = i
            axis(JAXIS) = j
            axis(KAXIS) = k
 
-           !put in default mass fraction values of all species
-           if (NSPECIES > 0) then
-              call Grid_putPointData(blockID, CENTER, SPECIES_BEGIN, EXTERIOR, &
-                   axis, 1.0e0-(NSPECIES-1)*sim_smallX)
-
-
-              !if there is only 1 species, this loop will not execute
-              do n = SPECIES_BEGIN+1,SPECIES_END
-                 call Grid_putPointData(blockID, CENTER, n, EXTERIOR, &
-                      axis, sim_smallX)
-              enddo
-           end if
 
            ! Compute the gas energy and set the gamma-values needed for the equation of 
            ! state.
@@ -139,10 +139,20 @@ subroutine Simulation_initBlock(blockID)
                 velyZone**2 + & 
                 velzZone**2)
            
+#ifdef SIMULATION_TWO_MATERIALS
+           eosData(EOS_DENS) = rhoZone
+           eosData(EOS_PRES) = presZone
+           eosData(EOS_TEMP) = 1.0e8
+           call Eos(MODE_DENS_PRES, 1, eosData, mfrac)
+           eintZone = eosData(EOS_EINT)
+           gameZone = 1.0+eosData(EOS_PRES)/eosData(EOS_DENS)/eosData(EOS_EINT)
+           gamcZone = eosData(EOS_GAMC)
+#else
            eintZone = presZone / (sim_gamma-1.)
            eintZone = eintZone / rhoZone
            gameZone = sim_gamma
            gamcZone = sim_gamma
+#endif
            enerZone = eintZone + ekinZone
            enerZone = max(enerZone, sim_smallP)
 
@@ -199,35 +209,6 @@ subroutine Simulation_initBlock(blockID)
         enddo
      enddo
   enddo
-
-! #ifdef EELE_VAR
-!   call Eos_wrapped(MODE_DENS_EI_SCATTER,blkLimits,blockId)
-! #endif
-
-!   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
-!      do j = blkLimits(LOW,JAXIS),blkLimits(HIGH,JAXIS)
-!         do i = blkLimits(LOW,IAXIS),blkLimits(HIGH,IAXIS)
-!            axis(IAXIS) = i
-!            axis(JAXIS) = j
-!            axis(KAXIS) = k
-! #ifdef ERAD_VAR
-!            call Grid_putPointData(blockId, CENTER, ERAD_VAR, EXTERIOR, axis, 0.0  )   
-! #endif
-! #ifdef E3_VAR
-!            call Grid_putPointData(blockId, CENTER, E3_VAR,   EXTERIOR, axis, 0.0  )   
-! #endif
-
-! #ifdef PRAD_VAR
-!            call Grid_putPointData(blockId, CENTER, PRAD_VAR, EXTERIOR, axis, 0.0  )   
-! #endif
-! #ifdef TRAD_VAR
-!            call Grid_putPointData(blockId, CENTER, TRAD_VAR, EXTERIOR, axis, 0.0  )   
-! #endif
-!         enddo
-!      enddo
-!   enddo
-
-!! Cleanup!  Must deallocate arrays
 
   deallocate(xLeft)
   deallocate(xRight)
