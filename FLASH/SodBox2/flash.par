@@ -6,11 +6,11 @@
 
 #sim_rhoLeft	= 2.386E6  #1.
 #sim_rhoRight	= 23861.3108 #0.125
-sim_rhoLeft    = 1.
-sim_rhoRight   = 0.125
-sim_pLeft		= 1.
+sim_rhoLeft    = 2.386E6 #1.
+sim_rhoRight   = 23861.3108 #0.125
+#sim_pLeft		= 1.
 #sim_pRight		= 59.6525  #0.1
-sim_pRight             = 0.1
+sim_pRight             = 59.6525 #0.1
 sim_uLeft		= 0.
 sim_uRight		= 0.
 #rhoOut                  = 23861.3108
@@ -64,17 +64,17 @@ basenm          = "sod_"
 restart         = .false.
 
 #	checkpoint file output parameters
-checkpointFileIntervalTime = 0.2
+checkpointFileIntervalTime = 1.0 # 1E13
 checkpointFileIntervalStep = 0
 checkpointFileNumber = 0
 
 #	plotfile output parameters
-plotfileIntervalTime = 0.
+plotfileIntervalTime = 0.1 #1E12
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
 nend            = 1000
-tmax            = .2
+tmax            = 2.5E14 #1tff = 2.1E14s 
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"

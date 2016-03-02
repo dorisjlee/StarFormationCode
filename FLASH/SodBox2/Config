@@ -3,7 +3,7 @@
 
 REQUIRES Driver
 REQUIRES physics/Hydro
-
+REQUIRES physics/Gravity/GravityMain/Poisson
 USESETUPVARS ThreeT
 
 IF ThreeT
