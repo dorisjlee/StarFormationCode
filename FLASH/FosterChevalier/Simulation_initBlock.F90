@@ -32,7 +32,7 @@ subroutine Simulation_initBlock(blockID)
   
 
 
-  real :: xx, yy,  zz, xxL, xxR,rr
+  real :: xx, yy,  zz, xxL, xxR
   
   real :: lPosn0, lPosn
   
@@ -46,31 +46,13 @@ subroutine Simulation_initBlock(blockID)
   
   real :: rhoZone, velxZone, velyZone, velzZone, presZone, & 
        eintZone, enerZone, ekinZone, gameZone, gamcZone
-
-#ifdef SIMULATION_TWO_MATERIALS
-  real, dimension(EOS_NUM) :: eosData
-  real, dimension(NSPECIES) :: mfrac
-#endif
-
-#ifdef FLASH_3T
-  real :: peleZone, eeleZone
-  real :: pionZone, eionZone
-  real :: pradZone, eradZone
-#endif
+  
+  real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1,rho_out,P_out,rho_min,center
+  real, dimension(1000,1) :: dens_arr
   
   logical :: gcell = .true.
 
-  
-  ! dump some output to stdout listing the paramters
-!!$  if (sim_meshMe == MASTER_PE) then
-!!$     
-!!$     
-!!$1    format (1X, 1P, 4(A7, E13.7, :, 1X))
-!!$2    format (1X, 1P, 2(A7, E13.7, 1X), A7, I13)
-!!$     
-!!$  endif
-  
-  
+  character (len=255) :: cwd  
   ! get the integer index information for the current block
   call Grid_getBlkIndexLimits(blockId,blkLimits,blkLimitsGC)
   
@@ -97,25 +79,39 @@ subroutine Simulation_initBlock(blockID)
   call Grid_getCellCoords(IAXIS, blockId, CENTER, gcell, xCenter, sizeX)
   call Grid_getCellCoords(IAXIS, blockId, RIGHT_EDGE, gcell, xRight, sizeX)
 
+  !Read in data from Lane Emden Numerical Integration result
+  !call getcwd(cwd)
+  !write(*,*) trim(cwd)
+  ! reading file from the location ./flash4 starts up which in our case is  /global/project/projectdirs/astro250/doris/FLASH4.3/object
+  open(12,file="density.txt")
+  read(12,*) dens_arr
+  close(12)
 !------------------------------------------------------------------------------
-
+  rho_c = 1.1E-19
+  rmax=6.41 !dimensionless xi units 
+  dr=0.01!delta xi used to initialize np.arange for the numerical integration
+  rc =rr*0.5194
+  rho_min =  rho_c*dens_arr(int(rmax*100),1)
+  print *,"rho_min: ", rho_min
+  center = 2.5E17 !abs(xmin-xmax)/2. !boxlen/2
+  !print *,"center: ", center
 ! Loop over cells in the block.  For each, compute the physical position of 
 ! its left and right edge and its center as well as its physical width.  
 ! Then decide which side of the initial discontinuity it is on and initialize 
 ! the hydro variables appropriately.
   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
      ! get the coordinates of the cell center in the z-direction
-     zz = zCoord(k)-0.5
+     zz = zCoord(k)-center
      do j = blkLimits(LOW,JAXIS),blkLimits(HIGH,JAXIS)
         ! get the coordinates of the cell center in the y-direction
-        yy = yCoord(j)-0.5
+        yy = yCoord(j)-center
         do i = blkLimits(LOW,IAXIS),blkLimits(HIGH,IAXIS)
            ! get the cell center, left, and right positions in x
-           xx  = xCenter(i)-0.5
+           xx  = xCenter(i)-center
            rr = sqrt(xx**2 + yy**2 + zz**2)
            !print *,"xx,yy,zz: ", xx,yy,zz
            !print *,"rr: ", rr
-           if (rr <= 0.25) then
+           if (rr <= 1.63e17) then
            !    print *,"Inside"
                rhoZone =sim_rhoLeft
            else

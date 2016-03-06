@@ -44,9 +44,11 @@ geometry = cartesian
 #		Size of computational volume
 
 xmin		= 0.
-xmax		= 1.
+xmax		= 5.0E17
 ymin		= 0.
-ymax		= 1.
+ymax		= 5.0E17
+zmin		= 0.
+zmax		= 5.0E17
 
 #		Boundary conditions
 
