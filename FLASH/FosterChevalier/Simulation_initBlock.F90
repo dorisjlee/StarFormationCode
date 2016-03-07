@@ -27,7 +27,7 @@ subroutine Simulation_initBlock(blockID)
   integer, intent(in) :: blockID
   
 
-  integer :: i, j, k, n
+  integer :: i, j, k, n,io
   integer :: iMax, jMax, kMax
   
 
@@ -48,11 +48,11 @@ subroutine Simulation_initBlock(blockID)
        eintZone, enerZone, ekinZone, gameZone, gamcZone
   
   real rmax, rho_c,xl,xr,xc,yl,yr,yc,zr,zl,zc,rr,dr,rc,rho0,rho1,rc0,rc1,rho_out,P_out,rho_min,center
-  real, dimension(1000,1) :: dens_arr
+  real, dimension(3000,1) :: dens_arr
   
   logical :: gcell = .true.
 
-  character (len=255) :: cwd  
+  ! character (len=255) :: cwd  
   ! get the integer index information for the current block
   call Grid_getBlkIndexLimits(blockId,blkLimits,blkLimitsGC)
   
@@ -84,21 +84,20 @@ subroutine Simulation_initBlock(blockID)
   !write(*,*) trim(cwd)
   ! reading file from the location ./flash4 starts up which in our case is  /global/project/projectdirs/astro250/doris/FLASH4.3/object
   open(12,file="density.txt")
-  read(12,*) dens_arr
+!  print *,"open okay!"
+  read(12,*,IOSTAT=io) dens_arr
+!  print *,"finished read"
+!  call printMatrix(dens_arr,646,1)
   close(12)
 !------------------------------------------------------------------------------
-  rho_c = 1.1E-19
+  rho_c = 1.1E-19 
   rmax=6.41 !dimensionless xi units 
   dr=0.01!delta xi used to initialize np.arange for the numerical integration
-  rc =rr*0.5194
+!  rc=rr*1.057E-17
   rho_min =  rho_c*dens_arr(int(rmax*100),1)
-  print *,"rho_min: ", rho_min
-  center = 2.5E17 !abs(xmin-xmax)/2. !boxlen/2
+!  print *,"rho_min: ", rho_min
+  center = 2.5E17  !abs(xmin-xmax)/2. !boxlen/2
   !print *,"center: ", center
-! Loop over cells in the block.  For each, compute the physical position of 
-! its left and right edge and its center as well as its physical width.  
-! Then decide which side of the initial discontinuity it is on and initialize 
-! the hydro variables appropriately.
   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
      ! get the coordinates of the cell center in the z-direction
      zz = zCoord(k)-center
@@ -109,53 +108,52 @@ subroutine Simulation_initBlock(blockID)
            ! get the cell center, left, and right positions in x
            xx  = xCenter(i)-center
            rr = sqrt(xx**2 + yy**2 + zz**2)
-           !print *,"xx,yy,zz: ", xx,yy,zz
-           !print *,"rr: ", rr
-           if (rr <= 1.63e17) then
-           !    print *,"Inside"
-               rhoZone =sim_rhoLeft
+!           print *,"xx,yy,zz: ", xx,yy,zz
+!           print *,"rr: ", rr
+           rc=rr*1.057E-17
+           if (rc <= rmax) then
+!               print *,"Inside"
+               rc0 = int(rc/dr)+1 !to prevent from hitting index 0 which is yields zero density
+!               print *,dens_arr(rc0,1)
+!               print *,rc0
+               rho0 =  rho_c*dens_arr(rc0,1)
+               rho1 = rho_c*dens_arr(rc0+1,1)
+               rc0 = rc0*dr
+               rc1 = rc0+dr
+               rhoZone = rho0+(rho1-rho0)*(rc-rc0)/(rc1-rc0) !linear interpolation
+!               print *,"rho0,rho1,rc0,rc1,rhoZone:",rho0,rho1,rc0,rc1,rhoZone 
            else
-           !    print *,"Outisde"
-               rhoZone =sim_rhoRight
+!               print *,"Outisde"
+               rhoZone =  7.9856E-27 !rho_min*10^-6
            endif
-           !rhoZone = sim_rhoRight
-           presZone = sim_pRight
            velxZone = 0.0 
            velyZone = 0.0
            velzZone = 0.0
-
+           !Pressure 
+           IF (rc .LE. rmax) THEN     
+                presZone=rhoZone*8.254E8  !ideal gas law (T=10K inside)
+           ELSE
+                presZone=rhoZone*8.254E10 !ideal gas law (T=10^7K outside)
+           END IF           
            axis(IAXIS) = i
            axis(JAXIS) = j
            axis(KAXIS) = k
 
 
+           !print *,"rhoZone: ",rhoZone
+           !print *,"presZone: ",presZone
            ! Compute the gas energy and set the gamma-values needed for the equation of 
            ! state.
-           ekinZone = 0.5 * (velxZone**2 + & 
-                velyZone**2 + & 
-                velzZone**2)
-           
-#ifdef SIMULATION_TWO_MATERIALS
-           eosData(EOS_DENS) = rhoZone
-           eosData(EOS_PRES) = presZone
-           eosData(EOS_TEMP) = 1.0e8
-           call Eos(MODE_DENS_PRES, 1, eosData, mfrac)
-           eintZone = eosData(EOS_EINT)
-           gameZone = 1.0+eosData(EOS_PRES)/eosData(EOS_DENS)/eosData(EOS_EINT)
-           gamcZone = eosData(EOS_GAMC)
-#else
+           ekinZone = 0.5 * (velxZone**2 + velyZone**2 + velzZone**2)
            eintZone = presZone / (sim_gamma-1.)
            eintZone = eintZone / rhoZone
            gameZone = sim_gamma
            gamcZone = sim_gamma
-#endif
            enerZone = eintZone + ekinZone
            enerZone = max(enerZone, sim_smallP)
 
            ! store the variables in the current zone via Grid put methods
            ! data is put stored one cell at a time with these calls to Grid_putData           
-
-
            call Grid_putPointData(blockId, CENTER, DENS_VAR, EXTERIOR, axis, rhoZone)
            call Grid_putPointData(blockId, CENTER, PRES_VAR, EXTERIOR, axis, presZone)
            call Grid_putPointData(blockId, CENTER, VELX_VAR, EXTERIOR, axis, velxZone)
@@ -215,3 +213,15 @@ subroutine Simulation_initBlock(blockID)
  
   return
 end subroutine Simulation_initBlock
+
+subroutine printMatrix(array, n, m)
+	implicit none
+	real, intent(in) :: array(n,m)
+	integer, intent(in) :: n,m
+	integer :: i
+	print *,"------------START_ARRAY-----------------------------"
+	do i = 1,n
+		print*, array(i,:)
+	end do
+ 	print *,"------------------END_ARRAY-----------------------"
+end subroutine printMatrix

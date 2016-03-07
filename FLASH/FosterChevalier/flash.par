@@ -1,5 +1,3 @@
-#	Runtime parameters for the Sod shock-tube problem.
-
 #	Parameters for initial model
 
 #		Density, pressure, and velocity on either side of interface
@@ -66,17 +64,17 @@ basenm          = "sod_"
 #restart         = .true.
 restart = .false.
 #	checkpoint file output parameters
-checkpointFileIntervalTime = 0.1 #1.0 # 1E13
+checkpointFileIntervalTime = 1e13 
 checkpointFileIntervalStep = 0
 #checkpointFileNumber = 1.0
 checkpointFileNumber = 0 
 #	plotfile output parameters
-plotfileIntervalTime = 0.01 #0.1 #1E12
+plotfileIntervalTime = 1.E12
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
 nend            = 1000
-tmax            = 1.40  #2.5E14 #1tff = 2.1E14s 
+tmax            = 1e13 # 1tff = 2.00293986e14 s 
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
@@ -122,25 +120,25 @@ dtinit = 1E-2
 ## -------------------------------------------------------------##
 ##  SWITCHES SPECIFIC TO THE UNSPLIT HYDRO SOLVER               ##
 #	I. INTERPOLATION SCHEME:
-order		= 2      # Interpolation order (first/second/third/fifth order)
-slopeLimiter    = "mc"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
-LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
-charLimiting	= .true. # Characteristic limiting vs. Primitive limiting
+#order		= 2      # Interpolation order (first/second/third/fifth order)
+#slopeLimiter    = "mc"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
+#LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
+#charLimiting	= .true. # Characteristic limiting vs. Primitive limiting
 
-use_avisc	= .false. # use artificial viscosity (originally for PPM)
+#use_avisc	= .false. # use artificial viscosity (originally for PPM)
 #cvisc		= 0.1     # coefficient for artificial viscosity
-use_flattening	= .false. # use flattening (dissipative) (originally for PPM)
-use_steepening	= .false. # use contact steepening (originally for PPM)
-use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
+#use_flattening	= .false. # use flattening (dissipative) (originally for PPM)
+#use_steepening	= .false. # use contact steepening (originally for PPM)
+#use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
 
 #	II. RIEMANN SOLVERS:
-RiemannSolver	= "Roe"       # Roe, HLL, HLLC, LLF, Marquina
-entropy         = .false.     # Entropy fix for the Roe solver
+#RiemannSolver	= "Roe"       # Roe, HLL, HLLC, LLF, Marquina
+#entropy         = .false.     # Entropy fix for the Roe solver
 
-hy_fPresInMomFlux = 1.0       # Part of pressure gradient term in momentum equation to include in momentum fluxes
+#hy_fPresInMomFlux = 1.0       # Part of pressure gradient term in momentum equation to include in momentum fluxes
 
 #	III. STRONG SHOCK HANDELING SCHEME:
-shockDetect	= .false.     # Shock Detect for numerical stability
+#shockDetect	= .false.     # Shock Detect for numerical stability
 ## -------------------------------------------------------------##
 
 ## ---------------------------------------------------------------##
