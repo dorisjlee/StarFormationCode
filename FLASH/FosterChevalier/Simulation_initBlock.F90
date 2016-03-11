@@ -83,7 +83,7 @@ subroutine Simulation_initBlock(blockID)
   !call getcwd(cwd)
   !write(*,*) trim(cwd)
   ! reading file from the location ./flash4 starts up which in our case is  /global/project/projectdirs/astro250/doris/FLASH4.3/object
-  open(12,file="density.txt")
+  open(12,file="../density.txt")
 !  print *,"open okay!"
   read(12,*,IOSTAT=io) dens_arr
 !  print *,"finished read"
@@ -96,7 +96,7 @@ subroutine Simulation_initBlock(blockID)
 !  rc=rr*1.057E-17
   rho_min =  rho_c*dens_arr(int(rmax*100),1)
 !  print *,"rho_min: ", rho_min
-  center = 2.5E17  !abs(xmin-xmax)/2. !boxlen/2
+  center = 2.5E18  !abs(xmin-xmax)/2. !boxlen/2
   !print *,"center: ", center
   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
      ! get the coordinates of the cell center in the z-direction
@@ -133,7 +133,7 @@ subroutine Simulation_initBlock(blockID)
            IF (rc .LE. rmax) THEN     
                 presZone=rhoZone*8.254E8  !ideal gas law (T=10K inside)
            ELSE
-                presZone=rhoZone*8.254E10 !ideal gas law (T=10^7K outside)
+                presZone=6.591E-12 !ideal gas law (T=10^7K outside)
            END IF           
            axis(IAXIS) = i
            axis(JAXIS) = j
