@@ -42,11 +42,11 @@ geometry = cartesian
 #		Size of computational volume
 
 xmin		= 0.
-xmax		= 5.0E18
+xmax		= 1.0E9
 ymin		= 0.
-ymax		= 5.0E18
+ymax		= 1.0E9
 zmin		= 0.
-zmax		= 5.0E18
+zmax		= 1.0E9
 
 #		Boundary conditions
 
@@ -64,17 +64,17 @@ basenm          = "sod_"
 restart         = .false.
 #restart = .false.
 #	checkpoint file output parameters
-checkpointFileIntervalTime = 1.E6 #1e13 
+checkpointFileIntervalTime = 10 #1e13 
 checkpointFileIntervalStep = 0
 #checkpointFileNumber = 1.0
 checkpointFileNumber = 0 
 #	plotfile output parameters
-plotfileIntervalTime = 1.E6 #1.E12
+plotfileIntervalTime = 5 #1.E12
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
-nend            = 1000
-tmax            = 1e13 # 1tff = 2.00293986e14 s 
+nend            = 1000000
+tmax            = 2200 # 1tff = 2.00293986e14 s 
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
