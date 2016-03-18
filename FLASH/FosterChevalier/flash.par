@@ -64,12 +64,12 @@ basenm          = "sod_"
 restart         = .false.
 #restart = .false.
 #	checkpoint file output parameters
-checkpointFileIntervalTime = 10 #1e13 
+checkpointFileIntervalTime = 100 #1e13 
 checkpointFileIntervalStep = 0
 #checkpointFileNumber = 1.0
 checkpointFileNumber = 0 
 #	plotfile output parameters
-plotfileIntervalTime = 5 #1.E12
+plotfileIntervalTime = 50 #1.E12
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
@@ -86,8 +86,8 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #    AMR refinement parameters  
-lrefine_min     = 4 #6
-lrefine_max     = 4 #6
+lrefine_min     = 2 #4
+lrefine_max     = 5 #4
 refine_var_1    = "dens"
 
 # These parameters are used only for the uniform grid
