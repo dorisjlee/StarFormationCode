@@ -124,7 +124,7 @@ subroutine Simulation_initBlock(blockID)
 !               print *,"rho0,rho1,rc0,rc1,rhoZone:",rho0,rho1,rc0,rc1,rhoZone 
            else
 !               print *,"Outisde"
-               rhoZone = 7.2591E-2 ! 7.2591E-8 !7.9856E-27 !rho_min*10^-6
+               rhoZone =  7.2591E-8 !7.9856E-27 !rho_min*10^-6
            endif
            velxZone = 0.0 
            velyZone = 0.0

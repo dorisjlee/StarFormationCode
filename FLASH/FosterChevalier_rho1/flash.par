@@ -74,7 +74,7 @@ plotfileIntervalStep = 0
 plotfileNumber = 0
 
 nend            = 1000000
-tmax            = 13000 # 1tff = 2.00293986e14 s 
+tmax            = 2200 # 1tff = 2.00293986e14 s 
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
