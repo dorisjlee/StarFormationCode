@@ -1,0 +1,27 @@
+# Configuration file for the Uniform Sphere problem
+REQUIRES Driver
+REQUIRES physics/Hydro
+REQUIRES physics/Gravity/GravityMain/Poisson
+#REQUIRES physics/Eos/EosMain/Gamma
+REQUIRES physics/Eos
+#REQUIRES physics/sourceTerms/Polytrope
+#REQUIRES Particles/ParticlesMain/active/Sink
+#LINKIF Grid_markRefineDerefine.F90 Grid/GridMain/paramesh
+
+
+D rhoOut          Density outside of the sphere
+PARAMETER 	  rhoOut  REAL 	23861. [0 to ]
+D rhoIn	          Density of the sphere
+PARAMETER 	  rhoIn   REAL      2.386E6  [0 to ]
+D P		  Pressure Everywhere
+PARAMETER 	  P	  REAL	59.6525   [0 to ]
+D rcloud  	  Size of the Cloud
+PARAMETER 	  rcloud  REAL 0.25  [0 to 1]
+D  sim_i/sim_j/sim_kctr        Coordinates of the center of the cloud
+PARAMETER 	  sim_xctr REAL 0.5  [0 to 1]
+PARAMETER  	  sim_yctr REAL 0.5  [0 to 1]
+PARAMETER  	  sim_zctr REAL 0.5  [0 to 1]
+##D sim_gamma
+#PARAMETER  	  sim_gamma REAL 1.0001
+##D sim_gascon
+#PARAMETER  	  sim_gascon REAL 8.2544E7

@@ -1,0 +1,113 @@
+#	Parameters for initial model
+rhoOut			= 23861.3108
+rhoIn                   = 2.386E6
+P			= 59.6525
+rcloud			= 0.25
+sim_xctr		= 0.0 
+sim_yctr		= 0.0
+sim_zctr		= 0.0 
+
+
+#		Grid dimensionality and geometry
+
+geometry = "cartesian"
+
+# Units of Physical Constants
+pc_unitsbase    = CGS
+#		Size of computational volume
+
+xmin		= -1. 
+xmax		= 1.
+ymin		= -1.
+ymax		= 1.
+zmin		= -1.
+zmax		= 1.
+
+#		Boundary conditions
+xl_boundary_type = "outflow"
+xr_boundary_type = "outflow"
+
+yl_boundary_type = "outflow"
+yr_boundary_type = "outflow"
+
+zl_boundary_type = "outflow"
+zr_boundary_type = "outflow"
+
+#	Simulation time, I/O  parameters
+
+cfl		= 0.8
+basenm          = "uniform_sphere_"
+restart         = .false.
+
+gamma = 1.001
+
+#	checkpoint file output parameters
+checkpointFileIntervalTime = 0.1
+checkpointFileIntervalStep = 0
+checkpointFileNumber = 0
+
+#	plotfile output parameters
+plotfileIntervalTime = 0.1
+plotfileIntervalStep = 0
+plotfileNumber = 0
+
+nend            = 10000
+tmax            = 1.40
+
+run_comment     = "Uniform Sphere"
+log_file        = "uniform_sphere.log"
+eintSwitch     = 1.e-4
+
+plot_var_1 = "dens"
+plot_var_2 = "pres"
+plot_var_3 = "temp"
+
+#  Adaptvie Grid refinement parameters
+lrefine_min     = 6
+lrefine_max     = 6
+#lrefine_min = 4
+#lrefine_max = 6
+refine_var_1 = "dens"
+refine_var_2 = "pres"
+
+#Sink Particles Parameters
+#sink_density_thresh = 1.928E5
+#sink_accretion_radius = 0.03906
+#sink_softening_radius = 0.03906
+
+# Uniform Grid specific parameters 
+# see note below for more explanation
+
+#iGridSize = 8   #global number of gridpoints along x, excluding gcells
+#jGridSize = 8   #global number of gridpoints along y, excluding gcells
+#kGridSize = 1
+iProcs = 1	#num procs in i direction
+jProcs = 1	#num procs in j direction
+kProcs = 1
+
+
+# When using UG, iProcs, jProcs and kProcs must be specified.
+# These are the processors along each of the dimensions
+#FIXEDBLOCKSIZE mode ::
+# When using fixed blocksize, iGridSize etc are redundant in
+# runtime parameters. These quantities are calculated as 
+# iGridSize = NXB*iprocs
+# jGridSize = NYB*jprocs
+# kGridSize = NZB*kprocs
+#NONFIXEDBLOCKSIZE mode ::
+# iGridSize etc must be specified. They constitute the global
+# number of grid points in the physical domain without taking 
+# the guard cell into account. The local blocksize is calculated
+# as iGridSize/iprocs  etc.
+ 
+ 
+## -------------------------------------------------------------##
+
+## ---------------------------------------------------------------##
+##  SWITCHES SPECIFIC TO THE SUPER-TIME-STEPPING (STS) ALGORITHM  ##
+##  NOTE: For details on using STS runtime parameters, please     ##
+##        refer to user's guide (Driver chapter).                 ##
+useSTS                  = .false.
+nstepTotalSTS           = 5
+nuSTS                   = 0.2
+## ---------------------------------------------------------------##
