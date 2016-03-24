@@ -48,3 +48,12 @@ PARAMETER sim_posn	    REAL    0.5
 D   tiny            Threshold value used for numerical zero
 PARAMETER tiny         REAL     1.e-30
 
+D  smallt
+PARAMETER smallt      REAL 1.e-30
+
+D  smallp
+PARAMETER smallp      REAL 1.e-30
+
+D  smalle 
+PARAMETER smalle      REAL 1.e-30
+

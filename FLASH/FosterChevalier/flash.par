@@ -72,7 +72,7 @@ plotfileIntervalStep = 0
 plotfileNumber = 0
 
 nend            = 1000
-tmax            = 1e13 # 1tff = 2.00293986e14 s 
+tmax            = 1.0e15 # 1tff = 2.00293986e14 s 
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
@@ -132,7 +132,7 @@ kProcs = 4
 #use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
 
 #	II. RIEMANN SOLVERS:
-#RiemannSolver	= "Roe"       # Roe, HLL, HLLC, LLF, Marquina
+RiemannSolver	= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina
 #entropy         = .false.     # Entropy fix for the Roe solver
 
 #hy_fPresInMomFlux = 1.0       # Part of pressure gradient term in momentum equation to include in momentum fluxes
