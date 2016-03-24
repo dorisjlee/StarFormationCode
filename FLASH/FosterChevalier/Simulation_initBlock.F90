@@ -90,13 +90,13 @@ subroutine Simulation_initBlock(blockID)
 !  call printMatrix(dens_arr,646,1)
   close(12)
 !------------------------------------------------------------------------------
-  rho_c = 1.0 !1.1E-19 
-  rmax=7.45 !dimensionless xi units 
+  rho_c = 1.1E-19 
+  rmax=6.41 !dimensionless xi units 
   dr=0.01!delta xi used to initialize np.arange for the numerical integration
 !  rc=rr*1.057E-17
   rho_min =  rho_c*dens_arr(int(rmax*100),1)
 !  print *,"rho_min: ", rho_min
-  center = 5.0E8  !abs(xmin-xmax)/2. !boxlen/2
+  center = 2.5E18  !abs(xmin-xmax)/2. !boxlen/2
   !print *,"center: ", center
   do k = blkLimits(LOW,KAXIS),blkLimits(HIGH,KAXIS)
      ! get the coordinates of the cell center in the z-direction
@@ -110,7 +110,7 @@ subroutine Simulation_initBlock(blockID)
            rr = sqrt(xx**2 + yy**2 + zz**2)
 !           print *,"xx,yy,zz: ", xx,yy,zz
 !           print *,"rr: ", rr
-           rc=rr*3.188e-8
+           rc=rr*1.057E-17
            if (rc <= rmax) then
 !               print *,"Inside"
                rc0 = int(rc/dr)+1 !to prevent from hitting index 0 which is yields zero density
@@ -124,7 +124,7 @@ subroutine Simulation_initBlock(blockID)
 !               print *,"rho0,rho1,rc0,rc1,rhoZone:",rho0,rho1,rc0,rc1,rhoZone 
            else
 !               print *,"Outisde"
-               rhoZone = 7.2591E-2 ! 7.2591E-8 !7.9856E-27 !rho_min*10^-6
+               rhoZone =  7.9856E-27 !rho_min*10^-6
            endif
            velxZone = 0.0 
            velyZone = 0.0
@@ -133,7 +133,7 @@ subroutine Simulation_initBlock(blockID)
            IF (rc .LE. rmax) THEN     
                 presZone=rhoZone*8.254E8  !ideal gas law (T=10K inside)
            ELSE
-                presZone= 5.992e7 !ideal gas law (T=10^7K outside)
+                presZone=6.591E-12 !ideal gas law (T=10^7K outside)
            END IF           
            axis(IAXIS) = i
            axis(JAXIS) = j
