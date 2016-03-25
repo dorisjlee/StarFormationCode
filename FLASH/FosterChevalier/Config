@@ -1,22 +1,8 @@
-#	Configuration file for the Sod shock-tube problem
-#	(Sod, G. A., 1978, J. Comp. Phys., 27, 1)
-
 REQUIRES Driver
 REQUIRES physics/Hydro
 REQUIRES physics/Gravity/GravityMain/Poisson
 REQUIRES physics/Eos
 REQUIRES Grid
-
-USESETUPVARS withParticles
-
-IF withParticles
-   PARTICLETYPE passive INITMETHOD lattice MAPMETHOD quadratic ADVMETHOD rungekutta
-   REQUIRES Particles/ParticlesMain
-   REQUESTS Particles/ParticlesMapping/Quadratic
-   REQUESTS Particles/ParticlesInitialization/Lattice
-   REQUESTS IO/IOMain/
-   REQUESTS IO/IOParticles
-ENDIF
 
 D sim_rhoLeft Density in the left part of the grid 
 PARAMETER sim_rhoLeft	REAL    1.       [0 to ]
@@ -57,3 +43,5 @@ PARAMETER smallp      REAL 1.e-30
 D  smalle 
 PARAMETER smalle      REAL 1.e-30
 
+D  smlrho
+PARAMETER smlrho      REAL 1.e-30

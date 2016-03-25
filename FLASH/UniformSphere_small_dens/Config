@@ -1,9 +1,9 @@
-# Configuration file for the Uniform Sphere problem
 REQUIRES Driver
 REQUIRES physics/Hydro
 REQUIRES physics/Gravity/GravityMain/Poisson
-#REQUIRES physics/Eos/EosMain/Gamma
 REQUIRES physics/Eos
+REQUIRES Grid
+#REQUIRES physics/Eos/EosMain/Gamma
 #REQUIRES physics/sourceTerms/Polytrope
 #REQUIRES Particles/ParticlesMain/active/Sink
 #LINKIF Grid_markRefineDerefine.F90 Grid/GridMain/paramesh
@@ -25,3 +25,18 @@ PARAMETER  	  sim_zctr REAL 0.5  [0 to 1]
 #PARAMETER  	  sim_gamma REAL 1.0001
 ##D sim_gascon
 #PARAMETER  	  sim_gascon REAL 8.2544E7
+
+#D   tiny            Threshold value used for numerical zero
+#PARAMETER tiny         REAL     1.e-30
+
+D  smallt
+PARAMETER smallt      REAL 1.e-30
+
+D  smallp
+PARAMETER smallp      REAL 1.e-30
+
+D  smalle
+PARAMETER smalle      REAL 1.e-30
+
+D  smlrho
+PARAMETER smlrho      REAL 1.e-30

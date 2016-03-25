@@ -62,17 +62,18 @@ basenm          = "sod_"
 restart         = .false.
 #restart = .false.
 #	checkpoint file output parameters
-checkpointFileIntervalTime = 1.E6 #1e13 
+checkpointFileIntervalTime = 1.E13 #1e13 
 checkpointFileIntervalStep = 0
 #checkpointFileNumber = 1.0
 checkpointFileNumber = 0 
 #	plotfile output parameters
-plotfileIntervalTime = 1.E6 #1.E12
+plotfileIntervalTime = 1.E13 #1.E12
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
-nend            = 1000
-tmax            = 1.0e15 # 1tff = 2.00293986e14 s 
+nend            = 1E10
+tmax            = 1.2e15 # 1tff = 2.00293986e14 s 
+dtinit 		= 1.0E5
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
@@ -99,48 +100,7 @@ iProcs = 2	#number or procs in the i direction
 jProcs = 3
 kProcs = 4
 
-
-#dtinit = 1E6 
-
-# When using UG, iProcs, jProcs and kProcs must be specified.
-# These are the processors along each of the dimensions
-#FIXEDBLOCKSIZE mode ::
-# When using fixed blocksize, iGridSize etc are redundant in
-# runtime parameters. These quantities are calculated as 
-# iGridSize = NXB*iprocs
-# jGridSize = NYB*jprocs
-# kGridSize = NZB*kprocs
-#NONFIXEDBLOCKSIZE mode ::
-# iGridSize etc must be specified. They constitute the global
-# number of grid points in the physical domain without taking 
-# the guard cell into account. The local blocksize is calculated
-# as iGridSize/iprocs  etc.
- 
-
-## -------------------------------------------------------------##
-##  SWITCHES SPECIFIC TO THE UNSPLIT HYDRO SOLVER               ##
-#	I. INTERPOLATION SCHEME:
-#order		= 2      # Interpolation order (first/second/third/fifth order)
-#slopeLimiter    = "mc"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
-#LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
-#charLimiting	= .true. # Characteristic limiting vs. Primitive limiting
-
-#use_avisc	= .false. # use artificial viscosity (originally for PPM)
-#cvisc		= 0.1     # coefficient for artificial viscosity
-#use_flattening	= .false. # use flattening (dissipative) (originally for PPM)
-#use_steepening	= .false. # use contact steepening (originally for PPM)
-#use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
-
-#	II. RIEMANN SOLVERS:
 RiemannSolver	= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina
-#entropy         = .false.     # Entropy fix for the Roe solver
-
-#hy_fPresInMomFlux = 1.0       # Part of pressure gradient term in momentum equation to include in momentum fluxes
-
-#	III. STRONG SHOCK HANDELING SCHEME:
-#shockDetect	= .false.     # Shock Detect for numerical stability
-## -------------------------------------------------------------##
-
 ## ---------------------------------------------------------------##
 ##  SWITCHES SPECIFIC TO THE SUPER-TIME-STEPPING (STS) ALGORITHM  ##
 ##  NOTE: For details on using STS runtime parameters, please     ##
@@ -148,105 +108,4 @@ RiemannSolver	= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina
 useSTS                  = .false.
 nstepTotalSTS           = 5
 nuSTS                   = 0.2
-## ---------------------------------------------------------------##l_boundary_type = "outflow"
-xr_boundary_type = "outflow"
-
-yl_boundary_type = "outflow"
-yr_boundary_type = "outflow"
-
-
-#	Simulation (grid, time, I/O) parameters
-
-cfl		= 0.5
-basenm          = "sod_"
-restart         = .false.
-#restart = .false.
-#	checkpoint file output parameters
-checkpointFileIntervalTime = 100 #1e13 
-checkpointFileIntervalStep = 0
-#checkpointFileNumber = 1.0
-checkpointFileNumber = 0 
-#	plotfile output parameters
-plotfileIntervalTime = 50 #1.E12
-plotfileIntervalStep = 0
-plotfileNumber = 0
-
-nend            = 1000000
-tmax            = 13000 # 1tff = 2.00293986e14 s 
-
-run_comment     = "Sod problem, diagonal direction"
-log_file        = "sod.log"
-eintSwitch     = 1.e-4
-
-
-plot_var_1 = "dens"
-plot_var_2 = "pres"
-plot_var_3 = "temp"
-
-#    AMR refinement parameters  
-lrefine_min     = 2 #4
-lrefine_max     = 5 #4
-refine_var_1    = "dens"
-
-# These parameters are used only for the uniform grid
-
-
-#iGridSize = 64  #defined as nxb * iprocs
-#jGridSize = 64
-#kGridSize = 64 
-
-iProcs = 2	#number or procs in the i direction	
-jProcs = 3
-kProcs = 4
-
-
-#dtinit = 1E6 
-
-# When using UG, iProcs, jProcs and kProcs must be specified.
-# These are the processors along each of the dimensions
-#FIXEDBLOCKSIZE mode ::
-# When using fixed blocksize, iGridSize etc are redundant in
-# runtime parameters. These quantities are calculated as 
-# iGridSize = NXB*iprocs
-# jGridSize = NYB*jprocs
-# kGridSize = NZB*kprocs
-#NONFIXEDBLOCKSIZE mode ::
-# iGridSize etc must be specified. They constitute the global
-# number of grid points in the physical domain without taking 
-# the guard cell into account. The local blocksize is calculated
-# as iGridSize/iprocs  etc.
- 
-
-## -------------------------------------------------------------##
-##  SWITCHES SPECIFIC TO THE UNSPLIT HYDRO SOLVER               ##
-#	I. INTERPOLATION SCHEME:
-#order		= 2      # Interpolation order (first/second/third/fifth order)
-#slopeLimiter    = "mc"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
-#LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
-#charLimiting	= .true. # Characteristic limiting vs. Primitive limiting
-
-#use_avisc	= .false. # use artificial viscosity (originally for PPM)
-#cvisc		= 0.1     # coefficient for artificial viscosity
-#use_flattening	= .false. # use flattening (dissipative) (originally for PPM)
-#use_steepening	= .false. # use contact steepening (originally for PPM)
-#use_upwindTVD	= .false. # use upwind biased TVD slope for PPM (need nguard=6)
-
-#	II. RIEMANN SOLVERS:
-#RiemannSolver	= "Roe"       # Roe, HLL, HLLC, LLF, Marquina
-#entropy         = .false.     # Entropy fix for the Roe solver
-
-#hy_fPresInMomFlux = 1.0       # Part of pressure gradient term in momentum equation to include in momentum fluxes
-
-#	III. STRONG SHOCK HANDELING SCHEME:
-#shockDetect	= .false.     # Shock Detect for numerical stability
-## -------------------------------------------------------------##
-
-## ---------------------------------------------------------------##
-##  SWITCHES SPECIFIC TO THE SUPER-TIME-STEPPING (STS) ALGORITHM  ##
-##  NOTE: For details on using STS runtime parameters, please     ##
-##        refer to user's guide (Driver chapter).                 ##
-useSTS                  = .false.
-nstepTotalSTS           = 5
-nuSTS                   = 0.2
-## ---------------------------------------------------------------##
 
