@@ -61,19 +61,20 @@ cfl		= 0.5
 basenm          = "sod_"
 restart         = .false.
 #restart = .false.
-#	checkpoint file output parameters
-checkpointFileIntervalTime = 1.E13 #1e13 
+
+checkpointFileIntervalTime = 1.E12 #1e13
 checkpointFileIntervalStep = 0
 #checkpointFileNumber = 1.0
-checkpointFileNumber = 0 
-#	plotfile output parameters
-plotfileIntervalTime = 1.E13 #1.E12
+checkpointFileNumber = 0
+#       plotfile output parameters
+plotfileIntervalTime = 5.E11 #1.E12
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
-nend            = 1E10
-tmax            = 1.2e15 # 1tff = 2.00293986e14 s 
-dtinit 		= 1.0E5
+nend            = 1E6
+tmax            = 5.0e13 # 1tff = 2.00293986e14 s
+dtinit          = 1.0E3
+dtmax           = 1.0E15
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
@@ -97,7 +98,7 @@ refine_var_1    = "dens"
 #kGridSize = 64 
 
 iProcs = 2	#number or procs in the i direction	
-jProcs = 3
+jProcs = 2
 kProcs = 4
 
 RiemannSolver	= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina
