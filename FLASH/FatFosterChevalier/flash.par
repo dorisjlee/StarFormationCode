@@ -1,4 +1,4 @@
-fattening_factor = 10.
+fattening_factor = 1.
 
 sim_rhoLeft    = 2.386E6 #1.
 sim_rhoRight   = 23861.3108 #0.125
