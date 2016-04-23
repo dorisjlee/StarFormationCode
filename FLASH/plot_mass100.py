@@ -9,8 +9,7 @@ import matplotlib.cm as cm
 from matplotlib.colors import LogNorm
 import os
 import sys
-#fat_fname=sys.argv[1]
-fat_fname=10
+fat_fname=sys.argv[1]
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 G = 6.67e-8 #cgs
@@ -34,7 +33,7 @@ boxlen = 1e19
 ctr =dim/2
 dr=cell_size
 ratio = boxlen/dim
-xi_range = np.logspace(-np.log10(0.5),np.log10(40),num=40)
+xi_range = np.logspace(-np.log10(0.5),np.log10(18),num=20)
 r_range = xi_range/1.057E-17
 	#let dr = cell_size
 #xyzrange = np.arange(start,end)

@@ -10,9 +10,9 @@ from matplotlib.colors import LogNorm
 import os
 import sys
 #fat_fname=sys.argv[1]
-fat_fname=10
+fat_fname=31
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
-os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
+os.chdir("../../project/FLASH4.3_3/object/fat{}/".format(fat_fname))
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 0 
@@ -34,7 +34,7 @@ boxlen = 1e19
 ctr =dim/2
 dr=cell_size
 ratio = boxlen/dim
-xi_range = np.logspace(-np.log10(0.5),np.log10(40),num=40)
+xi_range = np.logspace(-np.log10(0.5),np.log10(18),num=20)
 r_range = xi_range/1.057E-17
 	#let dr = cell_size
 #xyzrange = np.arange(start,end)
@@ -85,7 +85,8 @@ plt.figure()
 #tlst =  [22,24,26,28,31]
 #tlst = [22, 24, 26, 28, 30, 31]
 #tlst = [0,10,20,25,30,34,36,38,39,40]
-tlst = [  0,  20,  40,  60,  80, 90,100,110]
+#tlst = [  0, 40,  60,  80, 90,100,110]
+tlst = [84,86,88]
 for t in tlst :
 	plot_MR(t)
 plt.legend(loc='upper left')

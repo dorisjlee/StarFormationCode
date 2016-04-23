@@ -10,7 +10,7 @@ from matplotlib.colors import LogNorm
 import os
 import sys
 #fat_fname=sys.argv[1]
-fat_fname=10
+fat_fname=1
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 G = 6.67e-8 #cgs
@@ -34,7 +34,7 @@ boxlen = 1e19
 ctr =dim/2
 dr=cell_size
 ratio = boxlen/dim
-xi_range = np.logspace(-np.log10(0.5),np.log10(40),num=40)
+xi_range = np.logspace(np.log10(0.5),1,num=20)
 r_range = xi_range/1.057E-17
 	#let dr = cell_size
 #xyzrange = np.arange(start,end)
@@ -74,7 +74,7 @@ def plot_MR(timestep):
 	    sum_args_list.append(sum_args)
 	sum_args_list = np.array(sum_args_list)
 	print "confidence_blockcount_list: ", confident_blockcount_lst
-	np.savetxt("sum_args_list{}_2.txt".format(timestep),sum_args_list)
+	np.savetxt("sum_args_list{}_3.txt".format(timestep),sum_args_list)
 	print "sum_args_list: ",sum_args_list
 	plt.loglog(xi_range,4*np.pi*G*sum_args_list/a,label= "t={}".format(timestep))
 	#plt.loglog(xi_range,4*np.pi*G*sum_args_list/a)
@@ -85,7 +85,10 @@ plt.figure()
 #tlst =  [22,24,26,28,31]
 #tlst = [22, 24, 26, 28, 30, 31]
 #tlst = [0,10,20,25,30,34,36,38,39,40]
-tlst = [  0,  20,  40,  60,  80, 90,100,110]
+#tlst = [  0,  20,  40,  60,  80, 90,100,110]
+#tlst = [  0,  20,  40,  55,  70, 95]
+tlst = [  0, 150,200,220,240,250,260,280,300,305]
+#tlst = [220,240,260,280,290,300,305]
 for t in tlst :
 	plot_MR(t)
 plt.legend(loc='upper left')
