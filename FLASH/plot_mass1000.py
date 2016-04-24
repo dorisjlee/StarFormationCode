@@ -9,10 +9,9 @@ import matplotlib.cm as cm
 from matplotlib.colors import LogNorm
 import os
 import sys
-#fat_fname=sys.argv[1]
-fat_fname=31
+fat_fname=1000
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
-os.chdir("../../project/FLASH4.3_3/object/fat{}/".format(fat_fname))
+os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 0 
@@ -34,7 +33,7 @@ boxlen = 1e19
 ctr =dim/2
 dr=cell_size
 ratio = boxlen/dim
-xi_range = np.logspace(np.log10(0.5),1,num=20)
+xi_range = np.logspace(-0.8,0.8,num=25)
 r_range = xi_range/1.057E-17
 	#let dr = cell_size
 #xyzrange = np.arange(start,end)
@@ -84,10 +83,9 @@ plt.figure()
 #tlst = [0,10,20,30]
 #tlst =  [22,24,26,28,31]
 #tlst = [22, 24, 26, 28, 30, 31]
-#tlst = [0,10,20,25,30,34,36,38,39,40]
-#tlst = [  0,  60,  80,84,86,87,88, 90]
-tlst = [ 30]
-#tlst = [84,86,88]
+#tlst = [0,28,30,32,40]
+tlst = [0,20,26,30,31]
+#tlst = [  0,  20,  40,  60,  80, 90,100,110]
 for t in tlst :
 	plot_MR(t)
 plt.legend(loc='upper left')
