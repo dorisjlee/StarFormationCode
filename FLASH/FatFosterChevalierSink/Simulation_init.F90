@@ -6,16 +6,23 @@ subroutine Simulation_init()
   use Driver_interface, ONLY : Driver_getMype, Driver_abortFlash
   use RuntimeParameters_interface, ONLY : RuntimeParameters_get
   use Logfile_interface, ONLY : Logfile_stamp
-  use Multispecies_interface, ONLY : Multispecies_setProperty
+  use Particles_sinkData
+  use pt_sinkInterface, only: pt_sinkCreateParticle, pt_sinkGatherGlobal
   implicit none
 #include "constants.h"
 #include "Flash.h"
-#include "Multispecies.h"
-
+#include "Particles.h"
   
-  call Driver_getMype(MESH_COMM, sim_meshMe)
+  integer :: myPE, pno, blockID
+  real    :: pt
+  logical :: restart
 
+  ! do nothing on restart
+  call RuntimeParameters_get("restart", restart)
+  if (restart) return
 
+  call Driver_getMype(GLOBAL_COMM, myPE)
+  sim_globalMe = myPE
   call RuntimeParameters_get('smallp', sim_smallP)
   call RuntimeParameters_get('smallx', sim_smallX) 
   call RuntimeParameters_get('fattening_factor',fattening_factor ) 
@@ -35,56 +42,47 @@ subroutine Simulation_init()
   
   call RuntimeParameters_get('sim_posn', sim_posn)
 
-#ifdef SIMULATION_TWO_MATERIALS
-  call RuntimeParameters_get('sim_abarLeft', sim_abarLeft)
-  call RuntimeParameters_get('sim_zbarLeft', sim_zbarLeft)
-  call RuntimeParameters_get('sim_abarRight', sim_abarRight)
-  call RuntimeParameters_get('sim_zbarRight', sim_zbarRight)
-#endif
 
   call Logfile_stamp( "initializing Sod problem",  &
        "[Simulation_init]")
      
-#ifdef SIMULATION_TWO_MATERIALS
-  call Multispecies_setProperty(LEFT_SPEC, A, sim_abarLeft)
-  call Multispecies_setProperty(LEFT_SPEC, Z, sim_zbarLeft)
-  call Multispecies_setProperty(RGHT_SPEC, A, sim_abarRight)
-  call Multispecies_setProperty(RGHT_SPEC, Z, sim_zbarRight)
-#endif
+! place initial sink particle
 
-#ifdef FLASH_3T
-  call RuntimeParameters_get('sim_pionLeft' , sim_pionLeft )
-  call RuntimeParameters_get('sim_pionRight', sim_pionRight)
-  call RuntimeParameters_get('sim_peleLeft' , sim_peleLeft )
-  call RuntimeParameters_get('sim_peleRight', sim_peleRight)
-  call RuntimeParameters_get('sim_pradLeft' , sim_pradLeft )
-  call RuntimeParameters_get('sim_pradRight', sim_pradRight)
+  if (sim_globalMe == MASTER_PE) then
 
-  if (sim_pionLeft  < 0.0) call Driver_abortFlash("Must specify sim_pionLeft" )
-  if (sim_pionRight < 0.0) call Driver_abortFlash("Must specify sim_pionRight")
-  if (sim_peleLeft  < 0.0) call Driver_abortFlash("Must specify sim_peleLeft" )
-  if (sim_peleRight < 0.0) call Driver_abortFlash("Must specify sim_peleRight")
-  if (sim_pradLeft  < 0.0) call Driver_abortFlash("Must specify sim_pradLeft" )
-  if (sim_pradRight < 0.0) call Driver_abortFlash("Must specify sim_pradRight")
-#endif
+    call RuntimeParameters_get("sim_sink_x", sim_sink_x)
+    call RuntimeParameters_get("sim_sink_y", sim_sink_y)
+    call RuntimeParameters_get("sim_sink_z", sim_sink_z)
+    call RuntimeParameters_get("sim_sink_vx", sim_sink_vx)
+    call RuntimeParameters_get("sim_sink_vy", sim_sink_vy)
+    call RuntimeParameters_get("sim_sink_vz", sim_sink_vz)
+    call RuntimeParameters_get("sim_sink_mass", sim_sink_mass)
 
-  ! convert the shock angle paramters
-  sim_xAngle = sim_xAngle * 0.0174532925 ! Convert to radians.
-  sim_yAngle = sim_yAngle * 0.0174532925
+    blockID = 1
+    pt = 0.0
 
-  sim_xCos = cos(sim_xAngle)
-  
-  if (NDIM == 1) then
-     sim_xCos = 1.
-     sim_yCos = 0.
-     sim_zCos = 0.
-     
-  elseif (NDIM == 2) then
-     sim_yCos = sqrt(1. - sim_xCos*sim_xCos)
-     sim_zCos = 0.
-     
-  elseif (NDIM == 3) then
-     sim_yCos = cos(sim_yAngle)
-     sim_zCos = sqrt( max(0., 1. - sim_xCos*sim_xCos - sim_yCos*sim_yCos) )
+    pno = pt_sinkCreateParticle(sim_sink_x, sim_sink_y, sim_sink_z, pt, blockID, sim_globalMe)
+
+    particles_local(VELX_PART_PROP, 1) = sim_sink_vx
+    particles_local(VELY_PART_PROP, 1) = sim_sink_vy
+    particles_local(VELZ_PART_PROP, 1) = sim_sink_vz
+    particles_local(MASS_PART_PROP, 1) = sim_sink_mass
+
+    write(*,'(A,4(1X,ES16.9),3I8)') "initial sink particle created (x, y, z, pt, blockID, MyPE, tag): ", &
+      & sim_sink_x, sim_sink_y, sim_sink_z, pt, blockID, sim_globalMe, int(particles_local(TAG_PART_PROP,pno))
+
   endif
+
+ !Looks like tolerance level set for mass, px,py,pz, seems to be specific to the mom test
+ !call RuntimeParameters_get("sim_massTol", sim_massTol)
+ ! call RuntimeParameters_get("sim_momXTol", sim_momXTol)
+ ! call RuntimeParameters_get("sim_momYTol", sim_momYTol)
+ ! call RuntimeParameters_get("sim_momZTol", sim_momZTol)
+
+
+  call pt_sinkGatherGlobal()
+
+  sim_testInitialized = .FALSE.
+
+
 end subroutine Simulation_init

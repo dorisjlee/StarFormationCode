@@ -1,4 +1,4 @@
-fattening_factor = 1000.
+fattening_factor = 100.
 
 sim_rhoLeft    = 2.386E6 #1.
 sim_rhoRight   = 23861.3108 #0.125
@@ -30,21 +30,28 @@ useSinkParticles = .true.
 sink_density_thresh =  5.e-17
 sink_accretion_radius =  1.953125e+17
 sink_softening_radius =  1.953125e+17
+sim_sink_x    =  +6.45465e+16
+sim_sink_y    =  -3.22732e+16
+sim_sink_z    =  0.0
+sim_sink_vx   =  0.0
+sim_sink_vy   =  2.0e4
+sim_sink_vz   =  0.0
+sim_sink_mass =  1.989e32
 
 #	Simulation (grid, time, I/O) parameters
 cfl		= 0.5
 basenm          = "sod_"
 restart         = .false.
 
-checkpointFileIntervalTime = 1.E9
+checkpointFileIntervalTime = 1.E10
 checkpointFileIntervalStep = 0
 checkpointFileNumber = 0
 #       plotfile output parameters
-plotfileIntervalTime = 1.E9
+plotfileIntervalTime = 1.E10
 plotfileIntervalStep = 0
 plotfileNumber = 0
 
-particleFileIntervalTime = 1.E9
+particleFileIntervalTime = 1.E10
 particleFileIntervalStep = 0
 particleFileNumber = 0
 

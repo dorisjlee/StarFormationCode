@@ -6,9 +6,17 @@ REQUIRES Grid
 REQUIRES Particles/ParticlesMain/active/Sink
 PARAMETER fattening_factor REAL 100.
 
-PARTICLETYPE active
-PARTICLEPROP dens
-PARTICLEMAP TO dens FROM VARIABLE dens
+#PARTICLETYPE active
+#PARTICLEPROP dens
+#PARTICLEMAP TO dens FROM VARIABLE dens
+
+PARAMETER sim_sink_x             REAL     0.0
+PARAMETER sim_sink_y             REAL     0.0
+PARAMETER sim_sink_z             REAL     0.0
+PARAMETER sim_sink_vx            REAL     0.0
+PARAMETER sim_sink_vy            REAL     0.0
+PARAMETER sim_sink_vz            REAL     0.0
+PARAMETER sim_sink_mass          REAL     0.0
 
 D sim_rhoLeft Density in the left part of the grid 
 PARAMETER sim_rhoLeft	REAL    1.       [0 to ]
