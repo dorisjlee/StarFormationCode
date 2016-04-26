@@ -27,38 +27,39 @@ yr_boundary_type = "outflow"
 #Sink Particles Parameters
 useParticle = .true.
 useSinkParticles = .true.
-sink_density_thresh =  5.e-17
+sink_density_thresh = 1.0 # 2.54794669312e-19
 sink_accretion_radius =  1.953125e+17
 sink_softening_radius =  1.953125e+17
-sim_sink_x    =  +6.45465e+16
-sim_sink_y    =  -3.22732e+16
-sim_sink_z    =  0.0
+sim_sink_x    =  5.0E18
+sim_sink_y    =  5.0E18
+sim_sink_z    =  5.0E18
 sim_sink_vx   =  0.0
-sim_sink_vy   =  2.0e4
+sim_sink_vy   =  0.0
 sim_sink_vz   =  0.0
 sim_sink_mass =  1.989e32
 
-#	Simulation (grid, time, I/O) parameters
+# Simulation (grid, time, I/O) parameters
 cfl		= 0.5
 basenm          = "sod_"
-restart         = .false.
+restart         = .true.
 
-checkpointFileIntervalTime = 1.E10
+checkpointFileIntervalTime = 1.e10
 checkpointFileIntervalStep = 0
-checkpointFileNumber = 0
-#       plotfile output parameters
-plotfileIntervalTime = 1.E10
-plotfileIntervalStep = 0
-plotfileNumber = 0
+checkpointFileNumber = 48
 
-particleFileIntervalTime = 1.E10
+# plotfile output parameters
+plotfileIntervalTime = 1.e10
+plotfileIntervalStep = 0
+plotfileNumber = 48
+
+particleFileIntervalTime = 1.e10
 particleFileIntervalStep = 0
-particleFileNumber = 0
+particleFileNumber = 48
 
 nend            = 1E6
 tmax            = 5.0e13
 dtinit          = 1.0E3
-dtmax           = 1.0E15
+dtmax           = 1.0E10 #1.0E15
 
 run_comment     = "Sod problem, diagonal direction"
 log_file        = "sod.log"
