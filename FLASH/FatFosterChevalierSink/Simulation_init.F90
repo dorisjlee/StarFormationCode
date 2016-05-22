@@ -46,35 +46,35 @@ subroutine Simulation_init()
        "[Simulation_init]")
      
 ! place initial sink particle
-if (restart) then
-	  print *,"placing sink particle on restart"
-	  if (sim_globalMe == MASTER_PE) then
+!if (restart) then
+!	  print *,"placing sink particle on restart"
+!	  if (sim_globalMe == MASTER_PE) then
+!
+!	    call RuntimeParameters_get("sim_sink_x", sim_sink_x)
+!	    call RuntimeParameters_get("sim_sink_y", sim_sink_y)
+!	    call RuntimeParameters_get("sim_sink_z", sim_sink_z)
+!	    call RuntimeParameters_get("sim_sink_vx", sim_sink_vx)
+!	    call RuntimeParameters_get("sim_sink_vy", sim_sink_vy)
+!	    call RuntimeParameters_get("sim_sink_vz", sim_sink_vz)
+!	    call RuntimeParameters_get("sim_sink_mass", sim_sink_mass)
+!
+!	    blockID = 1
+!	    pt = 0.0
+!
+!	    pno = pt_sinkCreateParticle(sim_sink_x, sim_sink_y, sim_sink_z, pt, blockID, sim_globalMe)
+!
+!	    particles_local(VELX_PART_PROP, 1) = sim_sink_vx
+!	    particles_local(VELY_PART_PROP, 1) = sim_sink_vy
+!	    particles_local(VELZ_PART_PROP, 1) = sim_sink_vz
+!	    particles_local(MASS_PART_PROP, 1) = sim_sink_mass
+!
+!	    write(*,'(A,4(1X,ES16.9),3I8)') "initial sink particle created (x, y, z, pt, blockID, MyPE, tag): ", &
+!	      & sim_sink_x, sim_sink_y, sim_sink_z, pt, blockID, sim_globalMe, int(particles_local(TAG_PART_PROP,pno))
+!
+!	  endif
+!	  call pt_sinkGatherGlobal()
 
-	    call RuntimeParameters_get("sim_sink_x", sim_sink_x)
-	    call RuntimeParameters_get("sim_sink_y", sim_sink_y)
-	    call RuntimeParameters_get("sim_sink_z", sim_sink_z)
-	    call RuntimeParameters_get("sim_sink_vx", sim_sink_vx)
-	    call RuntimeParameters_get("sim_sink_vy", sim_sink_vy)
-	    call RuntimeParameters_get("sim_sink_vz", sim_sink_vz)
-	    call RuntimeParameters_get("sim_sink_mass", sim_sink_mass)
-
-	    blockID = 1
-	    pt = 0.0
-
-	    pno = pt_sinkCreateParticle(sim_sink_x, sim_sink_y, sim_sink_z, pt, blockID, sim_globalMe)
-
-	    particles_local(VELX_PART_PROP, 1) = sim_sink_vx
-	    particles_local(VELY_PART_PROP, 1) = sim_sink_vy
-	    particles_local(VELZ_PART_PROP, 1) = sim_sink_vz
-	    particles_local(MASS_PART_PROP, 1) = sim_sink_mass
-
-	    write(*,'(A,4(1X,ES16.9),3I8)') "initial sink particle created (x, y, z, pt, blockID, MyPE, tag): ", &
-	      & sim_sink_x, sim_sink_y, sim_sink_z, pt, blockID, sim_globalMe, int(particles_local(TAG_PART_PROP,pno))
-
-	  endif
-	  call pt_sinkGatherGlobal()
-
-	  sim_testInitialized = .FALSE.
-endif
+!	  sim_testInitialized = .FALSE.
+!endif
 
 end subroutine Simulation_init

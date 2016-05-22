@@ -11,11 +11,11 @@ gamma           = 1.001 #1.4
 geometry = cartesian
 
 xmin		= 0.
-xmax		= 1.0E19
+xmax		= 2.31E18
 ymin		= 0.
-ymax		= 1.0E19
+ymax		= 2.31E18
 zmin		= 0.
-zmax		= 1.0E19
+zmax		= 2.31E18
 
 #		Boundary conditions
 xl_boundary_type = "outflow"
@@ -27,9 +27,9 @@ yr_boundary_type = "outflow"
 #Sink Particles Parameters
 useParticle = .true.
 useSinkParticles = .true.
-sink_density_thresh = 1.0 # 2.54794669312e-19
-sink_accretion_radius =  1.953125e+17
-sink_softening_radius =  1.953125e+17
+sink_density_thresh =  2.60909741376e-16
+sink_accretion_radius =  6.103515625e+15
+sink_softening_radius =  6.103515625e+15
 sim_sink_x    =  5.0E18
 sim_sink_y    =  5.0E18
 sim_sink_z    =  5.0E18
@@ -37,24 +37,23 @@ sim_sink_vx   =  0.0
 sim_sink_vy   =  0.0
 sim_sink_vz   =  0.0
 sim_sink_mass =  1.989e32
-
 # Simulation (grid, time, I/O) parameters
 cfl		= 0.5
 basenm          = "sod_"
-restart         = .true.
+restart         = .false.
 
 checkpointFileIntervalTime = 1.e10
 checkpointFileIntervalStep = 0
-checkpointFileNumber = 48
+checkpointFileNumber = 0
 
 # plotfile output parameters
 plotfileIntervalTime = 1.e10
 plotfileIntervalStep = 0
-plotfileNumber = 48
+plotfileNumber = 0
 
 particleFileIntervalTime = 1.e10
 particleFileIntervalStep = 0
-particleFileNumber = 48
+particleFileNumber = 0
 
 nend            = 1E6
 tmax            = 5.0e13
@@ -71,9 +70,12 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #    AMR refinement parameters  
-lrefine_min     = 2 #6
-lrefine_max     = 5 #6
-refine_var_1    = "dens"
+lrefine_min     = 6 
+lrefine_max     = 8
+#refine_var_1    = "dens"
+refineOnJeansLength=.true.
+jeans_ncells_ref = 32.0
+jeans_ncells_deref = 64.0
 
 # These parameters are used only for the uniform grid
 
@@ -82,8 +84,8 @@ refine_var_1    = "dens"
 #jGridSize = 64
 #kGridSize = 64 
 
-iProcs = 2	#number or procs in the i direction	
-jProcs = 2
+iProcs = 3  	#number or procs in the i direction	
+jProcs = 4
 kProcs = 4
 
 RiemannSolver	= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina

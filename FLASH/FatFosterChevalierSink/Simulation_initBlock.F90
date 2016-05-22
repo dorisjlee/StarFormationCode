@@ -93,7 +93,7 @@ subroutine Simulation_initBlock(blockID)
   rho_min =  rho_c*dens_arr(int(rmax*100),1)
   !print *,"rho_min: ", rho_min
   !fattening_factor = 1000.
-  center = 5.0E18  !abs(xmin-xmax)/2. !boxlen/2
+  center = 2.0e18 !1.155E18 !5.0E18  !abs(xmin-xmax)/2. !boxlen/2
   !rho_out=1.0e-6*rho_min
   rho_out =0.5E-22
   P_out = fattening_factor*rho_min*8.254E8
