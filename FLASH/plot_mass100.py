@@ -10,8 +10,10 @@ from matplotlib.colors import LogNorm
 import os
 import sys
 fat_fname=100
+print "mass plots for fat 100"
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
-os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
+#os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
+os.chdir("../../project/FLASH4.3_3/object/")
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 0 
@@ -83,7 +85,7 @@ plt.figure()
 #tlst = [0,10,20,30]
 #tlst =  [22,24,26,28,31]
 #tlst = [22, 24, 26, 28, 30, 31]
-tlst = [0,28,30,32,40]
+tlst = [0,10,20,30,40,45,50]
 #tlst = [  0,  20,  40,  60,  80, 90,100,110]
 for t in tlst :
 	plot_MR(t)
