@@ -9,6 +9,7 @@ import matplotlib.cm as cm
 from matplotlib.colors import LogNorm
 import os
 import sys
+lev = int(sys.argv[1])
 fat_fname=100
 print "mass plots for fat 100"
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
@@ -18,7 +19,7 @@ G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 0 
 ds = yt.load("sod_hdf5_chk_{}".format(str(timestep).zfill(4)))
-lev = 5
+#lev = 6
 dim = 2**(lev+3)
 #all_data = ds.covering_grid(level=lev, left_edge=[0,0.0,0.0],dims=[dim,dim,dim])
 #dens_arr =  np.array(all_data["density"])
@@ -35,7 +36,8 @@ boxlen = 1e19
 ctr =dim/2
 dr=cell_size
 ratio = boxlen/dim
-xi_range = np.logspace(0,1.04,num=20)
+#xi_range = np.logspace(0,1.04,num=20)
+xi_range = np.logspace(0,1.04,num=10)
 r_range = xi_range/1.057E-17
 	#let dr = cell_size
 #xyzrange = np.arange(start,end)
@@ -85,7 +87,8 @@ plt.figure()
 #tlst = [0,10,20,30]
 #tlst =  [22,24,26,28,31]
 #tlst = [22, 24, 26, 28, 30, 31]
-tlst = [0,10,20,30,40,45,50]
+#tlst = [0,10,20,30,40,45,50]
+tlst = [30]
 #tlst = [  0,  20,  40,  60,  80, 90,100,110]
 for t in tlst :
 	plot_MR(t)
