@@ -1,0 +1,20 @@
+Make everything in fc.nml in cgs units [physical]
+do the conversion inside read_params
+
+Things in condinit that should be inside readparam
+
+
+rmax=6.4512 !dimensionless xi units
+rho_c=0.02806!rho_c = 1.10e-19 [cgs] /scale_d
+dr=0.01!delta xi used to initialize np.arange for the numerical integration
+!rc =rr*(boxlen/32.)*0.5194 !converting from grid units to code length units to units of dimensionless xi
+rc =rr*0.5194
+
+rho_outside : 1.997E-9 !ideal gas law computed rho_out with T=10^7 K and P_edge = P_out
+
+pressure_outside : 2.57E-3
+
+Inside read param now 
+
+       !USER DEFINED FOR ISOTHERMAL SPHERE PATCH
+       &,rho_c,rmax,rho_out,p_out &
