@@ -73,7 +73,7 @@ def plot_MR(timestep):
 	    sum_args_list.append(sum_args)
 	sum_args_list = np.array(sum_args_list)
 	print "confidence_blockcount_list: ", confident_blockcount_lst
-	np.savetxt("sum_args_list{}.txt".format(timestep),sum_args_list)
+	np.savetxt("sum_args_list{0}_lev{1}.txt".format(timestep,lev),sum_args_list)
 	print "sum_args_list: ",sum_args_list
 	plt.loglog(xi_range,4*np.pi*G*sum_args_list/a,label= "t={}".format(timestep))
 	#plt.loglog(xi_range,4*np.pi*G*sum_args_list/a)

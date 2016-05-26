@@ -25,10 +25,10 @@ dr=cell_size
 boxlen=int(ds.domain_width[0])
 ratio = boxlen/dim
 #xi_range = np.logspace(0,1.04,num=20)
-xi_range = np.logspace(0,1.04,num=10)
+xi_range = np.logspace(0,1.04,num=20)
 r_range = xi_range/1.057E-17
 end  = dim/2
-	#let dr = cell_size
+#let dr = cell_size
 #xyzrange = np.arange(start,end)
 def plot_MR(timestep):
 	ds = yt.load("sod_hdf5_chk_{}".format(str(timestep).zfill(4)))
@@ -54,16 +54,16 @@ def plot_MR(timestep):
 					if np.isclose(r,ri,atol=dr):#atol is +/-
 						sum_args+=r*dens_arr[i][j][k]*dr
 						confident_blockcount+=1
-	    print sum_args
-	    print "At radius ",ri*1.057E-17,", number of blocks within dr: ",confident_blockcount
-	    confident_blockcount_lst.append(confident_blockcount)
-	    sum_args_list.append(sum_args)
+	    	print sum_args
+	    	print "At radius ",ri*1.057E-17,", number of blocks within dr: ",confident_blockcount
+	    	confident_blockcount_lst.append(confident_blockcount)
+	    	sum_args_list.append(sum_args)
 	sum_args_list = np.array(sum_args_list)
 	print "confidence_blockcount_list: ", confident_blockcount_lst
-	np.savetxt("sum_args_list{}_3.txt".format(timestep),sum_args_list)
+	np.savetxt("sum_args_list{0}_lev{1}.txt".format(timestep,lev),sum_args_list)
 	print "sum_args_list: ",sum_args_list
 	plt.loglog(xi_range,4*np.pi*G*sum_args_list/a,label= "t={}".format(timestep))
-	plt.savefig('mass{}.png'.format(timestep))
+	plt.savefig('mass{0}_lev{1}.png'.format(timestep,lev))
 
 plt.figure()
 tlst = [30]

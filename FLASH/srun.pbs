@@ -1,10 +1,10 @@
 #!/bin/bash -l
-#SBATCH -p shared   
+#SBATCH -p shared 
 #SBATCH -n 1
 #SBATCH -o %j.out
 #SBATCH -e %j.err      
-#SBATCH -t 05:00:00  
-#SBATCH -J mass100
+#SBATCH -t 04:00:00  
+#SBATCH -J mass100_lev7
 set -x  
 export LD_LIBRARY_PATH=/global/homes/d/dorislee/anaconda/lib:$LD_LIBRARY_PATH
-srun -n 1 --unbuffered /global/homes/d/dorislee/anaconda/bin/python plot_mass100.py 
+srun -n 1 --mem=61440 --unbuffered time /global/homes/d/dorislee/anaconda/bin/python plot_mass100.py 7 
