@@ -15,7 +15,7 @@ print "mass plots for fat 100"
 os.chdir("../../project/FLASH4.3_3/object/")
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
-timestep= 0 
+timestep= 30 
 ds = yt.load("sod_hdf5_chk_{}".format(str(timestep).zfill(4)))
 dim = 2**(lev+3)
 cell_size = int((ds.domain_width/dim)[0].in_cgs())
@@ -27,7 +27,7 @@ ratio = boxlen/dim
 #xi_range = np.logspace(0,1.04,num=20)
 xi_range = np.logspace(0,1.04,num=20)
 r_range = xi_range/1.057E-17
-end  = dim/2
+#end  = dim/2
 #let dr = cell_size
 #xyzrange = np.arange(start,end)
 def plot_MR(timestep):
@@ -38,15 +38,21 @@ def plot_MR(timestep):
 	sum_args_list = []
 	confident_blockcount_lst = []
 	confident_blockcount=0
-	for ri in r_range:
+	for ri in r_range[::-1]:
 #	    print "Looking at radius: ", ri
-		start = int(ri/ratio)
-		margin = [int(ri/ratio)+70 if int(ri/ratio)+70 <127 else 0][0]
+		#start = int(ri/ratio)+70
+		#end = dim/2-int(ri/ratio)
+#		margin = [int(ri/ratio)+70 if int(ri/ratio)+70 <127 else 0][0]
+ #   	    	start  = margin
+ #   	    	end = dim-margin
+            	#start = int((ri+5*dr)/(np.sqrt(2)*ratio))
+            	#end = int((ri-5*dr)/(np.sqrt(2)*ratio))
+		start = int(ri/ratio)+50
+		end =  dim/2 
 		sum_args = 0
 		xyzrange = np.arange(start,end)
 		print "ri : ",ri
 		print "Looping over: ", len(xyzrange)**3
-
 		for i in xyzrange:
 			for j in xyzrange:
 				for k in xyzrange:
@@ -54,6 +60,14 @@ def plot_MR(timestep):
 					if np.isclose(r,ri,atol=dr):#atol is +/-
 						sum_args+=r*dens_arr[i][j][k]*dr
 						confident_blockcount+=1
+		#			if confident_blockcount >100:
+                #				break
+        	#		else:
+            	#			continue
+        	#		break
+    		#	else:
+        	#		continue
+    		#	break
 	    	print sum_args
 	    	print "At radius ",ri*1.057E-17,", number of blocks within dr: ",confident_blockcount
 	    	confident_blockcount_lst.append(confident_blockcount)
@@ -71,3 +85,4 @@ for t in tlst :
 	plot_MR(t)
 plt.legend(loc='upper left')
 plt.savefig("MRplot.png")
+

@@ -48,10 +48,12 @@ def plot_MR(timestep):
 	for ri in r_range:
 #	    print "Looking at radius: ", ri
 	    #plt.figure()
-       	    margin = [int(ri/ratio)+70 if int(ri/ratio)+70 <127 else 0][0]
-    	    start  = margin
-    	    end = dim-margin
-#	    print "(start,end):",start,end
+       	    #margin = [int(ri/ratio)+70 if int(ri/ratio)+70 <127 else 0][0]
+    	    #start  = margin
+    	    #end = dim-margin
+	    start = int((ri+5*dr)/(sqrt(2)*ratio))
+	    end = int((ri-5*dr)/(sqrt(2)*ratio))
+	    #print "(start,end):",start,end
     	    #plt.imshow(dens_arr[start:end,dim/2,start:end],cmap=cm.jet,norm=LogNorm())
             #plt.colorbar()
 	    sum_args = 0
