@@ -12,7 +12,8 @@ import sys
 lev = int(sys.argv[1])
 fat_fname=100
 print "mass plots for fat 100"
-os.chdir("../../project/FLASH4.3_3/object/")
+#os.chdir("../../project/FLASH4.3_3/object/")
+os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 30
@@ -24,8 +25,8 @@ ctr =dim/2
 dr=cell_size
 boxlen=int(ds.domain_width[0])
 ratio = boxlen/dim
-#xi_range = np.logspace(0,1.04,num=20)
-xi_range = np.logspace(-1.5,1.5,num=30)
+#xi_range = np.logspace(-1.5,1.5,num=30)
+xi_range = np.logspace(0,1.04,num=20)
 r_range = xi_range/1.057E-17
 
 def plot_MR(timestep):
@@ -40,18 +41,19 @@ def plot_MR(timestep):
     for ri in r_range[::-1]:
         ix,iy,iz =  np.where(np.isclose(r,ri,atol=dr))
         print "At radius xi= ",ri*1.057E-17,", number of blocks within dr: ",len(ix)
-	confident_blockcount_list.append(len(ix))
+	confident_blockcount_lst.append(len(ix))
         #val =np.sum(r[ix][iy][iz]*dens_arr[ix][iy][iz]*dr)
 	sum_args_list.append(np.sum(r[ix,iy,iz]*dens_arr[ix,iy,iz]*dr))
     sum_args_list = np.array(sum_args_list)
     print "confidence_blockcount_list: ", confident_blockcount_lst
-    np.savetxt("fast_sum_args_list{0}_lev{1}.txt".format(timestep,lev),sum_args_list)
+    np.savetxt("2fast_sum_args_list{0}_lev{1}.txt".format(timestep,lev),sum_args_list)
     print "sum_args_list: ",sum_args_list
     plt.loglog(xi_range,4*np.pi*G*sum_args_list/a,label= "t={}".format(timestep))
-    plt.savefig('fast_mass{0}_lev{1}.png'.format(timestep,lev))
+    plt.savefig('2fast_mass{0}_lev{1}.png'.format(timestep,lev))
 
 plt.figure()
-tlst = [0,10,20,30,40,50]
+#tlst = [0,10,20,30,40,50]
+tlst = [0,28,30,32,40]
 for t in tlst :
     plot_MR(t)
 plt.legend(loc='upper left')
