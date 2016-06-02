@@ -12,8 +12,8 @@ import sys
 lev = int(sys.argv[1])
 fat_fname=100
 print "mass plots for fat 100"
-#os.chdir("../../project/FLASH4.3_3/object/")
-os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
+os.chdir("../../project/FLASH4.3_3/object/")
+#os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 30
@@ -25,8 +25,8 @@ ctr =dim/2
 dr=cell_size
 boxlen=int(ds.domain_width[0])
 ratio = boxlen/dim
-#xi_range = np.logspace(-1.5,1.5,num=30)
-xi_range = np.logspace(0,1.04,num=20)
+xi_range = np.logspace(-1.5,1.5,num=30)
+#xi_range = np.logspace(0,1.04,num=20)
 r_range = xi_range/1.057E-17
 
 def plot_MR(timestep):
