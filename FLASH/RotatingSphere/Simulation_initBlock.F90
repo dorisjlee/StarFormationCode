@@ -86,7 +86,7 @@ subroutine Simulation_initBlock(blockID)
   rmax=16.90 
   dr=0.01!delta xi used to initialize np.arange for the numerical integration
   rho_min =  rho_c*dens_arr(int(rmax*100),1)
-  center = 2.0e18 !1.155E18 !5.0E18  !abs(xmin-xmax)/2. !boxlen/2
+  center = 5.e18 !1.155E18 !5.0E18  !abs(xmin-xmax)/2. !boxlen/2
   rho_out =0.5E-22
   P_out = fattening_factor*rho_min*8.254E8
   !print *,"beta:",beta_param
@@ -102,7 +102,7 @@ subroutine Simulation_initBlock(blockID)
            xx  = xCenter(i)-center
            rr = sqrt(xx**2 + yy**2 + zz**2)
            phi =  atan(yy/xx)
-           !print *, phi
+  !         print *, phi
            rc=rr*1.057E-17
            if (rc <= rmax) then
                rc0 = int(rc/dr)+1 !to prevent from hitting index 0 which is yields zero density
@@ -114,11 +114,24 @@ subroutine Simulation_initBlock(blockID)
            else
                rhoZone =  fattening_factor*rho_out!7.9856E-27 !rho_min*10^-6
            endif
-           velxZone = -omega*rr*sin(phi)  
-           velyZone = omega*rr*cos(phi)
+           velxZone = abs(omega*rr*sin(phi))
+           velyZone = abs(omega*rr*cos(phi))
+
+           if (xx<0) then
+               velyZone=-velyZone
+           endif
+           if (yy>0) then
+               velxZone=-velxZone
+           endif
+
+!           print *,xx,yy,phi,velxZone,velyZone
+           if (rc >=18.719) then
+               velxZone = velxZone*exp(-(rc-18.719))  
+               velyZone = velyZone*exp(-(rc-18.719))
+           endif
            velzZone = 0.0
            !print *,omega
-           !print *,velyZone
+ !          print *,"vy: ",velyZone
            !Pressure 
            IF (rc .LE. rmax) THEN     
                 presZone=rhoZone*8.254E8  !ideal gas law (T=10K inside)
