@@ -14,16 +14,17 @@ fat_fname=100
 print "mass plots for fat 100"
 #os.chdir("../../project/FLASH4.3_3/object/")
 #os.chdir("../../project/FLASH4.3_3/lev8sink/")
-os.chdir("../../project/FLASH4.3_3/lev8nosink/")
+#os.chdir("../../project/FLASH4.3_3/lev8nosink/")
 #os.chdir("../../project/FLASH4.3_3/low_res_no_sink/")
 #os.chdir("../../project/FLASH4.3_2/object/fat{}/".format(fat_fname))
+os.chdir("../../project/FLASH4.3_3/hi_res_beta_0.01sink_CFL0.3_Jeans/")
 G = 6.67e-8 #cgs
 a = 28730.5 #cm/s
 timestep= 30
 ds = yt.load("sod_hdf5_chk_{}".format(str(timestep).zfill(4)))
 dim = 2**(lev+3)
-#cell_size = int((ds.domain_width/dim)[0].in_cgs())
-cell_size = 15625000000000000
+cell_size = int((ds.domain_width/dim)[0].in_cgs())
+#cell_size = 15625000000000000
 #cell_size = 39062500000000000
 #cell_size = 3906250000000000
 print "cell size: ", cell_size
@@ -56,15 +57,20 @@ def plot_MR(timestep):
     np.savetxt("compare_new_fast_sum_args_list{0}_lev{1}.txt".format(timestep,lev),sum_args_list)
     print "sum_args_list: ",sum_args_list
     plt.loglog(xi_range,4*np.pi*G*sum_args_list/a,label= "t={}".format(timestep))
-    plt.savefig('compare_new_fast_mass{0}_lev{1}.png'.format(timestep,lev))
+    plt.savefig('mass{0}_lev{1}.png'.format(timestep,lev))
 
 plt.figure()
 #tlst = [0,10,20,30,40,50]
 #tlst = [0,28,30,32,40]
 #tlst = [34,36,38]
 #tlst = [0,28,30,32,40]
-tlst = [0,28,30,32,40]
-for t in tlst :
-    plot_MR(t)
+#tlst = [0,28,30,32,40]
+#tlst = [3034]
+#for t in tlst :
+END_TIME = 348
+for t in np.arange(210,END_TIME):
+    if t%30 ==0:
+	print "time: ", t
+    	plot_MR(t)
 plt.legend(loc='upper left')
 plt.savefig("compare_fast_MRplot.png")
