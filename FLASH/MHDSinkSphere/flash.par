@@ -1,0 +1,137 @@
+fattening_factor = 100.
+beta_param = 0
+alpha = 0.1
+gamma           = 1.001 
+geometry = cartesian
+
+xmin		= 0.
+xmax		= 1e19 
+ymin		= 0.
+ymax		= 1e19
+zmin		= 0.
+zmax		= 1e19
+
+#		Boundary conditions
+xl_boundary_type = "outflow"
+xr_boundary_type = "outflow"
+
+yl_boundary_type = "outflow"
+yr_boundary_type = "outflow"
+
+#Sink Particles Parameters
+useParticle = .true.
+sink_merging = .true.
+useSinkParticles = .true.
+sink_density_thresh = 2.54794669312e-19 
+sink_accretion_radius = 1.953125e+17
+sink_softening_radius = 1.953125e+17
+sim_sink_x    =  5.0E18
+sim_sink_y    =  5.0E18
+sim_sink_z    =  5.0E18
+sim_sink_vx   =  0.0
+sim_sink_vy   =  0.0
+sim_sink_vz   =  0.0
+sim_sink_mass =  1.989e32
+
+
+# Simulation (grid, time, I/O) parameters
+cfl		= 0.3
+basenm          = "mhd_sphere_"
+restart         = .false.
+
+checkpointFileIntervalTime = 1.e10
+checkpointFileIntervalStep = 0
+checkpointFileNumber = 0 
+
+# plotfile output parameters
+plotfileIntervalTime = 1.e10
+plotfileIntervalStep = 0
+plotfileNumber = 0
+
+particleFileIntervalTime = 1.e10
+particleFileIntervalStep = 0
+particleFileNumber = 0 
+
+
+nend            = 1E6
+tmax            = 5.0e13
+dtinit          = 1.0E3
+dtmax           = 1.0E10 #1.0E15
+
+run_comment     = "MHD sphere"
+log_file        = "mhd_sphere.log"
+eintSwitch     = 1.e-4
+
+
+plot_var_1 = "dens"
+plot_var_2 = "pres"
+plot_var_3 = "temp"
+
+#    AMR refinement parameters  
+lrefine_min     = 5  #6 
+lrefine_max     = 7  #8 
+#refine_var_1    = "dens"
+refineOnJeansLength=.true.
+jeans_ncells_ref = 32.0
+jeans_ncells_deref = 64.0
+
+# These parameters are used only for the uniform grid
+
+
+#iGridSize = 64  #defined as nxb * iprocs
+#jGridSize = 64
+#kGridSize = 64 
+
+iProcs = 3  	#number or procs in the i direction	
+jProcs = 4
+kProcs = 4
+
+RiemannSolver	= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina
+
+#       DivB control switch
+killdivb        = .true.
+
+
+#       Flux Conservation for AMR
+flux_correct    = .true.
+
+## -------------------------------------------------------------##
+##  SWITCHES SPECIFIC TO THE UNSPLIT STAGGERED MESH MHD SOLVER  ##
+#       I. INTERPOLATION SCHEME:
+order           = 2      # Interpolation order (first/second/third/fifth order)
+slopeLimiter    = "vanLeer"   # Slope limiters (minmod, mc, vanLeer, hybrid, limited)
+LimitedSlopeBeta= 1.     # Slope parameter for the "limited" slope by Toro
+charLimiting    = .true. # Characteristic limiting vs. Primitive limiting
+
+
+use_avisc       = .false. # use artificial viscosity (originally for PPM)
+cvisc           = 0.1     # coefficient for artificial viscosity
+use_flattening  = .false. # use flattening (dissipative) (originally for PPM)
+use_steepening  = .false. # use contact steepening (originally for PPM)
+use_upwindTVD   = .false. # use upwind biased TVD slope for PPM (need nguard=6)
+
+
+#       II. MAGNETIC(B) AND ELECTRIC(E) FIELDS:
+E_modification  = .false.           # High order algorithm for E-field construction
+energyFix       = .true.           # Update magnetic energy using staggered B-fields
+ForceHydroLimit = .false.          # Pure Hydro Limit (B=0)
+prolMethod      = "balsara_prol" # Prolongation method (injecton_prol, balsara_prol)
+
+
+#       III. RIEMANN SOLVERS:
+RiemannSolver   = "hllc"       # Roe, HLL, HLLC, HLLD, LLF, Marquina
+entropy         = .false.     # Entropy fix for the Roe solver
+
+
+#       IV. STRONG SHOCK HANDELING SCHEME:
+shockDetect     = .false.     # Shock Detect for numerical stability
+## -------------------------------------------------------------##
+
+## ---------------------------------------------------------------##
+##  SWITCHES SPECIFIC TO THE SUPER-TIME-STEPPING (STS) ALGORITHM  ##
+##  NOTE: For details on using STS runtime parameters, please     ##
+##        refer to user's guide (Driver chapter).                 ##
+useSTS                  = .false.
+nstepTotalSTS           = 5
+nuSTS                   = 0.2
+## ---------------------------------------------------------------##
