@@ -1,0 +1,2133 @@
+ _/_/_/       _/_/     _/    _/    _/_/_/   _/_/_/_/    _/_/_/  
+ _/    _/    _/  _/    _/_/_/_/   _/    _/  _/         _/    _/ 
+ _/    _/   _/    _/   _/ _/ _/   _/        _/         _/       
+ _/_/_/     _/_/_/_/   _/    _/     _/_/    _/_/_/       _/_/   
+ _/    _/   _/    _/   _/    _/         _/  _/               _/ 
+ _/    _/   _/    _/   _/    _/   _/    _/  _/         _/    _/ 
+ _/    _/   _/    _/   _/    _/    _/_/_/   _/_/_/_/    _/_/_/  
+                         Version 3.0                            
+        written by Romain Teyssier (University of Zurich)       
+                (c) CEA 1999-2007, UZH 2008-2014                
+  
+ Working with nproc =    1 for ndim = 2
+ Using solver = hydro with nvar =  5
+  
+ compile date = Tue Mar 10 01:48:44 PDT 2015
+ patch dir    = 
+ remote repo  = https://bitbucket.org/rteyssie/ramses.git
+ local branch = master
+ last commit  = 01300149 -undo the changes that I accidently pushed to the wrong remote reposito
+  
+ Building initial AMR grid
+ Initial mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         16 grids (      16,      16,      16,)
+ Level  6 has         16 grids (      16,      16,      16,)
+ Level  7 has         16 grids (      16,      16,      16,)
+ Level  8 has         16 grids (      16,      16,      16,)
+ Level  9 has         15 grids (      15,      15,      15,)
+ Level 10 has          8 grids (       8,       8,       8,)
+ Starting time integration
+ Fine step=     0 t= 0.00000E+00 dt= 1.019E-06 a= 1.000E+00 mem= 0.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         16 grids (      16,      16,      16,)
+ Level  6 has         16 grids (      16,      16,      16,)
+ Level  7 has         16 grids (      16,      16,      16,)
+ Level  8 has         16 grids (      16,      16,      16,)
+ Level  9 has         16 grids (      16,      16,      16,)
+ Level 10 has         13 grids (      13,      13,      13,)
+ Main step=     1 mcons= 0.00E+00 econs= 0.00E+00 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=     2 t= 2.13973E-06 dt= 1.286E-06 a= 1.000E+00 mem= 0.3% 
+ Fine step=    10 t= 1.58689E-05 dt= 2.220E-06 a= 1.000E+00 mem= 0.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         25 grids (      25,      25,      25,)
+ Level  8 has         25 grids (      25,      25,      25,)
+ Level  9 has         33 grids (      33,      33,      33,)
+ Level 10 has         39 grids (      39,      39,      39,)
+ Main step=    10 mcons= 0.00E+00 econs= 7.77E-16 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=    20 t= 4.34500E-05 dt= 3.290E-06 a= 1.000E+00 mem= 0.4% 
+ Fine step=    30 t= 7.88079E-05 dt= 3.797E-06 a= 1.000E+00 mem= 0.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         25 grids (      25,      25,      25,)
+ Level  8 has         33 grids (      33,      33,      33,)
+ Level  9 has         43 grids (      43,      43,      43,)
+ Level 10 has         69 grids (      69,      69,      69,)
+ Main step=    20 mcons= 0.00E+00 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=    40 t= 1.18533E-04 dt= 4.171E-06 a= 1.000E+00 mem= 0.5% 
+ Fine step=    50 t= 1.62215E-04 dt= 4.630E-06 a= 1.000E+00 mem= 0.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         25 grids (      25,      25,      25,)
+ Level  8 has         35 grids (      35,      35,      35,)
+ Level  9 has         58 grids (      58,      58,      58,)
+ Level 10 has         92 grids (      92,      92,      92,)
+ Main step=    30 mcons= 0.00E+00 econs=-3.11E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=    60 t= 2.09889E-04 dt= 4.969E-06 a= 1.000E+00 mem= 0.5% 
+ Fine step=    70 t= 2.60890E-04 dt= 5.289E-06 a= 1.000E+00 mem= 0.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         35 grids (      35,      35,      35,)
+ Level  8 has         46 grids (      46,      46,      46,)
+ Level  9 has         71 grids (      71,      71,      71,)
+ Level 10 has        120 grids (     120,     120,     120,)
+ Main step=    40 mcons= 0.00E+00 econs=-4.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=    80 t= 3.14971E-04 dt= 5.582E-06 a= 1.000E+00 mem= 0.6% 
+ Fine step=    90 t= 3.71881E-04 dt= 5.849E-06 a= 1.000E+00 mem= 0.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         35 grids (      35,      35,      35,)
+ Level  8 has         46 grids (      46,      46,      46,)
+ Level  9 has         83 grids (      83,      83,      83,)
+ Level 10 has        144 grids (     144,     144,     144,)
+ Main step=    50 mcons= 0.00E+00 econs=-4.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   100 t= 4.31355E-04 dt= 6.092E-06 a= 1.000E+00 mem= 0.6% 
+ Fine step=   110 t= 4.93181E-04 dt= 6.316E-06 a= 1.000E+00 mem= 0.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         35 grids (      35,      35,      35,)
+ Level  8 has         48 grids (      48,      48,      48,)
+ Level  9 has         90 grids (      90,      90,      90,)
+ Level 10 has        162 grids (     162,     162,     162,)
+ Main step=    60 mcons= 0.00E+00 econs=-5.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   120 t= 5.57187E-04 dt= 6.525E-06 a= 1.000E+00 mem= 0.6% 
+ Fine step=   130 t= 6.23224E-04 dt= 6.719E-06 a= 1.000E+00 mem= 0.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         35 grids (      35,      35,      35,)
+ Level  8 has         58 grids (      58,      58,      58,)
+ Level  9 has        103 grids (     103,     103,     103,)
+ Level 10 has        184 grids (     184,     184,     184,)
+ Main step=    70 mcons= 0.00E+00 econs=-5.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   140 t= 6.91859E-04 dt= 7.065E-06 a= 1.000E+00 mem= 0.7% 
+ Fine step=   150 t= 7.63134E-04 dt= 7.384E-06 a= 1.000E+00 mem= 0.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         36 grids (      36,      36,      36,)
+ Level  8 has         61 grids (      61,      61,      61,)
+ Level  9 has        118 grids (     118,     118,     118,)
+ Level 10 has        204 grids (     204,     204,     204,)
+ Main step=    80 mcons= 0.00E+00 econs=-5.99E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   160 t= 8.37985E-04 dt= 7.597E-06 a= 1.000E+00 mem= 0.7% 
+ Fine step=   170 t= 9.14603E-04 dt= 7.757E-06 a= 1.000E+00 mem= 0.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         25 grids (      25,      25,      25,)
+ Level  7 has         36 grids (      36,      36,      36,)
+ Level  8 has         61 grids (      61,      61,      61,)
+ Level  9 has        121 grids (     121,     121,     121,)
+ Level 10 has        222 grids (     222,     222,     222,)
+ Main step=    90 mcons=-1.11E-16 econs=-6.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   180 t= 9.94056E-04 dt= 8.547E-06 a= 1.000E+00 mem= 0.7% 
+ Fine step=   190 t= 1.07987E-03 dt= 8.636E-06 a= 1.000E+00 mem= 0.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         35 grids (      35,      35,      35,)
+ Level  7 has         46 grids (      46,      46,      46,)
+ Level  8 has         73 grids (      73,      73,      73,)
+ Level  9 has        138 grids (     138,     138,     138,)
+ Level 10 has        246 grids (     246,     246,     246,)
+ Main step=   100 mcons= 0.00E+00 econs=-7.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   200 t= 1.17123E-03 dt= 9.496E-06 a= 1.000E+00 mem= 0.8% 
+ Fine step=   210 t= 1.26628E-03 dt= 9.522E-06 a= 1.000E+00 mem= 0.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         35 grids (      35,      35,      35,)
+ Level  7 has         46 grids (      46,      46,      46,)
+ Level  8 has         75 grids (      75,      75,      75,)
+ Level  9 has        151 grids (     151,     151,     151,)
+ Level 10 has        266 grids (     266,     266,     266,)
+ Main step=   110 mcons= 0.00E+00 econs=-7.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   220 t= 1.36435E-03 dt= 1.093E-05 a= 1.000E+00 mem= 0.9% 
+ Fine step=   230 t= 1.47330E-03 dt= 1.085E-05 a= 1.000E+00 mem= 0.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         35 grids (      35,      35,      35,)
+ Level  7 has         48 grids (      48,      48,      48,)
+ Level  8 has         86 grids (      86,      86,      86,)
+ Level  9 has        164 grids (     164,     164,     164,)
+ Level 10 has        290 grids (     290,     290,     290,)
+ Main step=   120 mcons= 0.00E+00 econs=-8.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   240 t= 1.59113E-03 dt= 1.198E-05 a= 1.000E+00 mem= 0.9% 
+ Fine step=   250 t= 1.71257E-03 dt= 1.212E-05 a= 1.000E+00 mem= 0.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         35 grids (      35,      35,      35,)
+ Level  7 has         48 grids (      48,      48,      48,)
+ Level  8 has         90 grids (      90,      90,      90,)
+ Level  9 has        171 grids (     171,     171,     171,)
+ Level 10 has        304 grids (     304,     304,     304,)
+ Main step=   130 mcons=-1.11E-16 econs=-9.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   260 t= 1.84148E-03 dt= 1.402E-05 a= 1.000E+00 mem= 0.9% 
+ Fine step=   270 t= 1.98285E-03 dt= 1.487E-05 a= 1.000E+00 mem= 1.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         35 grids (      35,      35,      35,)
+ Level  7 has         48 grids (      48,      48,      48,)
+ Level  8 has         94 grids (      94,      94,      94,)
+ Level  9 has        186 grids (     186,     186,     186,)
+ Level 10 has        332 grids (     332,     332,     332,)
+ Main step=   140 mcons=-1.11E-16 econs=-1.07E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   280 t= 2.13465E-03 dt= 1.558E-05 a= 1.000E+00 mem= 1.0% 
+ Fine step=   290 t= 2.29355E-03 dt= 1.744E-05 a= 1.000E+00 mem= 1.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         36 grids (      36,      36,      36,)
+ Level  7 has         59 grids (      59,      59,      59,)
+ Level  8 has        105 grids (     105,     105,     105,)
+ Level  9 has        202 grids (     202,     202,     202,)
+ Level 10 has        356 grids (     356,     356,     356,)
+ Main step=   150 mcons= 0.00E+00 econs=-1.09E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   300 t= 2.46805E-03 dt= 1.848E-05 a= 1.000E+00 mem= 1.1% 
+ Fine step=   310 t= 2.65737E-03 dt= 1.958E-05 a= 1.000E+00 mem= 1.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         36 grids (      36,      36,      36,)
+ Level  7 has         61 grids (      61,      61,      61,)
+ Level  8 has        111 grids (     111,     111,     111,)
+ Level  9 has        219 grids (     219,     219,     219,)
+ Level 10 has        384 grids (     384,     384,     384,)
+ Main step=   160 mcons= 0.00E+00 econs=-1.14E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   320 t= 2.85896E-03 dt= 2.103E-05 a= 1.000E+00 mem= 1.1% 
+ Fine step=   330 t= 3.07504E-03 dt= 2.239E-05 a= 1.000E+00 mem= 1.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         36 grids (      36,      36,      36,)
+ Level  7 has         61 grids (      61,      61,      61,)
+ Level  8 has        126 grids (     126,     126,     126,)
+ Level  9 has        238 grids (     238,     238,     238,)
+ Level 10 has        412 grids (     412,     412,     412,)
+ Main step=   170 mcons= 0.00E+00 econs=-1.23E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   340 t= 3.30633E-03 dt= 2.372E-05 a= 1.000E+00 mem= 1.2% 
+ Fine step=   350 t= 3.55077E-03 dt= 2.512E-05 a= 1.000E+00 mem= 1.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         25 grids (      25,      25,      25,)
+ Level  6 has         36 grids (      36,      36,      36,)
+ Level  7 has         63 grids (      63,      63,      63,)
+ Level  8 has        129 grids (     129,     129,     129,)
+ Level  9 has        252 grids (     252,     252,     252,)
+ Level 10 has        446 grids (     446,     446,     446,)
+ Main step=   180 mcons=-1.11E-16 econs=-1.24E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   360 t= 3.80397E-03 dt= 2.562E-05 a= 1.000E+00 mem= 1.2% 
+ Fine step=   370 t= 4.06205E-03 dt= 2.610E-05 a= 1.000E+00 mem= 1.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         35 grids (      35,      35,      35,)
+ Level  6 has         46 grids (      46,      46,      46,)
+ Level  7 has         73 grids (      73,      73,      73,)
+ Level  8 has        142 grids (     142,     142,     142,)
+ Level  9 has        270 grids (     270,     270,     270,)
+ Level 10 has        470 grids (     470,     470,     470,)
+ Main step=   190 mcons= 0.00E+00 econs=-1.67E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   380 t= 4.33440E-03 dt= 2.892E-05 a= 1.000E+00 mem= 1.3% 
+ Fine step=   390 t= 4.62461E-03 dt= 2.920E-05 a= 1.000E+00 mem= 1.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         35 grids (      35,      35,      35,)
+ Level  6 has         46 grids (      46,      46,      46,)
+ Level  7 has         75 grids (      75,      75,      75,)
+ Level  8 has        146 grids (     146,     146,     146,)
+ Level  9 has        283 grids (     283,     283,     283,)
+ Level 10 has        495 grids (     495,     495,     495,)
+ Main step=   200 mcons= 0.00E+00 econs=-1.67E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   400 t= 4.93502E-03 dt= 3.237E-05 a= 1.000E+00 mem= 1.4% 
+ Fine step=   410 t= 5.25901E-03 dt= 3.245E-05 a= 1.000E+00 mem= 1.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         35 grids (      35,      35,      35,)
+ Level  6 has         48 grids (      48,      48,      48,)
+ Level  7 has         78 grids (      78,      78,      78,)
+ Level  8 has        163 grids (     163,     163,     163,)
+ Level  9 has        297 grids (     297,     297,     297,)
+ Level 10 has        520 grids (     520,     520,     520,)
+ Main step=   210 mcons=-1.11E-16 econs= 1.78E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   420 t= 5.58412E-03 dt= 3.262E-05 a= 1.000E+00 mem= 1.4% 
+ Fine step=   430 t= 5.95186E-03 dt= 3.769E-05 a= 1.000E+00 mem= 1.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         35 grids (      35,      35,      35,)
+ Level  6 has         48 grids (      48,      48,      48,)
+ Level  7 has         88 grids (      88,      88,      88,)
+ Level  8 has        172 grids (     172,     172,     172,)
+ Level  9 has        327 grids (     327,     327,     327,)
+ Level 10 has        548 grids (     548,     548,     548,)
+ Main step=   220 mcons= 0.00E+00 econs=-1.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   440 t= 6.32822E-03 dt= 4.234E-05 a= 1.000E+00 mem= 1.5% 
+ Fine step=   450 t= 6.75203E-03 dt= 4.282E-05 a= 1.000E+00 mem= 1.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         35 grids (      35,      35,      35,)
+ Level  6 has         48 grids (      48,      48,      48,)
+ Level  7 has         92 grids (      92,      92,      92,)
+ Level  8 has        183 grids (     183,     183,     183,)
+ Level  9 has        341 grids (     341,     341,     341,)
+ Level 10 has        569 grids (     569,     569,     569,)
+ Main step=   230 mcons= 0.00E+00 econs=-1.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   460 t= 7.17821E-03 dt= 4.241E-05 a= 1.000E+00 mem= 1.6% 
+ Fine step=   470 t= 7.64527E-03 dt= 4.991E-05 a= 1.000E+00 mem= 1.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         35 grids (      35,      35,      35,)
+ Level  6 has         48 grids (      48,      48,      48,)
+ Level  7 has         94 grids (      94,      94,      94,)
+ Level  8 has        194 grids (     194,     194,     194,)
+ Level  9 has        355 grids (     355,     355,     355,)
+ Level 10 has        595 grids (     595,     595,     595,)
+ Main step=   240 mcons= 0.00E+00 econs=-1.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   480 t= 8.14058E-03 dt= 5.375E-05 a= 1.000E+00 mem= 1.6% 
+ Fine step=   490 t= 8.68170E-03 dt= 5.532E-05 a= 1.000E+00 mem= 1.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         36 grids (      36,      36,      36,)
+ Level  6 has         59 grids (      59,      59,      59,)
+ Level  7 has        107 grids (     107,     107,     107,)
+ Level  8 has        208 grids (     208,     208,     208,)
+ Level  9 has        379 grids (     379,     379,     379,)
+ Level 10 has        612 grids (     612,     612,     612,)
+ Main step=   250 mcons= 2.22E-16 econs=-1.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   500 t= 9.23837E-03 dt= 5.825E-05 a= 1.000E+00 mem= 1.7% 
+ Fine step=   510 t= 9.83422E-03 dt= 6.121E-05 a= 1.000E+00 mem= 1.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         36 grids (      36,      36,      36,)
+ Level  6 has         61 grids (      61,      61,      61,)
+ Level  7 has        111 grids (     111,     111,     111,)
+ Level  8 has        212 grids (     212,     212,     212,)
+ Level  9 has        401 grids (     401,     401,     401,)
+ Level 10 has        639 grids (     639,     639,     639,)
+ Main step=   260 mcons= 2.22E-16 econs=-1.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   520 t= 1.04563E-02 dt= 6.424E-05 a= 1.000E+00 mem= 1.7% 
+ Fine step=   530 t= 1.10946E-02 dt= 6.384E-05 a= 1.000E+00 mem= 1.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         36 grids (      36,      36,      36,)
+ Level  6 has         61 grids (      61,      61,      61,)
+ Level  7 has        113 grids (     113,     113,     113,)
+ Level  8 has        228 grids (     228,     228,     228,)
+ Level  9 has        429 grids (     429,     429,     429,)
+ Level 10 has        666 grids (     666,     666,     666,)
+ Main step=   270 mcons=-1.11E-16 econs=-1.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   540 t= 1.17680E-02 dt= 6.802E-05 a= 1.000E+00 mem= 1.8% 
+ Fine step=   550 t= 1.24663E-02 dt= 7.160E-05 a= 1.000E+00 mem= 1.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         36 grids (      36,      36,      36,)
+ Level  6 has         61 grids (      61,      61,      61,)
+ Level  7 has        126 grids (     126,     126,     126,)
+ Level  8 has        244 grids (     244,     244,     244,)
+ Level  9 has        446 grids (     446,     446,     446,)
+ Level 10 has        692 grids (     692,     692,     692,)
+ Main step=   280 mcons= 0.00E+00 econs=-8.88E-16 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   560 t= 1.32001E-02 dt= 7.427E-05 a= 1.000E+00 mem= 1.9% 
+ Fine step=   570 t= 1.39546E-02 dt= 7.716E-05 a= 1.000E+00 mem= 2.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         36 grids (      36,      36,      36,)
+ Level  6 has         63 grids (      63,      63,      63,)
+ Level  7 has        129 grids (     129,     129,     129,)
+ Level  8 has        258 grids (     258,     258,     258,)
+ Level  9 has        469 grids (     469,     469,     469,)
+ Level 10 has        713 grids (     713,     713,     713,)
+ Main step=   290 mcons=-1.11E-16 econs=-1.11E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   580 t= 1.47338E-02 dt= 8.004E-05 a= 1.000E+00 mem= 2.0% 
+ Fine step=   590 t= 1.55406E-02 dt= 8.307E-05 a= 1.000E+00 mem= 2.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         46 grids (      46,      46,      46,)
+ Level  6 has         73 grids (      73,      73,      73,)
+ Level  7 has        145 grids (     145,     145,     145,)
+ Level  8 has        278 grids (     278,     278,     278,)
+ Level  9 has        509 grids (     509,     509,     509,)
+ Level 10 has        748 grids (     748,     748,     748,)
+ Main step=   300 mcons= 0.00E+00 econs=-9.99E-16 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   600 t= 1.63804E-02 dt= 8.580E-05 a= 1.000E+00 mem= 2.1% 
+ Fine step=   610 t= 1.72498E-02 dt= 8.743E-05 a= 1.000E+00 mem= 2.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         46 grids (      46,      46,      46,)
+ Level  6 has         75 grids (      75,      75,      75,)
+ Level  7 has        146 grids (     146,     146,     146,)
+ Level  8 has        292 grids (     292,     292,     292,)
+ Level  9 has        533 grids (     533,     533,     533,)
+ Level 10 has        740 grids (     740,     740,     740,)
+ Main step=   310 mcons=-1.11E-16 econs= 7.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   620 t= 1.81455E-02 dt= 9.055E-05 a= 1.000E+00 mem= 2.2% 
+ Fine step=   630 t= 1.90695E-02 dt= 9.416E-05 a= 1.000E+00 mem= 2.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         46 grids (      46,      46,      46,)
+ Level  6 has         76 grids (      76,      76,      76,)
+ Level  7 has        159 grids (     159,     159,     159,)
+ Level  8 has        306 grids (     306,     306,     306,)
+ Level  9 has        557 grids (     557,     557,     557,)
+ Level 10 has        786 grids (     786,     786,     786,)
+ Main step=   320 mcons=-1.11E-16 econs= 7.88E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   640 t= 2.00216E-02 dt= 9.623E-05 a= 1.000E+00 mem= 2.3% 
+ Fine step=   650 t= 2.10007E-02 dt= 9.941E-05 a= 1.000E+00 mem= 2.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         48 grids (      48,      48,      48,)
+ Level  6 has         78 grids (      78,      78,      78,)
+ Level  7 has        163 grids (     163,     163,     163,)
+ Level  8 has        309 grids (     309,     309,     309,)
+ Level  9 has        566 grids (     566,     566,     566,)
+ Level 10 has        766 grids (     766,     766,     766,)
+ Main step=   330 mcons= 0.00E+00 econs= 7.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   660 t= 2.20066E-02 dt= 1.030E-04 a= 1.000E+00 mem= 2.3% 
+ Fine step=   670 t= 2.30405E-02 dt= 1.050E-04 a= 1.000E+00 mem= 2.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         48 grids (      48,      48,      48,)
+ Level  6 has         78 grids (      78,      78,      78,)
+ Level  7 has        166 grids (     166,     166,     166,)
+ Level  8 has        328 grids (     328,     328,     328,)
+ Level  9 has        601 grids (     601,     601,     601,)
+ Level 10 has        864 grids (     864,     864,     864,)
+ Main step=   340 mcons= 0.00E+00 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   680 t= 2.41019E-02 dt= 1.072E-04 a= 1.000E+00 mem= 2.4% 
+ Fine step=   690 t= 2.51882E-02 dt= 1.106E-04 a= 1.000E+00 mem= 2.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         48 grids (      48,      48,      48,)
+ Level  6 has         92 grids (      92,      92,      92,)
+ Level  7 has        181 grids (     181,     181,     181,)
+ Level  8 has        344 grids (     344,     344,     344,)
+ Level  9 has        619 grids (     619,     619,     619,)
+ Level 10 has        870 grids (     870,     870,     870,)
+ Main step=   350 mcons=-2.22E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   700 t= 2.63053E-02 dt= 1.137E-04 a= 1.000E+00 mem= 2.5% 
+ Fine step=   710 t= 2.74483E-02 dt= 1.158E-04 a= 1.000E+00 mem= 2.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         48 grids (      48,      48,      48,)
+ Level  6 has         92 grids (      92,      92,      92,)
+ Level  7 has        183 grids (     183,     183,     183,)
+ Level  8 has        360 grids (     360,     360,     360,)
+ Level  9 has        650 grids (     650,     650,     650,)
+ Level 10 has        874 grids (     874,     874,     874,)
+ Main step=   360 mcons=-1.11E-16 econs=-2.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   720 t= 2.86189E-02 dt= 1.185E-04 a= 1.000E+00 mem= 2.6% 
+ Fine step=   730 t= 2.98150E-02 dt= 1.216E-04 a= 1.000E+00 mem= 2.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         48 grids (      48,      48,      48,)
+ Level  6 has         94 grids (      94,      94,      94,)
+ Level  7 has        196 grids (     196,     196,     196,)
+ Level  8 has        372 grids (     372,     372,     372,)
+ Level  9 has        660 grids (     660,     660,     660,)
+ Level 10 has        906 grids (     906,     906,     906,)
+ Main step=   370 mcons=-1.11E-16 econs=-2.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   740 t= 3.10411E-02 dt= 1.244E-04 a= 1.000E+00 mem= 2.6% 
+ Fine step=   750 t= 3.22938E-02 dt= 1.265E-04 a= 1.000E+00 mem= 2.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         49 grids (      49,      49,      49,)
+ Level  6 has         95 grids (      95,      95,      95,)
+ Level  7 has        201 grids (     201,     201,     201,)
+ Level  8 has        392 grids (     392,     392,     392,)
+ Level  9 has        697 grids (     697,     697,     697,)
+ Level 10 has        950 grids (     950,     950,     950,)
+ Main step=   380 mcons= 0.00E+00 econs=-2.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   760 t= 3.35725E-02 dt= 1.295E-04 a= 1.000E+00 mem= 2.7% 
+ Fine step=   770 t= 3.48785E-02 dt= 1.326E-04 a= 1.000E+00 mem= 2.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         59 grids (      59,      59,      59,)
+ Level  6 has        107 grids (     107,     107,     107,)
+ Level  7 has        211 grids (     211,     211,     211,)
+ Level  8 has        406 grids (     406,     406,     406,)
+ Level  9 has        711 grids (     711,     711,     711,)
+ Level 10 has        969 grids (     969,     969,     969,)
+ Main step=   390 mcons=-1.11E-16 econs=-3.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   780 t= 3.62132E-02 dt= 1.350E-04 a= 1.000E+00 mem= 2.8% 
+ Fine step=   790 t= 3.75738E-02 dt= 1.372E-04 a= 1.000E+00 mem= 2.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         59 grids (      59,      59,      59,)
+ Level  6 has        109 grids (     109,     109,     109,)
+ Level  7 has        218 grids (     218,     218,     218,)
+ Level  8 has        422 grids (     422,     422,     422,)
+ Level  9 has        728 grids (     728,     728,     728,)
+ Level 10 has       1002 grids (    1002,    1002,    1002,)
+ Main step=   400 mcons=-1.11E-16 econs=-3.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   800 t= 3.89616E-02 dt= 1.404E-04 a= 1.000E+00 mem= 2.9% 
+ Fine step=   810 t= 4.03779E-02 dt= 1.436E-04 a= 1.000E+00 mem= 2.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         61 grids (      61,      61,      61,)
+ Level  6 has        111 grids (     111,     111,     111,)
+ Level  7 has        225 grids (     225,     225,     225,)
+ Level  8 has        434 grids (     434,     434,     434,)
+ Level  9 has        753 grids (     753,     753,     753,)
+ Level 10 has       1040 grids (    1040,    1040,    1040,)
+ Main step=   410 mcons= 0.00E+00 econs=-3.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   820 t= 4.18228E-02 dt= 1.458E-04 a= 1.000E+00 mem= 3.0% 
+ Fine step=   830 t= 4.32944E-02 dt= 1.489E-04 a= 1.000E+00 mem= 3.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         61 grids (      61,      61,      61,)
+ Level  6 has        113 grids (     113,     113,     113,)
+ Level  7 has        233 grids (     233,     233,     233,)
+ Level  8 has        452 grids (     452,     452,     452,)
+ Level  9 has        781 grids (     781,     781,     781,)
+ Level 10 has       1078 grids (    1078,    1078,    1078,)
+ Main step=   420 mcons= 0.00E+00 econs=-2.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   840 t= 4.47941E-02 dt= 1.521E-04 a= 1.000E+00 mem= 3.1% 
+ Fine step=   850 t= 4.63216E-02 dt= 1.543E-04 a= 1.000E+00 mem= 3.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         61 grids (      61,      61,      61,)
+ Level  6 has        115 grids (     115,     115,     115,)
+ Level  7 has        234 grids (     234,     234,     234,)
+ Level  8 has        458 grids (     458,     458,     458,)
+ Level  9 has        798 grids (     798,     798,     798,)
+ Level 10 has       1102 grids (    1102,    1102,    1102,)
+ Main step=   430 mcons= 0.00E+00 econs=-3.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   860 t= 4.78759E-02 dt= 1.569E-04 a= 1.000E+00 mem= 3.1% 
+ Fine step=   870 t= 4.94583E-02 dt= 1.605E-04 a= 1.000E+00 mem= 3.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         61 grids (      61,      61,      61,)
+ Level  6 has        127 grids (     127,     127,     127,)
+ Level  7 has        249 grids (     249,     249,     249,)
+ Level  8 has        474 grids (     474,     474,     474,)
+ Level  9 has        827 grids (     827,     827,     827,)
+ Level 10 has       1145 grids (    1145,    1145,    1145,)
+ Main step=   440 mcons= 0.00E+00 econs=-3.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   880 t= 5.10695E-02 dt= 1.627E-04 a= 1.000E+00 mem= 3.2% 
+ Fine step=   890 t= 5.27078E-02 dt= 1.649E-04 a= 1.000E+00 mem= 3.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         63 grids (      63,      63,      63,)
+ Level  6 has        131 grids (     131,     131,     131,)
+ Level  7 has        251 grids (     251,     251,     251,)
+ Level  8 has        492 grids (     492,     492,     492,)
+ Level  9 has        853 grids (     853,     853,     853,)
+ Level 10 has       1186 grids (    1186,    1186,    1186,)
+ Main step=   450 mcons= 0.00E+00 econs=-3.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   900 t= 5.43719E-02 dt= 1.683E-04 a= 1.000E+00 mem= 3.3% 
+ Fine step=   910 t= 5.60655E-02 dt= 1.712E-04 a= 1.000E+00 mem= 3.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         63 grids (      63,      63,      63,)
+ Level  6 has        129 grids (     129,     129,     129,)
+ Level  7 has        266 grids (     266,     266,     266,)
+ Level  8 has        508 grids (     508,     508,     508,)
+ Level  9 has        887 grids (     887,     887,     887,)
+ Level 10 has       1220 grids (    1220,    1220,    1220,)
+ Main step=   460 mcons= 0.00E+00 econs=-3.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   920 t= 5.77872E-02 dt= 1.733E-04 a= 1.000E+00 mem= 3.4% 
+ Fine step=   930 t= 5.95353E-02 dt= 1.767E-04 a= 1.000E+00 mem= 3.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         63 grids (      63,      63,      63,)
+ Level  6 has        131 grids (     131,     131,     131,)
+ Level  7 has        268 grids (     268,     268,     268,)
+ Level  8 has        523 grids (     523,     523,     523,)
+ Level  9 has        908 grids (     908,     908,     908,)
+ Level 10 has       1242 grids (    1242,    1242,    1242,)
+ Main step=   470 mcons= 0.00E+00 econs=-3.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   940 t= 6.13120E-02 dt= 1.797E-04 a= 1.000E+00 mem= 3.5% 
+ Fine step=   950 t= 6.31165E-02 dt= 1.818E-04 a= 1.000E+00 mem= 3.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         73 grids (      73,      73,      73,)
+ Level  6 has        145 grids (     145,     145,     145,)
+ Level  7 has        281 grids (     281,     281,     281,)
+ Level  8 has        544 grids (     544,     544,     544,)
+ Level  9 has        935 grids (     935,     935,     935,)
+ Level 10 has       1288 grids (    1288,    1288,    1288,)
+ Main step=   480 mcons= 0.00E+00 econs=-4.00E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   960 t= 6.49473E-02 dt= 1.847E-04 a= 1.000E+00 mem= 3.6% 
+ Fine step=   970 t= 6.68063E-02 dt= 1.881E-04 a= 1.000E+00 mem= 3.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         75 grids (      75,      75,      75,)
+ Level  6 has        149 grids (     149,     149,     149,)
+ Level  7 has        288 grids (     288,     288,     288,)
+ Level  8 has        560 grids (     560,     560,     560,)
+ Level  9 has        965 grids (     965,     965,     965,)
+ Level 10 has       1336 grids (    1336,    1336,    1336,)
+ Main step=   490 mcons= 0.00E+00 econs=-4.00E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=   980 t= 6.86946E-02 dt= 1.903E-04 a= 1.000E+00 mem= 3.7% 
+ Fine step=   990 t= 7.06098E-02 dt= 1.931E-04 a= 1.000E+00 mem= 3.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         75 grids (      75,      75,      75,)
+ Level  6 has        146 grids (     146,     146,     146,)
+ Level  7 has        300 grids (     300,     300,     300,)
+ Level  8 has        577 grids (     577,     577,     577,)
+ Level  9 has        980 grids (     980,     980,     980,)
+ Level 10 has       1356 grids (    1356,    1356,    1356,)
+ Main step=   500 mcons= 0.00E+00 econs=-3.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1000 t= 7.25532E-02 dt= 1.966E-04 a= 1.000E+00 mem= 3.8% 
+ Fine step=  1010 t= 7.45258E-02 dt= 1.987E-04 a= 1.000E+00 mem= 3.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         76 grids (      76,      76,      76,)
+ Level  6 has        151 grids (     151,     151,     151,)
+ Level  7 has        303 grids (     303,     303,     303,)
+ Level  8 has        592 grids (     592,     592,     592,)
+ Level  9 has       1015 grids (    1015,    1015,    1015,)
+ Level 10 has       1400 grids (    1400,    1400,    1400,)
+ Main step=   510 mcons= 0.00E+00 econs=-4.00E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1020 t= 7.65243E-02 dt= 2.012E-04 a= 1.000E+00 mem= 3.9% 
+ Fine step=  1030 t= 7.85511E-02 dt= 2.050E-04 a= 1.000E+00 mem= 3.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         78 grids (      78,      78,      78,)
+ Level  6 has        163 grids (     163,     163,     163,)
+ Level  7 has        318 grids (     318,     318,     318,)
+ Level  8 has        608 grids (     608,     608,     608,)
+ Level  9 has       1039 grids (    1039,    1039,    1039,)
+ Level 10 has       1441 grids (    1441,    1441,    1441,)
+ Main step=   520 mcons=-1.11E-16 econs=-3.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1040 t= 8.06072E-02 dt= 2.071E-04 a= 1.000E+00 mem= 4.0% 
+ Fine step=  1050 t= 8.26899E-02 dt= 2.096E-04 a= 1.000E+00 mem= 4.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         78 grids (      78,      78,      78,)
+ Level  6 has        163 grids (     163,     163,     163,)
+ Level  7 has        322 grids (     322,     322,     322,)
+ Level  8 has        620 grids (     620,     620,     620,)
+ Level  9 has       1068 grids (    1068,    1068,    1068,)
+ Level 10 has       1482 grids (    1482,    1482,    1482,)
+ Main step=   530 mcons=-1.11E-16 econs=-4.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1060 t= 8.48000E-02 dt= 2.133E-04 a= 1.000E+00 mem= 4.1% 
+ Fine step=  1070 t= 8.69393E-02 dt= 2.155E-04 a= 1.000E+00 mem= 4.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         78 grids (      78,      78,      78,)
+ Level  6 has        165 grids (     165,     165,     165,)
+ Level  7 has        331 grids (     331,     331,     331,)
+ Level  8 has        636 grids (     636,     636,     636,)
+ Level  9 has       1097 grids (    1097,    1097,    1097,)
+ Level 10 has       1506 grids (    1506,    1506,    1506,)
+ Main step=   540 mcons= 0.00E+00 econs=-4.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1080 t= 8.91059E-02 dt= 2.178E-04 a= 1.000E+00 mem= 4.2% 
+ Fine step=  1090 t= 9.12998E-02 dt= 2.212E-04 a= 1.000E+00 mem= 4.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         78 grids (      78,      78,      78,)
+ Level  6 has        169 grids (     169,     169,     169,)
+ Level  7 has        340 grids (     340,     340,     340,)
+ Level  8 has        650 grids (     650,     650,     650,)
+ Level  9 has       1119 grids (    1119,    1119,    1119,)
+ Level 10 has       1545 grids (    1545,    1545,    1545,)
+ Main step=   550 mcons= 0.00E+00 econs=-5.00E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1100 t= 9.35220E-02 dt= 2.240E-04 a= 1.000E+00 mem= 4.3% 
+ Fine step=  1110 t= 9.57717E-02 dt= 2.262E-04 a= 1.000E+00 mem= 4.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         88 grids (      88,      88,      88,)
+ Level  6 has        178 grids (     178,     178,     178,)
+ Level  7 has        348 grids (     348,     348,     348,)
+ Level  8 has        664 grids (     664,     664,     664,)
+ Level  9 has       1150 grids (    1150,    1150,    1150,)
+ Level 10 has       1584 grids (    1584,    1584,    1584,)
+ Main step=   560 mcons= 0.00E+00 econs=-4.88E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1120 t= 9.80485E-02 dt= 2.295E-04 a= 1.000E+00 mem= 4.4% 
+ Fine step=  1130 t= 1.00355E-01 dt= 2.323E-04 a= 1.000E+00 mem= 4.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         92 grids (      92,      92,      92,)
+ Level  6 has        183 grids (     183,     183,     183,)
+ Level  7 has        357 grids (     357,     357,     357,)
+ Level  8 has        676 grids (     676,     676,     676,)
+ Level  9 has       1177 grids (    1177,    1177,    1177,)
+ Level 10 has       1620 grids (    1620,    1620,    1620,)
+ Main step=   570 mcons= 0.00E+00 econs=-4.77E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1140 t= 1.02688E-01 dt= 2.346E-04 a= 1.000E+00 mem= 4.5% 
+ Fine step=  1150 t= 1.05049E-01 dt= 2.379E-04 a= 1.000E+00 mem= 4.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         92 grids (      92,      92,      92,)
+ Level  6 has        183 grids (     183,     183,     183,)
+ Level  7 has        356 grids (     356,     356,     356,)
+ Level  8 has        684 grids (     684,     684,     684,)
+ Level  9 has       1193 grids (    1193,    1193,    1193,)
+ Level 10 has       1653 grids (    1653,    1653,    1653,)
+ Main step=   580 mcons=-1.11E-16 econs=-4.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1160 t= 1.07439E-01 dt= 2.407E-04 a= 1.000E+00 mem= 4.5% 
+ Fine step=  1170 t= 1.09856E-01 dt= 2.430E-04 a= 1.000E+00 mem= 4.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         92 grids (      92,      92,      92,)
+ Level  6 has        183 grids (     183,     183,     183,)
+ Level  7 has        374 grids (     374,     374,     374,)
+ Level  8 has        700 grids (     700,     700,     700,)
+ Level  9 has       1222 grids (    1222,    1222,    1222,)
+ Level 10 has       1700 grids (    1700,    1700,    1700,)
+ Main step=   590 mcons= 0.00E+00 econs=-4.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1180 t= 1.12300E-01 dt= 2.463E-04 a= 1.000E+00 mem= 4.6% 
+ Fine step=  1190 t= 1.14774E-01 dt= 2.492E-04 a= 1.000E+00 mem= 4.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         94 grids (      94,      94,      94,)
+ Level  6 has        189 grids (     189,     189,     189,)
+ Level  7 has        373 grids (     373,     373,     373,)
+ Level  8 has        718 grids (     718,     718,     718,)
+ Level  9 has       1259 grids (    1259,    1259,    1259,)
+ Level 10 has       1726 grids (    1726,    1726,    1726,)
+ Main step=   600 mcons= 2.22E-16 econs=-5.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1200 t= 1.17275E-01 dt= 2.514E-04 a= 1.000E+00 mem= 4.7% 
+ Fine step=  1210 t= 1.19803E-01 dt= 2.547E-04 a= 1.000E+00 mem= 4.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         94 grids (      94,      94,      94,)
+ Level  6 has        199 grids (     199,     199,     199,)
+ Level  7 has        390 grids (     390,     390,     390,)
+ Level  8 has        732 grids (     732,     732,     732,)
+ Level  9 has       1279 grids (    1279,    1279,    1279,)
+ Level 10 has       1771 grids (    1771,    1771,    1771,)
+ Main step=   610 mcons=-2.22E-16 econs=-4.88E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1220 t= 1.22361E-01 dt= 2.575E-04 a= 1.000E+00 mem= 4.8% 
+ Fine step=  1230 t= 1.24946E-01 dt= 2.598E-04 a= 1.000E+00 mem= 4.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         94 grids (      94,      94,      94,)
+ Level  6 has        200 grids (     200,     200,     200,)
+ Level  7 has        390 grids (     390,     390,     390,)
+ Level  8 has        746 grids (     746,     746,     746,)
+ Level  9 has       1308 grids (    1308,    1308,    1308,)
+ Level 10 has       1800 grids (    1800,    1800,    1800,)
+ Main step=   620 mcons=-1.11E-16 econs=-5.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1240 t= 1.27558E-01 dt= 2.634E-04 a= 1.000E+00 mem= 4.9% 
+ Fine step=  1250 t= 1.30201E-01 dt= 2.659E-04 a= 1.000E+00 mem= 5.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         95 grids (      95,      95,      95,)
+ Level  6 has        203 grids (     203,     203,     203,)
+ Level  7 has        407 grids (     407,     407,     407,)
+ Level  8 has        764 grids (     764,     764,     764,)
+ Level  9 has       1345 grids (    1345,    1345,    1345,)
+ Level 10 has       1836 grids (    1836,    1836,    1836,)
+ Main step=   630 mcons= 0.00E+00 econs=-5.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1260 t= 1.32871E-01 dt= 2.682E-04 a= 1.000E+00 mem= 5.0% 
+ Fine step=  1270 t= 1.35568E-01 dt= 2.718E-04 a= 1.000E+00 mem= 5.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has         97 grids (      97,      97,      97,)
+ Level  6 has        205 grids (     205,     205,     205,)
+ Level  7 has        402 grids (     402,     402,     402,)
+ Level  8 has        778 grids (     778,     778,     778,)
+ Level  9 has       1359 grids (    1359,    1359,    1359,)
+ Level 10 has       1873 grids (    1873,    1873,    1873,)
+ Main step=   640 mcons=-1.11E-16 econs=-5.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1280 t= 1.38295E-01 dt= 2.743E-04 a= 1.000E+00 mem= 5.1% 
+ Fine step=  1290 t= 1.41049E-01 dt= 2.766E-04 a= 1.000E+00 mem= 5.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        107 grids (     107,     107,     107,)
+ Level  6 has        213 grids (     213,     213,     213,)
+ Level  7 has        424 grids (     424,     424,     424,)
+ Level  8 has        794 grids (     794,     794,     794,)
+ Level  9 has       1388 grids (    1388,    1388,    1388,)
+ Level 10 has       1912 grids (    1912,    1912,    1912,)
+ Main step=   650 mcons= 0.00E+00 econs=-5.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1300 t= 1.43830E-01 dt= 2.801E-04 a= 1.000E+00 mem= 5.2% 
+ Fine step=  1310 t= 1.46641E-01 dt= 2.827E-04 a= 1.000E+00 mem= 5.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        109 grids (     109,     109,     109,)
+ Level  6 has        219 grids (     219,     219,     219,)
+ Level  7 has        423 grids (     423,     423,     423,)
+ Level  8 has        812 grids (     812,     812,     812,)
+ Level  9 has       1417 grids (    1417,    1417,    1417,)
+ Level 10 has       1950 grids (    1950,    1950,    1950,)
+ Main step=   660 mcons=-1.11E-16 econs=-5.88E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1320 t= 1.49479E-01 dt= 2.850E-04 a= 1.000E+00 mem= 5.3% 
+ Fine step=  1330 t= 1.52343E-01 dt= 2.885E-04 a= 1.000E+00 mem= 5.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        109 grids (     109,     109,     109,)
+ Level  6 has        221 grids (     221,     221,     221,)
+ Level  7 has        438 grids (     438,     438,     438,)
+ Level  8 has        830 grids (     830,     830,     830,)
+ Level  9 has       1437 grids (    1437,    1437,    1437,)
+ Level 10 has       1981 grids (    1981,    1981,    1981,)
+ Main step=   670 mcons= 0.00E+00 econs=-6.11E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1340 t= 1.55238E-01 dt= 2.911E-04 a= 1.000E+00 mem= 5.4% 
+ Fine step=  1350 t= 1.58160E-01 dt= 2.935E-04 a= 1.000E+00 mem= 5.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        111 grids (     111,     111,     111,)
+ Level  6 has        220 grids (     220,     220,     220,)
+ Level  7 has        442 grids (     442,     442,     442,)
+ Level  8 has        841 grids (     841,     841,     841,)
+ Level  9 has       1468 grids (    1468,    1468,    1468,)
+ Level 10 has       2026 grids (    2026,    2026,    2026,)
+ Main step=   680 mcons= 0.00E+00 econs=-5.99E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1360 t= 1.61109E-01 dt= 2.969E-04 a= 1.000E+00 mem= 5.5% 
+ Fine step=  1370 t= 1.64087E-01 dt= 2.994E-04 a= 1.000E+00 mem= 5.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        113 grids (     113,     113,     113,)
+ Level  6 has        235 grids (     235,     235,     235,)
+ Level  7 has        459 grids (     459,     459,     459,)
+ Level  8 has        860 grids (     860,     860,     860,)
+ Level  9 has       1501 grids (    1501,    1501,    1501,)
+ Level 10 has       2052 grids (    2052,    2052,    2052,)
+ Main step=   690 mcons= 0.00E+00 econs=-6.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1380 t= 1.67093E-01 dt= 3.019E-04 a= 1.000E+00 mem= 5.6% 
+ Fine step=  1390 t= 1.70125E-01 dt= 3.056E-04 a= 1.000E+00 mem= 5.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        113 grids (     113,     113,     113,)
+ Level  6 has        235 grids (     235,     235,     235,)
+ Level  7 has        462 grids (     462,     462,     462,)
+ Level  8 has        874 grids (     874,     874,     874,)
+ Level  9 has       1523 grids (    1523,    1523,    1523,)
+ Level 10 has       2103 grids (    2103,    2103,    2103,)
+ Main step=   700 mcons=-2.22E-16 econs=-6.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1400 t= 1.73189E-01 dt= 3.078E-04 a= 1.000E+00 mem= 5.7% 
+ Fine step=  1410 t= 1.76279E-01 dt= 3.105E-04 a= 1.000E+00 mem= 5.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        115 grids (     115,     115,     115,)
+ Level  6 has        237 grids (     237,     237,     237,)
+ Level  7 has        474 grids (     474,     474,     474,)
+ Level  8 has        885 grids (     885,     885,     885,)
+ Level  9 has       1544 grids (    1544,    1544,    1544,)
+ Level 10 has       2136 grids (    2136,    2136,    2136,)
+ Main step=   710 mcons=-1.11E-16 econs=-5.99E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1420 t= 1.79397E-01 dt= 3.140E-04 a= 1.000E+00 mem= 5.8% 
+ Fine step=  1430 t= 1.82544E-01 dt= 3.162E-04 a= 1.000E+00 mem= 5.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        115 grids (     115,     115,     115,)
+ Level  6 has        239 grids (     239,     239,     239,)
+ Level  7 has        481 grids (     481,     481,     481,)
+ Level  8 has        902 grids (     902,     902,     902,)
+ Level  9 has       1579 grids (    1579,    1579,    1579,)
+ Level 10 has       2166 grids (    2166,    2166,    2166,)
+ Main step=   720 mcons=-2.22E-16 econs=-6.88E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1440 t= 1.85718E-01 dt= 3.189E-04 a= 1.000E+00 mem= 5.9% 
+ Fine step=  1450 t= 1.88921E-01 dt= 3.223E-04 a= 1.000E+00 mem= 5.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        125 grids (     125,     125,     125,)
+ Level  6 has        250 grids (     250,     250,     250,)
+ Level  7 has        492 grids (     492,     492,     492,)
+ Level  8 has        920 grids (     920,     920,     920,)
+ Level  9 has       1613 grids (    1613,    1613,    1613,)
+ Level 10 has       2202 grids (    2202,    2202,    2202,)
+ Main step=   730 mcons= 0.00E+00 econs=-6.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1460 t= 1.92152E-01 dt= 3.246E-04 a= 1.000E+00 mem= 6.0% 
+ Fine step=  1470 t= 1.95410E-01 dt= 3.275E-04 a= 1.000E+00 mem= 6.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        126 grids (     126,     126,     126,)
+ Level  6 has        250 grids (     250,     250,     250,)
+ Level  7 has        498 grids (     498,     498,     498,)
+ Level  8 has        931 grids (     931,     931,     931,)
+ Level  9 has       1636 grids (    1636,    1636,    1636,)
+ Level 10 has       2248 grids (    2248,    2248,    2248,)
+ Main step=   740 mcons=-1.11E-16 econs=-6.77E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1480 t= 1.98697E-01 dt= 3.307E-04 a= 1.000E+00 mem= 6.1% 
+ Fine step=  1490 t= 2.02012E-01 dt= 3.330E-04 a= 1.000E+00 mem= 6.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        127 grids (     127,     127,     127,)
+ Level  6 has        257 grids (     257,     257,     257,)
+ Level  7 has        507 grids (     507,     507,     507,)
+ Level  8 has        950 grids (     950,     950,     950,)
+ Level  9 has       1663 grids (    1663,    1663,    1663,)
+ Level 10 has       2290 grids (    2290,    2290,    2290,)
+ Main step=   750 mcons=-1.11E-16 econs=-6.99E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1500 t= 2.05355E-01 dt= 3.359E-04 a= 1.000E+00 mem= 6.2% 
+ Fine step=  1510 t= 2.08727E-01 dt= 3.392E-04 a= 1.000E+00 mem= 6.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        131 grids (     131,     131,     131,)
+ Level  6 has        255 grids (     255,     255,     255,)
+ Level  7 has        516 grids (     516,     516,     516,)
+ Level  8 has        966 grids (     966,     966,     966,)
+ Level  9 has       1689 grids (    1689,    1689,    1689,)
+ Level 10 has       2322 grids (    2322,    2322,    2322,)
+ Main step=   760 mcons= 0.00E+00 econs=-6.99E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1520 t= 2.12127E-01 dt= 3.414E-04 a= 1.000E+00 mem= 6.3% 
+ Fine step=  1530 t= 2.15554E-01 dt= 3.445E-04 a= 1.000E+00 mem= 6.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        131 grids (     131,     131,     131,)
+ Level  6 has        257 grids (     257,     257,     257,)
+ Level  7 has        514 grids (     514,     514,     514,)
+ Level  8 has        967 grids (     967,     967,     967,)
+ Level  9 has       1696 grids (    1696,    1696,    1696,)
+ Level 10 has       2338 grids (    2338,    2338,    2338,)
+ Main step=   770 mcons=-1.11E-16 econs=-6.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1540 t= 2.19010E-01 dt= 3.476E-04 a= 1.000E+00 mem= 6.3% 
+ Fine step=  1550 t= 2.22494E-01 dt= 3.498E-04 a= 1.000E+00 mem= 6.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        131 grids (     131,     131,     131,)
+ Level  6 has        271 grids (     271,     271,     271,)
+ Level  7 has        529 grids (     529,     529,     529,)
+ Level  8 has        984 grids (     984,     984,     984,)
+ Level  9 has       1729 grids (    1729,    1729,    1729,)
+ Level 10 has       2408 grids (    2408,    2408,    2408,)
+ Main step=   780 mcons= 0.00E+00 econs= 8.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1560 t= 2.26005E-01 dt= 3.529E-04 a= 1.000E+00 mem= 6.5% 
+ Fine step=  1570 t= 2.29545E-01 dt= 3.559E-04 a= 1.000E+00 mem= 6.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        131 grids (     131,     131,     131,)
+ Level  6 has        274 grids (     274,     274,     274,)
+ Level  7 has        530 grids (     530,     530,     530,)
+ Level  8 has       1004 grids (    1004,    1004,    1004,)
+ Level  9 has       1771 grids (    1771,    1771,    1771,)
+ Level 10 has       2432 grids (    2432,    2432,    2432,)
+ Main step=   790 mcons= 0.00E+00 econs= 8.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1580 t= 2.33114E-01 dt= 3.581E-04 a= 1.000E+00 mem= 6.5% 
+ Fine step=  1590 t= 2.36709E-01 dt= 3.616E-04 a= 1.000E+00 mem= 6.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        131 grids (     131,     131,     131,)
+ Level  6 has        271 grids (     271,     271,     271,)
+ Level  7 has        543 grids (     543,     543,     543,)
+ Level  8 has       1018 grids (    1018,    1018,    1018,)
+ Level  9 has       1795 grids (    1795,    1795,    1795,)
+ Level 10 has       2465 grids (    2465,    2465,    2465,)
+ Main step=   800 mcons=-1.11E-16 econs= 8.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1600 t= 2.40335E-01 dt= 3.642E-04 a= 1.000E+00 mem= 6.6% 
+ Fine step=  1610 t= 2.43988E-01 dt= 3.665E-04 a= 1.000E+00 mem= 6.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        133 grids (     133,     133,     133,)
+ Level  6 has        279 grids (     279,     279,     279,)
+ Level  7 has        547 grids (     547,     547,     547,)
+ Level  8 has       1038 grids (    1038,    1038,    1038,)
+ Level  9 has       1827 grids (    1827,    1827,    1827,)
+ Level 10 has       2502 grids (    2502,    2502,    2502,)
+ Main step=   810 mcons= 0.00E+00 econs= 8.99E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1620 t= 2.47668E-01 dt= 3.699E-04 a= 1.000E+00 mem= 6.8% 
+ Fine step=  1630 t= 2.51377E-01 dt= 3.726E-04 a= 1.000E+00 mem= 6.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        145 grids (     145,     145,     145,)
+ Level  6 has        287 grids (     287,     287,     287,)
+ Level  7 has        560 grids (     560,     560,     560,)
+ Level  8 has       1050 grids (    1050,    1050,    1050,)
+ Level  9 has       1854 grids (    1854,    1854,    1854,)
+ Level 10 has       2536 grids (    2536,    2536,    2536,)
+ Main step=   820 mcons=-3.33E-16 econs=-1.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1640 t= 2.55114E-01 dt= 3.751E-04 a= 1.000E+00 mem= 6.9% 
+ Fine step=  1650 t= 2.58879E-01 dt= 3.787E-04 a= 1.000E+00 mem= 6.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        147 grids (     147,     147,     147,)
+ Level  6 has        289 grids (     289,     289,     289,)
+ Level  7 has        561 grids (     561,     561,     561,)
+ Level  8 has       1062 grids (    1062,    1062,    1062,)
+ Level  9 has       1877 grids (    1877,    1877,    1877,)
+ Level 10 has       2585 grids (    2585,    2585,    2585,)
+ Main step=   830 mcons= 0.00E+00 econs=-1.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1660 t= 2.62673E-01 dt= 3.810E-04 a= 1.000E+00 mem= 6.9% 
+ Fine step=  1670 t= 2.66494E-01 dt= 3.837E-04 a= 1.000E+00 mem= 7.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        149 grids (     149,     149,     149,)
+ Level  6 has        293 grids (     293,     293,     293,)
+ Level  7 has        579 grids (     579,     579,     579,)
+ Level  8 has       1086 grids (    1086,    1086,    1086,)
+ Level  9 has       1899 grids (    1899,    1899,    1899,)
+ Level 10 has       2610 grids (    2610,    2610,    2610,)
+ Main step=   840 mcons= 0.00E+00 econs=-1.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1680 t= 2.70343E-01 dt= 3.870E-04 a= 1.000E+00 mem= 7.0% 
+ Fine step=  1690 t= 2.74222E-01 dt= 3.894E-04 a= 1.000E+00 mem= 7.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        149 grids (     149,     149,     149,)
+ Level  6 has        292 grids (     292,     292,     292,)
+ Level  7 has        580 grids (     580,     580,     580,)
+ Level  8 has       1106 grids (    1106,    1106,    1106,)
+ Level  9 has       1926 grids (    1926,    1926,    1926,)
+ Level 10 has       2644 grids (    2644,    2644,    2644,)
+ Main step=   850 mcons=-2.22E-16 econs=-1.67E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1700 t= 2.78128E-01 dt= 3.923E-04 a= 1.000E+00 mem= 7.1% 
+ Fine step=  1710 t= 2.82062E-01 dt= 3.954E-04 a= 1.000E+00 mem= 7.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        147 grids (     147,     147,     147,)
+ Level  6 has        303 grids (     303,     303,     303,)
+ Level  7 has        595 grids (     595,     595,     595,)
+ Level  8 has       1118 grids (    1118,    1118,    1118,)
+ Level  9 has       1953 grids (    1953,    1953,    1953,)
+ Level 10 has       2692 grids (    2692,    2692,    2692,)
+ Main step=   860 mcons= 2.22E-16 econs=-2.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1720 t= 2.86024E-01 dt= 3.978E-04 a= 1.000E+00 mem= 7.2% 
+ Fine step=  1730 t= 2.90014E-01 dt= 4.007E-04 a= 1.000E+00 mem= 7.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        151 grids (     151,     151,     151,)
+ Level  6 has        309 grids (     309,     309,     309,)
+ Level  7 has        601 grids (     601,     601,     601,)
+ Level  8 has       1136 grids (    1136,    1136,    1136,)
+ Level  9 has       1975 grids (    1975,    1975,    1975,)
+ Level 10 has       2732 grids (    2732,    2732,    2732,)
+ Main step=   870 mcons=-2.22E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1740 t= 2.94033E-01 dt= 4.039E-04 a= 1.000E+00 mem= 7.3% 
+ Fine step=  1750 t= 2.98081E-01 dt= 4.061E-04 a= 1.000E+00 mem= 7.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        151 grids (     151,     151,     151,)
+ Level  6 has        311 grids (     311,     311,     311,)
+ Level  7 has        612 grids (     612,     612,     612,)
+ Level  8 has       1154 grids (    1154,    1154,    1154,)
+ Level  9 has       1992 grids (    1992,    1992,    1992,)
+ Level 10 has       2762 grids (    2762,    2762,    2762,)
+ Main step=   880 mcons=-3.33E-16 econs=-1.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1760 t= 3.02155E-01 dt= 4.093E-04 a= 1.000E+00 mem= 7.4% 
+ Fine step=  1770 t= 3.06259E-01 dt= 4.122E-04 a= 1.000E+00 mem= 7.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        151 grids (     151,     151,     151,)
+ Level  6 has        309 grids (     309,     309,     309,)
+ Level  7 has        615 grids (     615,     615,     615,)
+ Level  8 has       1166 grids (    1166,    1166,    1166,)
+ Level  9 has       2033 grids (    2033,    2033,    2033,)
+ Level 10 has       2794 grids (    2794,    2794,    2794,)
+ Main step=   890 mcons= 4.44E-16 econs=-2.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1780 t= 3.10390E-01 dt= 4.145E-04 a= 1.000E+00 mem= 7.5% 
+ Fine step=  1790 t= 3.14549E-01 dt= 4.179E-04 a= 1.000E+00 mem= 7.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        163 grids (     163,     163,     163,)
+ Level  6 has        323 grids (     323,     323,     323,)
+ Level  7 has        631 grids (     631,     631,     631,)
+ Level  8 has       1178 grids (    1178,    1178,    1178,)
+ Level  9 has       2055 grids (    2055,    2055,    2055,)
+ Level 10 has       2841 grids (    2841,    2841,    2841,)
+ Main step=   900 mcons=-1.11E-16 econs=-1.78E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1800 t= 3.18738E-01 dt= 4.206E-04 a= 1.000E+00 mem= 7.6% 
+ Fine step=  1810 t= 3.22954E-01 dt= 4.229E-04 a= 1.000E+00 mem= 7.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        163 grids (     163,     163,     163,)
+ Level  6 has        324 grids (     324,     324,     324,)
+ Level  7 has        632 grids (     632,     632,     632,)
+ Level  8 has       1198 grids (    1198,    1198,    1198,)
+ Level  9 has       2088 grids (    2088,    2088,    2088,)
+ Level 10 has       2886 grids (    2886,    2886,    2886,)
+ Main step=   910 mcons=-2.22E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1820 t= 3.27197E-01 dt= 4.263E-04 a= 1.000E+00 mem= 7.7% 
+ Fine step=  1830 t= 3.31470E-01 dt= 4.289E-04 a= 1.000E+00 mem= 7.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        165 grids (     165,     165,     165,)
+ Level  6 has        327 grids (     327,     327,     327,)
+ Level  7 has        647 grids (     647,     647,     647,)
+ Level  8 has       1216 grids (    1216,    1216,    1216,)
+ Level  9 has       2123 grids (    2123,    2123,    2123,)
+ Level 10 has       2918 grids (    2918,    2918,    2918,)
+ Main step=   920 mcons= 0.00E+00 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1840 t= 3.35771E-01 dt= 4.315E-04 a= 1.000E+00 mem= 7.8% 
+ Fine step=  1850 t= 3.40099E-01 dt= 4.350E-04 a= 1.000E+00 mem= 7.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        165 grids (     165,     165,     165,)
+ Level  6 has        329 grids (     329,     329,     329,)
+ Level  7 has        649 grids (     649,     649,     649,)
+ Level  8 has       1234 grids (    1234,    1234,    1234,)
+ Level  9 has       2143 grids (    2143,    2143,    2143,)
+ Level 10 has       2958 grids (    2958,    2958,    2958,)
+ Main step=   930 mcons=-2.22E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1860 t= 3.44457E-01 dt= 4.373E-04 a= 1.000E+00 mem= 7.9% 
+ Fine step=  1870 t= 3.48842E-01 dt= 4.401E-04 a= 1.000E+00 mem= 7.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        169 grids (     169,     169,     169,)
+ Level  6 has        341 grids (     341,     341,     341,)
+ Level  7 has        664 grids (     664,     664,     664,)
+ Level  8 has       1242 grids (    1242,    1242,    1242,)
+ Level  9 has       2168 grids (    2168,    2168,    2168,)
+ Level 10 has       2980 grids (    2980,    2980,    2980,)
+ Main step=   940 mcons=-3.33E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1880 t= 3.53255E-01 dt= 4.434E-04 a= 1.000E+00 mem= 8.0% 
+ Fine step=  1890 t= 3.57697E-01 dt= 4.457E-04 a= 1.000E+00 mem= 8.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        169 grids (     169,     169,     169,)
+ Level  6 has        341 grids (     341,     341,     341,)
+ Level  7 has        665 grids (     665,     665,     665,)
+ Level  8 has       1262 grids (    1262,    1262,    1262,)
+ Level  9 has       2201 grids (    2201,    2201,    2201,)
+ Level 10 has       3024 grids (    3024,    3024,    3024,)
+ Main step=   950 mcons= 0.00E+00 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1900 t= 3.62166E-01 dt= 4.487E-04 a= 1.000E+00 mem= 8.1% 
+ Fine step=  1910 t= 3.66664E-01 dt= 4.518E-04 a= 1.000E+00 mem= 8.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        169 grids (     169,     169,     169,)
+ Level  6 has        347 grids (     347,     347,     347,)
+ Level  7 has        673 grids (     673,     673,     673,)
+ Level  8 has       1274 grids (    1274,    1274,    1274,)
+ Level  9 has       2233 grids (    2233,    2233,    2233,)
+ Level 10 has       3070 grids (    3070,    3070,    3070,)
+ Main step=   960 mcons=-4.44E-16 econs=-2.33E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1920 t= 3.71191E-01 dt= 4.541E-04 a= 1.000E+00 mem= 8.2% 
+ Fine step=  1930 t= 3.75745E-01 dt= 4.573E-04 a= 1.000E+00 mem= 8.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        169 grids (     169,     169,     169,)
+ Level  6 has        344 grids (     344,     344,     344,)
+ Level  7 has        682 grids (     682,     682,     682,)
+ Level  8 has       1286 grids (    1286,    1286,    1286,)
+ Level  9 has       2252 grids (    2252,    2252,    2252,)
+ Level 10 has       3088 grids (    3088,    3088,    3088,)
+ Main step=   970 mcons=-2.22E-16 econs=-1.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1940 t= 3.80328E-01 dt= 4.601E-04 a= 1.000E+00 mem= 8.3% 
+ Fine step=  1950 t= 3.84939E-01 dt= 4.624E-04 a= 1.000E+00 mem= 8.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        179 grids (     179,     179,     179,)
+ Level  6 has        357 grids (     357,     357,     357,)
+ Level  7 has        695 grids (     695,     695,     695,)
+ Level  8 has       1310 grids (    1310,    1310,    1310,)
+ Level  9 has       2283 grids (    2283,    2283,    2283,)
+ Level 10 has       3132 grids (    3132,    3132,    3132,)
+ Main step=   980 mcons=-3.33E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1960 t= 3.89577E-01 dt= 4.657E-04 a= 1.000E+00 mem= 8.4% 
+ Fine step=  1970 t= 3.94245E-01 dt= 4.685E-04 a= 1.000E+00 mem= 8.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        183 grids (     183,     183,     183,)
+ Level  6 has        361 grids (     361,     361,     361,)
+ Level  7 has        699 grids (     699,     699,     699,)
+ Level  8 has       1326 grids (    1326,    1326,    1326,)
+ Level  9 has       2317 grids (    2317,    2317,    2317,)
+ Level 10 has       3176 grids (    3176,    3176,    3176,)
+ Main step=   990 mcons=-4.44E-16 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  1980 t= 3.98941E-01 dt= 4.708E-04 a= 1.000E+00 mem= 8.5% 
+ Fine step=  1990 t= 4.03664E-01 dt= 4.743E-04 a= 1.000E+00 mem= 8.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        183 grids (     183,     183,     183,)
+ Level  6 has        361 grids (     361,     361,     361,)
+ Level  7 has        700 grids (     700,     700,     700,)
+ Level  8 has       1328 grids (    1328,    1328,    1328,)
+ Level  9 has       2331 grids (    2331,    2331,    2331,)
+ Level 10 has       3225 grids (    3225,    3225,    3225,)
+ Main step=  1000 mcons= 2.22E-16 econs=-2.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2000 t= 4.08417E-01 dt= 4.769E-04 a= 1.000E+00 mem= 8.6% 
+ Fine step=  2010 t= 4.13197E-01 dt= 4.795E-04 a= 1.000E+00 mem= 8.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        185 grids (     185,     185,     185,)
+ Level  6 has        365 grids (     365,     365,     365,)
+ Level  7 has        717 grids (     717,     717,     717,)
+ Level  8 has       1344 grids (    1344,    1344,    1344,)
+ Level  9 has       2355 grids (    2355,    2355,    2355,)
+ Level 10 has       3238 grids (    3238,    3238,    3238,)
+ Main step=  1010 mcons= 4.44E-16 econs=-2.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2020 t= 4.18005E-01 dt= 4.829E-04 a= 1.000E+00 mem= 8.7% 
+ Fine step=  2030 t= 4.22842E-01 dt= 4.853E-04 a= 1.000E+00 mem= 8.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        187 grids (     187,     187,     187,)
+ Level  6 has        365 grids (     365,     365,     365,)
+ Level  7 has        719 grids (     719,     719,     719,)
+ Level  8 has       1360 grids (    1360,    1360,    1360,)
+ Level  9 has       2388 grids (    2388,    2388,    2388,)
+ Level 10 has       3288 grids (    3288,    3288,    3288,)
+ Main step=  1020 mcons= 4.44E-16 econs=-2.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2040 t= 4.27707E-01 dt= 4.881E-04 a= 1.000E+00 mem= 8.8% 
+ Fine step=  2050 t= 4.32600E-01 dt= 4.913E-04 a= 1.000E+00 mem= 8.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        185 grids (     185,     185,     185,)
+ Level  6 has        376 grids (     376,     376,     376,)
+ Level  7 has        730 grids (     730,     730,     730,)
+ Level  8 has       1376 grids (    1376,    1376,    1376,)
+ Level  9 has       2419 grids (    2419,    2419,    2419,)
+ Level 10 has       3332 grids (    3332,    3332,    3332,)
+ Main step=  1030 mcons=-4.44E-16 econs=-2.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2060 t= 4.37522E-01 dt= 4.936E-04 a= 1.000E+00 mem= 8.9% 
+ Fine step=  2070 t= 4.42470E-01 dt= 4.967E-04 a= 1.000E+00 mem= 8.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        187 grids (     187,     187,     187,)
+ Level  6 has        381 grids (     381,     381,     381,)
+ Level  7 has        735 grids (     735,     735,     735,)
+ Level  8 has       1392 grids (    1392,    1392,    1392,)
+ Level  9 has       2435 grids (    2435,    2435,    2435,)
+ Level 10 has       3348 grids (    3348,    3348,    3348,)
+ Main step=  1040 mcons=-5.55E-16 econs=-2.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2080 t= 4.47448E-01 dt= 4.997E-04 a= 1.000E+00 mem= 9.0% 
+ Fine step=  2090 t= 4.52455E-01 dt= 5.020E-04 a= 1.000E+00 mem= 9.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        187 grids (     187,     187,     187,)
+ Level  6 has        385 grids (     385,     385,     385,)
+ Level  7 has        751 grids (     751,     751,     751,)
+ Level  8 has       1412 grids (    1412,    1412,    1412,)
+ Level  9 has       2462 grids (    2462,    2462,    2462,)
+ Level 10 has       3414 grids (    3414,    3414,    3414,)
+ Main step=  1050 mcons=-3.33E-16 econs=-1.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2100 t= 4.57488E-01 dt= 5.053E-04 a= 1.000E+00 mem= 9.1% 
+ Fine step=  2110 t= 4.62551E-01 dt= 5.081E-04 a= 1.000E+00 mem= 9.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        189 grids (     189,     189,     189,)
+ Level  6 has        379 grids (     379,     379,     379,)
+ Level  7 has        754 grids (     754,     754,     754,)
+ Level  8 has       1428 grids (    1428,    1428,    1428,)
+ Level  9 has       2499 grids (    2499,    2499,    2499,)
+ Level 10 has       3422 grids (    3422,    3422,    3422,)
+ Main step=  1060 mcons=-3.33E-16 econs=-2.11E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2120 t= 4.67642E-01 dt= 5.104E-04 a= 1.000E+00 mem= 9.1% 
+ Fine step=  2130 t= 4.72761E-01 dt= 5.139E-04 a= 1.000E+00 mem= 9.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        201 grids (     201,     201,     201,)
+ Level  6 has        395 grids (     395,     395,     395,)
+ Level  7 has        765 grids (     765,     765,     765,)
+ Level  8 has       1446 grids (    1446,    1446,    1446,)
+ Level  9 has       2525 grids (    2525,    2525,    2525,)
+ Level 10 has       3475 grids (    3475,    3475,    3475,)
+ Main step=  1070 mcons=-6.66E-16 econs=-2.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2140 t= 4.77909E-01 dt= 5.164E-04 a= 1.000E+00 mem= 9.3% 
+ Fine step=  2150 t= 4.83084E-01 dt= 5.190E-04 a= 1.000E+00 mem= 9.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        201 grids (     201,     201,     201,)
+ Level  6 has        399 grids (     399,     399,     399,)
+ Level  7 has        771 grids (     771,     771,     771,)
+ Level  8 has       1459 grids (    1459,    1459,    1459,)
+ Level  9 has       2546 grids (    2546,    2546,    2546,)
+ Level 10 has       3504 grids (    3504,    3504,    3504,)
+ Main step=  1080 mcons= 0.00E+00 econs=-2.22E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2160 t= 4.88287E-01 dt= 5.223E-04 a= 1.000E+00 mem= 9.4% 
+ Fine step=  2170 t= 4.93520E-01 dt= 5.248E-04 a= 1.000E+00 mem= 9.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        400 grids (     400,     400,     400,)
+ Level  7 has        780 grids (     780,     780,     780,)
+ Level  8 has       1478 grids (    1478,    1478,    1478,)
+ Level  9 has       2587 grids (    2587,    2587,    2587,)
+ Level 10 has       3536 grids (    3536,    3536,    3536,)
+ Main step=  1090 mcons=-2.22E-16 econs=-2.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2180 t= 4.98779E-01 dt= 5.275E-04 a= 1.000E+00 mem= 9.5% 
+ Fine step=  2190 t= 5.04068E-01 dt= 5.309E-04 a= 1.000E+00 mem= 9.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        397 grids (     397,     397,     397,)
+ Level  7 has        785 grids (     785,     785,     785,)
+ Level  8 has       1496 grids (    1496,    1496,    1496,)
+ Level  9 has       2605 grids (    2605,    2605,    2605,)
+ Level 10 has       3580 grids (    3580,    3580,    3580,)
+ Main step=  1100 mcons=-1.11E-16 econs=-2.00E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2200 t= 5.09385E-01 dt= 5.332E-04 a= 1.000E+00 mem= 9.6% 
+ Fine step=  2210 t= 5.14729E-01 dt= 5.363E-04 a= 1.000E+00 mem= 9.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        205 grids (     205,     205,     205,)
+ Level  6 has        413 grids (     413,     413,     413,)
+ Level  7 has        795 grids (     795,     795,     795,)
+ Level  8 has       1507 grids (    1507,    1507,    1507,)
+ Level  9 has       2632 grids (    2632,    2632,    2632,)
+ Level 10 has       3628 grids (    3628,    3628,    3628,)
+ Main step=  1110 mcons=-4.44E-16 econs=-2.11E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2220 t= 5.20102E-01 dt= 5.393E-04 a= 1.000E+00 mem= 9.7% 
+ Fine step=  2230 t= 5.25504E-01 dt= 5.416E-04 a= 1.000E+00 mem= 9.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        413 grids (     413,     413,     413,)
+ Level  7 has        804 grids (     804,     804,     804,)
+ Level  8 has       1528 grids (    1528,    1528,    1528,)
+ Level  9 has       2645 grids (    2645,    2645,    2645,)
+ Level 10 has       3652 grids (    3652,    3652,    3652,)
+ Main step=  1120 mcons=-4.44E-16 econs=-2.78E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2240 t= 5.30933E-01 dt= 5.449E-04 a= 1.000E+00 mem= 9.7% 
+ Fine step=  2250 t= 5.36392E-01 dt= 5.476E-04 a= 1.000E+00 mem= 9.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        207 grids (     207,     207,     207,)
+ Level  6 has        421 grids (     421,     421,     421,)
+ Level  7 has        819 grids (     819,     819,     819,)
+ Level  8 has       1546 grids (    1546,    1546,    1546,)
+ Level  9 has       2687 grids (    2687,    2687,    2687,)
+ Level 10 has       3680 grids (    3680,    3680,    3680,)
+ Main step=  1130 mcons=-4.44E-16 econs=-2.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2260 t= 5.41878E-01 dt= 5.499E-04 a= 1.000E+00 mem= 9.9% 
+ Fine step=  2270 t= 5.47392E-01 dt= 5.533E-04 a= 1.000E+00 mem= 9.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        207 grids (     207,     207,     207,)
+ Level  6 has        419 grids (     419,     419,     419,)
+ Level  7 has        818 grids (     818,     818,     818,)
+ Level  8 has       1556 grids (    1556,    1556,    1556,)
+ Level  9 has       2717 grids (    2717,    2717,    2717,)
+ Level 10 has       3721 grids (    3721,    3721,    3721,)
+ Main step=  1140 mcons=-3.33E-16 econs=-2.66E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2280 t= 5.52935E-01 dt= 5.560E-04 a= 1.000E+00 mem=10.0% 
+ Fine step=  2290 t= 5.58506E-01 dt= 5.586E-04 a= 1.000E+00 mem=10.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        424 grids (     424,     424,     424,)
+ Level  7 has        834 grids (     834,     834,     834,)
+ Level  8 has       1576 grids (    1576,    1576,    1576,)
+ Level  9 has       2735 grids (    2735,    2735,    2735,)
+ Level 10 has       3776 grids (    3776,    3776,    3776,)
+ Main step=  1150 mcons=-4.44E-16 econs=-2.78E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2300 t= 5.64105E-01 dt= 5.619E-04 a= 1.000E+00 mem=10.1% 
+ Fine step=  2310 t= 5.69733E-01 dt= 5.644E-04 a= 1.000E+00 mem=10.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        205 grids (     205,     205,     205,)
+ Level  6 has        433 grids (     433,     433,     433,)
+ Level  7 has        841 grids (     841,     841,     841,)
+ Level  8 has       1590 grids (    1590,    1590,    1590,)
+ Level  9 has       2776 grids (    2776,    2776,    2776,)
+ Level 10 has       3800 grids (    3800,    3800,    3800,)
+ Main step=  1160 mcons=-4.44E-16 econs=-2.78E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2320 t= 5.75389E-01 dt= 5.671E-04 a= 1.000E+00 mem=10.2% 
+ Fine step=  2330 t= 5.81072E-01 dt= 5.704E-04 a= 1.000E+00 mem=10.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        207 grids (     207,     207,     207,)
+ Level  6 has        437 grids (     437,     437,     437,)
+ Level  7 has        852 grids (     852,     852,     852,)
+ Level  8 has       1600 grids (    1600,    1600,    1600,)
+ Level  9 has       2801 grids (    2801,    2801,    2801,)
+ Level 10 has       3838 grids (    3838,    3838,    3838,)
+ Main step=  1170 mcons=-1.11E-16 econs=-2.89E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2340 t= 5.86785E-01 dt= 5.727E-04 a= 1.000E+00 mem=10.3% 
+ Fine step=  2350 t= 5.92525E-01 dt= 5.757E-04 a= 1.000E+00 mem=10.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        207 grids (     207,     207,     207,)
+ Level  6 has        435 grids (     435,     435,     435,)
+ Level  7 has        856 grids (     856,     856,     856,)
+ Level  8 has       1616 grids (    1616,    1616,    1616,)
+ Level  9 has       2817 grids (    2817,    2817,    2817,)
+ Level 10 has       3868 grids (    3868,    3868,    3868,)
+ Main step=  1180 mcons=-4.44E-16 econs=-2.00E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2360 t= 5.98294E-01 dt= 5.787E-04 a= 1.000E+00 mem=10.3% 
+ Fine step=  2370 t= 6.04091E-01 dt= 5.811E-04 a= 1.000E+00 mem=10.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        205 grids (     205,     205,     205,)
+ Level  6 has        445 grids (     445,     445,     445,)
+ Level  7 has        863 grids (     863,     863,     863,)
+ Level  8 has       1638 grids (    1638,    1638,    1638,)
+ Level  9 has       2850 grids (    2850,    2850,    2850,)
+ Level 10 has       3914 grids (    3914,    3914,    3914,)
+ Main step=  1190 mcons=-5.55E-16 econs=-2.44E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2380 t= 6.09916E-01 dt= 5.843E-04 a= 1.000E+00 mem=10.4% 
+ Fine step=  2390 t= 6.15770E-01 dt= 5.871E-04 a= 1.000E+00 mem=10.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        207 grids (     207,     207,     207,)
+ Level  6 has        453 grids (     453,     453,     453,)
+ Level  7 has        878 grids (     878,     878,     878,)
+ Level  8 has       1644 grids (    1644,    1644,    1644,)
+ Level  9 has       2881 grids (    2881,    2881,    2881,)
+ Level 10 has       3958 grids (    3958,    3958,    3958,)
+ Main step=  1200 mcons=-2.22E-16 econs= 1.02E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2400 t= 6.21652E-01 dt= 5.895E-04 a= 1.000E+00 mem=10.5% 
+ Fine step=  2410 t= 6.27561E-01 dt= 5.929E-04 a= 1.000E+00 mem=10.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        204 grids (     204,     204,     204,)
+ Level  6 has        448 grids (     448,     448,     448,)
+ Level  7 has        884 grids (     884,     884,     884,)
+ Level  8 has       1666 grids (    1666,    1666,    1666,)
+ Level  9 has       2907 grids (    2907,    2907,    2907,)
+ Level 10 has       4001 grids (    4001,    4001,    4001,)
+ Main step=  1210 mcons=-3.33E-16 econs= 1.01E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2420 t= 6.33501E-01 dt= 5.955E-04 a= 1.000E+00 mem=10.6% 
+ Fine step=  2430 t= 6.39467E-01 dt= 5.982E-04 a= 1.000E+00 mem=10.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        207 grids (     207,     207,     207,)
+ Level  6 has        457 grids (     457,     457,     457,)
+ Level  7 has        885 grids (     885,     885,     885,)
+ Level  8 has       1678 grids (    1678,    1678,    1678,)
+ Level  9 has       2926 grids (    2926,    2926,    2926,)
+ Level 10 has       4034 grids (    4034,    4034,    4034,)
+ Main step=  1220 mcons= 0.00E+00 econs= 1.01E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2440 t= 6.45462E-01 dt= 6.015E-04 a= 1.000E+00 mem=10.7% 
+ Fine step=  2450 t= 6.51486E-01 dt= 6.039E-04 a= 1.000E+00 mem=10.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        459 grids (     459,     459,     459,)
+ Level  7 has        896 grids (     896,     896,     896,)
+ Level  8 has       1696 grids (    1696,    1696,    1696,)
+ Level  9 has       2955 grids (    2955,    2955,    2955,)
+ Level 10 has       4070 grids (    4070,    4070,    4070,)
+ Main step=  1230 mcons=-9.99E-16 econs= 1.08E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2460 t= 6.57537E-01 dt= 6.067E-04 a= 1.000E+00 mem=10.8% 
+ Fine step=  2470 t= 6.63616E-01 dt= 6.100E-04 a= 1.000E+00 mem=10.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        205 grids (     205,     205,     205,)
+ Level  6 has        465 grids (     465,     465,     465,)
+ Level  7 has        902 grids (     902,     902,     902,)
+ Level  8 has       1700 grids (    1700,    1700,    1700,)
+ Level  9 has       2973 grids (    2973,    2973,    2973,)
+ Level 10 has       4098 grids (    4098,    4098,    4098,)
+ Main step=  1240 mcons= 2.22E-16 econs= 1.07E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2480 t= 6.69725E-01 dt= 6.123E-04 a= 1.000E+00 mem=10.9% 
+ Fine step=  2490 t= 6.75861E-01 dt= 6.153E-04 a= 1.000E+00 mem=10.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        205 grids (     205,     205,     205,)
+ Level  6 has        467 grids (     467,     467,     467,)
+ Level  7 has        901 grids (     901,     901,     901,)
+ Level  8 has       1708 grids (    1708,    1708,    1708,)
+ Level  9 has       2994 grids (    2994,    2994,    2994,)
+ Level 10 has       4140 grids (    4140,    4140,    4140,)
+ Main step=  1250 mcons=-1.11E-16 econs= 1.05E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2500 t= 6.82026E-01 dt= 6.183E-04 a= 1.000E+00 mem=10.9% 
+ Fine step=  2510 t= 6.88219E-01 dt= 6.207E-04 a= 1.000E+00 mem=11.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        470 grids (     470,     470,     470,)
+ Level  7 has        922 grids (     922,     922,     922,)
+ Level  8 has       1736 grids (    1736,    1736,    1736,)
+ Level  9 has       3029 grids (    3029,    3029,    3029,)
+ Level 10 has       4176 grids (    4176,    4176,    4176,)
+ Main step=  1260 mcons=-3.33E-16 econs= 1.08E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2520 t= 6.94439E-01 dt= 6.239E-04 a= 1.000E+00 mem=11.1% 
+ Fine step=  2530 t= 7.00689E-01 dt= 6.267E-04 a= 1.000E+00 mem=11.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        201 grids (     201,     201,     201,)
+ Level  6 has        466 grids (     466,     466,     466,)
+ Level  7 has        926 grids (     926,     926,     926,)
+ Level  8 has       1752 grids (    1752,    1752,    1752,)
+ Level  9 has       3076 grids (    3076,    3076,    3076,)
+ Level 10 has       4212 grids (    4212,    4212,    4212,)
+ Main step=  1270 mcons=-2.22E-16 econs= 1.07E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2540 t= 7.06966E-01 dt= 6.292E-04 a= 1.000E+00 mem=11.2% 
+ Fine step=  2550 t= 7.13272E-01 dt= 6.325E-04 a= 1.000E+00 mem=11.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        201 grids (     201,     201,     201,)
+ Level  6 has        485 grids (     485,     485,     485,)
+ Level  7 has        939 grids (     939,     939,     939,)
+ Level  8 has       1762 grids (    1762,    1762,    1762,)
+ Level  9 has       3107 grids (    3107,    3107,    3107,)
+ Level 10 has       4262 grids (    4262,    4262,    4262,)
+ Main step=  1280 mcons=-2.22E-16 econs= 1.04E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2560 t= 7.19607E-01 dt= 6.351E-04 a= 1.000E+00 mem=11.3% 
+ Fine step=  2570 t= 7.25969E-01 dt= 6.378E-04 a= 1.000E+00 mem=11.4% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        203 grids (     203,     203,     203,)
+ Level  6 has        489 grids (     489,     489,     489,)
+ Level  7 has        940 grids (     940,     940,     940,)
+ Level  8 has       1780 grids (    1780,    1780,    1780,)
+ Level  9 has       3119 grids (    3119,    3119,    3119,)
+ Level 10 has       4288 grids (    4288,    4288,    4288,)
+ Main step=  1290 mcons=-6.66E-16 econs= 1.04E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2580 t= 7.32359E-01 dt= 6.411E-04 a= 1.000E+00 mem=11.4% 
+ Fine step=  2590 t= 7.38779E-01 dt= 6.435E-04 a= 1.000E+00 mem=11.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        201 grids (     201,     201,     201,)
+ Level  6 has        487 grids (     487,     487,     487,)
+ Level  7 has        956 grids (     956,     956,     956,)
+ Level  8 has       1800 grids (    1800,    1800,    1800,)
+ Level  9 has       3156 grids (    3156,    3156,    3156,)
+ Level 10 has       4360 grids (    4360,    4360,    4360,)
+ Main step=  1300 mcons= 0.00E+00 econs= 1.11E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2600 t= 7.45225E-01 dt= 6.465E-04 a= 1.000E+00 mem=11.5% 
+ Fine step=  2610 t= 7.51701E-01 dt= 6.495E-04 a= 1.000E+00 mem=11.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        199 grids (     199,     199,     199,)
+ Level  6 has        487 grids (     487,     487,     487,)
+ Level  7 has        959 grids (     959,     959,     959,)
+ Level  8 has       1808 grids (    1808,    1808,    1808,)
+ Level  9 has       3183 grids (    3183,    3183,    3183,)
+ Level 10 has       4352 grids (    4352,    4352,    4352,)
+ Main step=  1310 mcons= 6.66E-16 econs= 1.07E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2620 t= 7.58206E-01 dt= 6.518E-04 a= 1.000E+00 mem=11.6% 
+ Fine step=  2630 t= 7.64737E-01 dt= 6.551E-04 a= 1.000E+00 mem=11.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        199 grids (     199,     199,     199,)
+ Level  6 has        484 grids (     484,     484,     484,)
+ Level  7 has        972 grids (     972,     972,     972,)
+ Level  8 has       1832 grids (    1832,    1832,    1832,)
+ Level  9 has       3197 grids (    3197,    3197,    3197,)
+ Level 10 has       4394 grids (    4394,    4394,    4394,)
+ Main step=  1320 mcons=-2.22E-16 econs= 1.11E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2640 t= 7.71298E-01 dt= 6.578E-04 a= 1.000E+00 mem=11.6% 
+ Fine step=  2650 t= 7.77887E-01 dt= 6.602E-04 a= 1.000E+00 mem=11.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        196 grids (     196,     196,     196,)
+ Level  6 has        486 grids (     486,     486,     486,)
+ Level  7 has        976 grids (     976,     976,     976,)
+ Level  8 has       1853 grids (    1853,    1853,    1853,)
+ Level  9 has       3226 grids (    3226,    3226,    3226,)
+ Level 10 has       4434 grids (    4434,    4434,    4434,)
+ Main step=  1330 mcons=-8.88E-16 econs= 1.13E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2660 t= 7.84504E-01 dt= 6.637E-04 a= 1.000E+00 mem=11.8% 
+ Fine step=  2670 t= 7.91150E-01 dt= 6.662E-04 a= 1.000E+00 mem=11.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        197 grids (     197,     197,     197,)
+ Level  6 has        487 grids (     487,     487,     487,)
+ Level  7 has        989 grids (     989,     989,     989,)
+ Level  8 has       1870 grids (    1870,    1870,    1870,)
+ Level  9 has       3269 grids (    3269,    3269,    3269,)
+ Level 10 has       4476 grids (    4476,    4476,    4476,)
+ Main step=  1340 mcons= 0.00E+00 econs= 1.10E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2680 t= 7.97824E-01 dt= 6.689E-04 a= 1.000E+00 mem=11.9% 
+ Fine step=  2690 t= 8.04525E-01 dt= 6.722E-04 a= 1.000E+00 mem=11.9% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        195 grids (     195,     195,     195,)
+ Level  6 has        483 grids (     483,     483,     483,)
+ Level  7 has        996 grids (     996,     996,     996,)
+ Level  8 has       1890 grids (    1890,    1890,    1890,)
+ Level  9 has       3291 grids (    3291,    3291,    3291,)
+ Level 10 has       4530 grids (    4530,    4530,    4530,)
+ Main step=  1350 mcons=-2.22E-16 econs= 1.20E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2700 t= 8.11256E-01 dt= 6.746E-04 a= 1.000E+00 mem=12.0% 
+ Fine step=  2710 t= 8.18014E-01 dt= 6.775E-04 a= 1.000E+00 mem=12.0% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        195 grids (     195,     195,     195,)
+ Level  6 has        475 grids (     475,     475,     475,)
+ Level  7 has       1004 grids (    1004,    1004,    1004,)
+ Level  8 has       1897 grids (    1897,    1897,    1897,)
+ Level  9 has       3304 grids (    3304,    3304,    3304,)
+ Level 10 has       4546 grids (    4546,    4546,    4546,)
+ Main step=  1360 mcons=-1.11E-15 econs= 1.15E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2720 t= 8.24801E-01 dt= 6.806E-04 a= 1.000E+00 mem=12.0% 
+ Fine step=  2730 t= 8.31616E-01 dt= 6.830E-04 a= 1.000E+00 mem=12.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        195 grids (     195,     195,     195,)
+ Level  6 has        481 grids (     481,     481,     481,)
+ Level  7 has       1005 grids (    1005,    1005,    1005,)
+ Level  8 has       1914 grids (    1914,    1914,    1914,)
+ Level  9 has       3317 grids (    3317,    3317,    3317,)
+ Level 10 has       4586 grids (    4586,    4586,    4586,)
+ Main step=  1370 mcons=-1.11E-16 econs= 1.22E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2740 t= 8.38459E-01 dt= 6.861E-04 a= 1.000E+00 mem=12.1% 
+ Fine step=  2750 t= 8.45332E-01 dt= 6.890E-04 a= 1.000E+00 mem=12.1% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        189 grids (     189,     189,     189,)
+ Level  6 has        474 grids (     474,     474,     474,)
+ Level  7 has       1020 grids (    1020,    1020,    1020,)
+ Level  8 has       1932 grids (    1932,    1932,    1932,)
+ Level  9 has       3363 grids (    3363,    3363,    3363,)
+ Level 10 has       4618 grids (    4618,    4618,    4618,)
+ Main step=  1380 mcons=-2.22E-16 econs= 1.24E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2760 t= 8.52232E-01 dt= 6.914E-04 a= 1.000E+00 mem=12.2% 
+ Fine step=  2770 t= 8.59159E-01 dt= 6.947E-04 a= 1.000E+00 mem=12.2% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        187 grids (     187,     187,     187,)
+ Level  6 has        469 grids (     469,     469,     469,)
+ Level  7 has       1027 grids (    1027,    1027,    1027,)
+ Level  8 has       1950 grids (    1950,    1950,    1950,)
+ Level  9 has       3389 grids (    3389,    3389,    3389,)
+ Level 10 has       4667 grids (    4667,    4667,    4667,)
+ Main step=  1390 mcons= 2.22E-16 econs= 1.22E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2780 t= 8.66116E-01 dt= 6.974E-04 a= 1.000E+00 mem=12.3% 
+ Fine step=  2790 t= 8.73101E-01 dt= 6.999E-04 a= 1.000E+00 mem=12.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        189 grids (     189,     189,     189,)
+ Level  6 has        467 grids (     467,     467,     467,)
+ Level  7 has       1019 grids (    1019,    1019,    1019,)
+ Level  8 has       1962 grids (    1962,    1962,    1962,)
+ Level  9 has       3411 grids (    3411,    3411,    3411,)
+ Level 10 has       4690 grids (    4690,    4690,    4690,)
+ Main step=  1400 mcons=-1.11E-16 econs= 1.24E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2800 t= 8.80113E-01 dt= 7.033E-04 a= 1.000E+00 mem=12.4% 
+ Fine step=  2810 t= 8.87155E-01 dt= 7.058E-04 a= 1.000E+00 mem=12.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        187 grids (     187,     187,     187,)
+ Level  6 has        461 grids (     461,     461,     461,)
+ Level  7 has       1016 grids (    1016,    1016,    1016,)
+ Level  8 has       1978 grids (    1978,    1978,    1978,)
+ Level  9 has       3452 grids (    3452,    3452,    3452,)
+ Level 10 has       4720 grids (    4720,    4720,    4720,)
+ Main step=  1410 mcons=-1.11E-16 econs= 1.19E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2820 t= 8.94224E-01 dt= 7.086E-04 a= 1.000E+00 mem=12.5% 
+ Fine step=  2830 t= 9.01322E-01 dt= 7.118E-04 a= 1.000E+00 mem=12.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        185 grids (     185,     185,     185,)
+ Level  6 has        461 grids (     461,     461,     461,)
+ Level  7 has       1007 grids (    1007,    1007,    1007,)
+ Level  8 has       1990 grids (    1990,    1990,    1990,)
+ Level  9 has       3483 grids (    3483,    3483,    3483,)
+ Level 10 has       4772 grids (    4772,    4772,    4772,)
+ Main step=  1420 mcons= 6.66E-16 econs= 1.18E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2840 t= 9.08449E-01 dt= 7.142E-04 a= 1.000E+00 mem=12.6% 
+ Fine step=  2850 t= 9.15603E-01 dt= 7.171E-04 a= 1.000E+00 mem=12.6% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        185 grids (     185,     185,     185,)
+ Level  6 has        457 grids (     457,     457,     457,)
+ Level  7 has       1001 grids (    1001,    1001,    1001,)
+ Level  8 has       2010 grids (    2010,    2010,    2010,)
+ Level  9 has       3499 grids (    3499,    3499,    3499,)
+ Level 10 has       4808 grids (    4808,    4808,    4808,)
+ Main step=  1430 mcons= 2.22E-16 econs= 1.13E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2860 t= 9.22786E-01 dt= 7.201E-04 a= 1.000E+00 mem=12.6% 
+ Fine step=  2870 t= 9.29997E-01 dt= 7.225E-04 a= 1.000E+00 mem=12.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        185 grids (     185,     185,     185,)
+ Level  6 has        450 grids (     450,     450,     450,)
+ Level  7 has        984 grids (     984,     984,     984,)
+ Level  8 has       2000 grids (    2000,    2000,    2000,)
+ Level  9 has       3530 grids (    3530,    3530,    3530,)
+ Level 10 has       4846 grids (    4846,    4846,    4846,)
+ Main step=  1440 mcons= 4.44E-16 econs= 1.07E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2880 t= 9.37236E-01 dt= 7.257E-04 a= 1.000E+00 mem=12.7% 
+ Fine step=  2890 t= 9.44504E-01 dt= 7.285E-04 a= 1.000E+00 mem=12.7% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        181 grids (     181,     181,     181,)
+ Level  6 has        443 grids (     443,     443,     443,)
+ Level  7 has        977 grids (     977,     977,     977,)
+ Level  8 has       1978 grids (    1978,    1978,    1978,)
+ Level  9 has       3555 grids (    3555,    3555,    3555,)
+ Level 10 has       4876 grids (    4876,    4876,    4876,)
+ Main step=  1450 mcons= 2.22E-16 econs= 1.07E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2900 t= 9.51800E-01 dt= 7.310E-04 a= 1.000E+00 mem=12.7% 
+ Fine step=  2910 t= 9.59124E-01 dt= 7.343E-04 a= 1.000E+00 mem=12.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        177 grids (     177,     177,     177,)
+ Level  6 has        445 grids (     445,     445,     445,)
+ Level  7 has        959 grids (     959,     959,     959,)
+ Level  8 has       1948 grids (    1948,    1948,    1948,)
+ Level  9 has       3553 grids (    3553,    3553,    3553,)
+ Level 10 has       4922 grids (    4922,    4922,    4922,)
+ Main step=  1460 mcons=-1.11E-15 econs= 1.03E-14 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2920 t= 9.66478E-01 dt= 7.369E-04 a= 1.000E+00 mem=12.8% 
+ Fine step=  2930 t= 9.73858E-01 dt= 7.397E-04 a= 1.000E+00 mem=12.8% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        177 grids (     177,     177,     177,)
+ Level  6 has        433 grids (     433,     433,     433,)
+ Level  7 has        942 grids (     942,     942,     942,)
+ Level  8 has       1894 grids (    1894,    1894,    1894,)
+ Level  9 has       3454 grids (    3454,    3454,    3454,)
+ Level 10 has       4902 grids (    4902,    4902,    4902,)
+ Main step=  1470 mcons= 4.44E-16 econs= 8.88E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2940 t= 9.81267E-01 dt= 7.429E-04 a= 1.000E+00 mem=12.7% 
+ Fine step=  2950 t= 9.88705E-01 dt= 7.453E-04 a= 1.000E+00 mem=12.5% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        177 grids (     177,     177,     177,)
+ Level  6 has        427 grids (     427,     427,     427,)
+ Level  7 has        915 grids (     915,     915,     915,)
+ Level  8 has       1838 grids (    1838,    1838,    1838,)
+ Level  9 has       3327 grids (    3327,    3327,    3327,)
+ Level 10 has       4660 grids (    4660,    4660,    4660,)
+ Main step=  1480 mcons=-1.78E-15 econs= 8.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2960 t= 9.96170E-01 dt= 7.484E-04 a= 1.000E+00 mem=12.3% 
+ Mesh structure
+ Level  1 has          1 grids (       1,       1,       1,)
+ Level  2 has          4 grids (       4,       4,       4,)
+ Level  3 has         16 grids (      16,      16,      16,)
+ Level  4 has         64 grids (      64,      64,      64,)
+ Level  5 has        177 grids (     177,     177,     177,)
+ Level  6 has        425 grids (     425,     425,     425,)
+ Level  7 has        917 grids (     917,     917,     917,)
+ Level  8 has       1832 grids (    1832,    1832,    1832,)
+ Level  9 has       3311 grids (    3311,    3311,    3311,)
+ Level 10 has       4652 grids (    4652,    4652,    4652,)
+ Main step=  1483 mcons=-6.66E-16 econs= 8.55E-15 epot= 0.00E+00 ekin= 2.50E-01
+ Fine step=  2966 t= 1.00066E+00 dt= 7.496E-04 a= 1.000E+00 mem=12.3% 
+ Run completed

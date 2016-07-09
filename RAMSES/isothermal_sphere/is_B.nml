@@ -1,0 +1,61 @@
+&INIT_PARAMS
+/
+&RUN_PARAMS 
+hydro=.true.
+verbose=.false.
+poisson=.true.
+ncontrol=1
+nrestart=0
+nremap=0
+nsubcycle=1,1,1,1,1,
+nstepmax=100000000
+/
+&AMR_PARAMS 
+levelmin=6
+levelmax=10
+ngridtot=10000
+nexpand=1
+boxlen=50000000000
+ngridmax=10000000
+/
+&BOUNDARY_PARAMS
+nboundary=6
+bound_type= 2,2,2,2,2,2,
+ibound_min=-1,+1,-1,-1,-1,-1
+ibound_max=-1,+1,+1,+1,+1,+1
+jbound_min= 0, 0,-1,+1,-1,-1
+jbound_max= 0, 0,-1,+1,+1,+1
+kbound_min= 0, 0, 0, 0,-1,+1
+kbound_max= 0, 0, 0, 0,-1,+1
+/
+
+&OUTPUT_PARAMS
+foutput=10000000
+delta_tout=1.0E+03
+tend=100.0E+05
+/
+&HYDRO_PARAMS
+gamma=1.00001
+courant_factor=0.5
+scheme='muscl'
+slope_type=1
+pressure_fix=.false.
+beta_fix=0.5
+smallr=1.0E-30
+/
+&POISSON_PARAMS
+gravity_type=0
+/
+
+&REFINE_PARAMS
+x_refine=0.0,0.0,0.0
+y_refine=0.0,0.0,0.0
+z_refine=0.0,0.0,0.0
+r_refine=1d10,1d10
+a_refine=1.0,1.0
+b_refine=1.0,1.0
+exp_refine=2.0,2.0
+interpol_var=0
+interpol_type=1
+/
+
