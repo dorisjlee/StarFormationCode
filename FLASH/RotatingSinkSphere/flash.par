@@ -28,17 +28,9 @@ yr_boundary_type = "outflow"
 useParticle = .true.
 sink_merging = .true.
 useSinkParticles = .true.
-sink_density_thresh = 2.54794669312e-19 
-sink_accretion_radius = 1.953125e+17
-sink_softening_radius = 1.953125e+17
-sim_sink_x    =  5.0E18
-sim_sink_y    =  5.0E18
-sim_sink_z    =  5.0E18
-sim_sink_vx   =  0.0
-sim_sink_vy   =  0.0
-sim_sink_vz   =  0.0
-sim_sink_mass =  1.989e32
-
+sink_density_thresh =  2.54794669312e-17
+sink_accretion_radius =  2.44140625e+16
+sink_softening_radius =  2.44140625e+16
 
 # Simulation (grid, time, I/O) parameters
 cfl		= 0.3
@@ -47,16 +39,16 @@ restart         = .true.
 
 checkpointFileIntervalTime = 1.e10
 checkpointFileIntervalStep = 0
-checkpointFileNumber = 291 
+checkpointFileNumber = 494
 
 # plotfile output parameters
 plotfileIntervalTime = 1.e10
 plotfileIntervalStep = 0
-plotfileNumber = 291
+plotfileNumber = 494
 
 particleFileIntervalTime = 1.e10
 particleFileIntervalStep = 0
-particleFileNumber = 291 
+particleFileNumber = 494
 
 
 nend            = 1E6
@@ -74,8 +66,8 @@ plot_var_2 = "pres"
 plot_var_3 = "temp"
 
 #    AMR refinement parameters  
-lrefine_min     = 5  #6 
-lrefine_max     = 7  #8 
+lrefine_min     = 5   
+lrefine_max     = 7   
 #refine_var_1    = "dens"
 refineOnJeansLength=.true.
 jeans_ncells_ref = 32.0
